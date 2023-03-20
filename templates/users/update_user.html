@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+</head>
+<body>
+<form method="post" enctype="multipart/form-data" class="form">
+    {% csrf_token %}
+    <p>
+        <label for="id_username">Имя пользователя:</label>
+        <input type="text" name="username" value="{{ user.username }}" maxlength="150" autocapitalize="none" autocomplete="username" autofocus="" required="" id="id_username">
+        <span class="helptext">Обязательное поле. Не более 150 символов. Только буквы, цифры и символы @/./+/-/_.</span>
+    </p>
+
+    <p>
+        <label for="id_last_name">Фамилия:</label>
+        <input type="text" name="last_name" value="{{ user.last_name }}" maxlength="150" id="id_surname">
+    </p>
+
+    <p>
+        <label for="id_first_name">Имя:</label>
+        <input type="text" name="first_name" value="{{ user.first_name }}" maxlength="150" id="id_name">
+    </p>
+
+    <p>
+        <label for="id_patronymic">Отчество:</label>
+        <input type="text" name="patronymic" value="{{ user.patronymic }}" maxlength="40" required="" id="id_patronymic">
+    </p>
+
+    <p>
+        <label for="id_company">Компания:</label>
+        <input type="text" name="company" value="{{ user.company }}" maxlength="40" required="" id="id_company">
+    </p>
+
+    <p>
+        <label for="id_number_phone">Номер телефона:</label>
+        <input type="text" name="number_phone" value="{{ user.number_phone }}" maxlength="40" required="" id="id_number_phone">
+    </p>
+
+    <p>
+        <label for="id_mail">Mail:</label>
+        <input type="text" name="mail" value="{{ user.mail }}" maxlength="40" required="" id="id_mail">
+    </p>
+
+    <p>
+        <label for="id_telegram">Telegram:</label>
+        <input type="text" name="telegram" value="{{ user.telegram }}" maxlength="40" required="" id="id_telegram">
+    </p>
+
+    <p>
+        <label for="id_vk">VK:</label>
+        <input type="text" name="vk" value="{{ user.vk }}" maxlength="40" required="" id="id_vk">
+    </p>
+
+    <p>
+        <label for="id_instagram">Instagram:</label>
+        <input type="text" name="instagram" value="{{ user.instagram }}" maxlength="40" required="" id="id_instagram">
+    </p>
+
+    <p>
+        <label for="id_type_of_transaction">Вид сделки:</label>
+        <input type="text" name="type_of_transaction" value="{{ user.type_of_transaction }}" maxlength="40" required="" id="id_type_of_transaction">
+    </p>
+
+
+  <p>
+    <label for="id_property_type">Тип недвижимости:</label>
+    <input type="text" name="property_type" value="{{ user.property_type }}" maxlength="40" required="" id="id_property_type">
+
+
+  </p>
+
+
+  <p>
+    <label for="id_viewing_phone_numbers">Просмотр номеров телефона:</label>
+    <input type="checkbox" name="viewing_phone_numbers" id="id_viewing_phone_numbers" {% if user.viewing_phone_numbers %}CHECKED{% endif %}>
+
+
+  </p>
+
+
+  <p>
+    <label for="id_editing_objects">Редактирование объектов:</label>
+    <input type="checkbox" name="editing_objects" id="id_editing_objects" {% if user.editing_objects %}CHECKED{% endif %}>
+
+
+  </p>
+
+
+  <p>
+    <label for="id_adding_objects">Добавление объектов:</label>
+    <input type="checkbox" name="adding_objects" id="id_adding_objects" {% if user.adding_objects %}CHECKED{% endif %}>
+
+
+  </p>
+
+
+  <p>
+    <label for="id_deleting_objects">Удаление объектов:</label>
+    <input type="checkbox" name="deleting_objects" id="id_deleting_objects" {% if user.deleting_objects %}CHECKED{% endif %}>
+
+
+  </p>
+
+
+  <p>
+    <label for="id_attcs">Доступ к разделу “обратный звонок”:</label>
+    <input type="checkbox" name="attcs" id="id_attcs" {% if user.attcs %}CHECKED{% endif %}>
+
+
+  </p>
+
+
+  <p>
+    <label for="id_attraos">Доступ к разделу “напоминания об объектах”:</label>
+    <input type="checkbox" name="attraos" id="id_attraos" {% if user.attraos %}CHECKED{% endif %}>
+
+
+  </p>
+
+
+  <p>
+    <label for="id_attclients">Доступ к разделу “клиенты”:</label>
+    <input type="checkbox" name="attclients" id="id_attclients" {% if user.attclients %}CHECKED{% endif %}>
+
+
+  </p>
+
+
+  <p>
+    <label for="id_attcrs">Доступ к разделу “напоминание по клиентам”:</label>
+    <input type="checkbox" name="attcrs" id="id_attcrs" {% if user.attcrs %}CHECKED{% endif %}>
+
+
+  </p>
+
+
+  <p>
+    <label for="id_attaacs">Доступ к разделу “добавление клиента”:</label>
+    <input type="checkbox" name="attaacs" id="id_attaacs" {% if user.attaacs %}CHECKED{% endif %}>
+
+
+  </p>
+
+
+  <p>
+    <label for="id_attcas">Доступ к разделу “архив  клиентов”:</label>
+    <input type="checkbox" name="attcas" id="id_attcas" {% if user.attcas %}CHECKED{% endif %}>
+
+
+  </p>
+
+    <input type="submit" value="Create my account">
+    </form>
+  </body>
+</html>

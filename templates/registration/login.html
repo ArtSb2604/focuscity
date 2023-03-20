@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <form method="post" class="section-admin">
+    {% csrf_token %}
+    <div class="container">
+        <div class="row section-password-recovery">
+            <div class="col container-password-recovery-5">
+                <div class="col container-password-recovery-22">
+                    <a href="#"><img class="logo-password-recovery" src="{% static 'img/password-recovery.png' %}" alt="Focus City"></a>
+                    <h1 class="container-password-recovery-2-text">Вход в личный кабинет</h1>
+                </div>
+
+                <div class="col container-password-recovery-33">
+                    <input type="text" class="form-control container-password-recovery-3-input" id="mail" name="mail" placeholder="Почта" aria-label="first-name-broker" aria-describedby="addon-wrapping">
+                    <input type="text" class="form-control container-password-recovery-3-input" id="password" name="password" placeholder="Пароль" aria-label="first-name-broker" aria-describedby="addon-wrapping">
+                    <div class="col container-password-recovery-6">
+                        <div class="p-2 container-password-recovery-7" style="width: 154px;">
+                            <input class="form-check-input checkbox-ud" type="checkbox" value="" id="flexCheckDefault-1" style="width: 24px; height: 24px;">
+                            <label class="form-check-label" for="flexCheckDefault-1">Запомнить меня</label>
+                        </div>
+                        <a class="text-decoration-none" href="password-recovery.html"><p class="container-password-recovery-7-text">Забыли пароль?</p></a>
+                    </div>
+                </div>
+                <div class="col container-password-recovery-4">
+                    <button type="submit" class="btn btn-dark container-password-recovery-4-button">Войти</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+    
+{% endblock %}

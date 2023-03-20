@@ -1,0 +1,152 @@
+<div class="form" id="form">
+        <div class="specific_data">
+            <input type="text" name="type" value="rent" maxlength="150" id="type" style="display: none;">
+            <div class="property_type">
+                Тип недвижимости:
+                <input type="radio" class="btn-check" onclick="prop_type('Апартамент');" name="property_type" id="option1" value="Апартамент" autocomplete="off" checked>
+                <label class="btn btn-secondary" for="option1">Апартамент</label>
+                <input type="radio" class="btn-check" onclick="prop_type('Квартира');" name="property_type" id="option2" value="Квартира" autocomplete="off">
+                <label class="btn btn-secondary" for="option2">Квартира</label>
+                <input type="radio" class="btn-check" onclick="prop_type('Офис');" name="property_type" id="option3" value="Офис" autocomplete="off">
+                <label class="btn btn-secondary" for="option3">Офис</label>
+                <input type="radio" class="btn-check" onclick="prop_type('Торговая площадь');" name="property_type" id="option4" value="Торговая площадь" autocomplete="off">
+                <label class="btn btn-secondary" for="option4">Торговая площадь</label>
+                <input type="radio" class="btn-check" onclick="prop_type('Свободного назаначения');" name="property_type" id="option5" value="Свободного назаначения" autocomplete="off">
+                <label class="btn btn-secondary" for="option5">Свободного назаначения</label>
+                <input type="radio" class="btn-check" onclick="prop_type('Паркинг');" name="property_type" id="option6" value="Паркинг" autocomplete="off">
+                <label class="btn btn-secondary" for="option6">Паркинг</label>
+                <input type="radio" class="btn-check" onclick="prop_type('Коворкинг');" name="property_type" id="option7" value="Коворкинг" autocomplete="off">
+                <label class="btn btn-secondary" for="option7">Коворкинг</label>
+            </div>
+
+            <div class="status">
+                Статус:
+                <div class="wrapper_status_rent" id="wrapper_status_rent">
+                <input type="radio" id="statusChoice1" name="status" value="Сдается">
+                <label for="statusChoice1">Сдается</label>
+                <input type="radio" id="statusChoice2" name="status" value="Сдано">
+                <label for="statusChoice2">Сдано</label>
+                </div>
+                <div class="wrapper_status_sale none_form" id="wrapper_status_sale">
+                <input type="radio" id="statusChoice1" name="status" value="Продается">
+                <label for="statusChoice1">Продается</label>
+                <input type="radio" id="statusChoice2" name="status" value="Продано">
+                <label for="statusChoice2">Продано</label>
+                </div>
+            </div>
+
+            <div class="wtcw">
+                С кем связь:
+                <div class="wtcw">
+                <input type="radio" id="wtcwChoice1" name="wtcw" value="Собственник">
+                <label for="wtcwChoice1">Собственник</label>
+                <input type="radio" id="wtcwChoice2" name="wtcw" value="Представитель собственника">
+                <label for="wtcwChoice2">Представитель собственника</label>
+                <input type="radio" id="wtcwChoice3" name="wtcw" value="Знакомый собственника">
+                <label for="wtcwChoice3">Знакомый собственника</label>
+                <input type="radio" id="wtcwChoice4" name="wtcw" value="Брокер">
+                <label for="wtcwChoice4">Брокер</label>
+                </div>
+            </div>
+
+            <p>
+                <label for="id_number_phone">Номер телефона</label>
+                <input type="text" name="number_phone" value="" maxlength="150" id="id_number_phone">
+            </p>
+
+            <p>
+                <label for="id_amount_remuneration">Размер вознаграждение</label>
+                <input type="text" name="amount_remuneration" value="" maxlength="150" id="id_amount_remuneration">
+            </p>
+
+            <p>
+                <label for="id_Appoint_responsible_person">Назначить ответственного</label>
+                <input type="text" name="Appoint_responsible_person" value="" maxlength="150" id="id_Appoint_responsible_person">
+            </p>
+
+            <div class="price">
+                Цена:
+                <p>
+                    <label for="id_price_month">месяц</label>
+                    <input type="text" name="price_month" value="" maxlength="150" id="id_price_month">
+                </p>
+                <p>
+                    <label for="id_price_square_month">м²/ месяц</label>
+                    <input type="text" name="price_square_month" value="" maxlength="150" id="id_price_square_month">
+                </p>
+                <p id="psy">
+                    <label for="id_price_square_year">м²/ год</label>
+                    <input type="text" name="price_square_year" value="0" maxlength="150" id="id_price_square_year">
+                </p>
+            </div>
+            <div class="data" id="data">
+                <label for="start">Заезд / Отъезд</label>
+            <input type="date" id="start" name="trip-start" data-placeholder="Дата, от">
+            <input type="date" id="start" name="trip-start" data-placeholder="Дата, до">
+            </div>
+
+            <div class="real_estate_data">
+                Данные недвижимости
+                <div class="rooms" id="rooms">
+                    Комнат:
+                    <div class="none_form" id="rooms_b">
+                            <input type="radio" id="roomsChoice1" name="rooms" value="openspasce">
+                            <label for="roomsChoice1">openspasce</label>
+                            <input type="radio" id="roomsChoice2" name="rooms" value="рабочее место">
+                            <label for="roomsChoice2">рабочее место</label>
+                        </div>
+                        <input type="radio" id="roomsChoice3" name="rooms" value="1">
+                        <label for="roomsChoice3">1</label>
+                        <input type="radio" id="roomsChoice4" name="rooms" value="2">
+                        <label for="roomsChoice4">2</label>
+                        <input type="radio" id="roomsChoice5" name="rooms" value="3">
+                        <label for="roomsChoice5">3</label>
+                        <input type="radio" id="roomsChoice6" name="rooms" value="4">
+                        <label for="roomsChoice6">4</label>
+                        <input type="radio" id="roomsChoice7" name="rooms" value="5+">
+                        <label for="roomsChoice7">5+</label>
+                </div>
+
+                <div class="bedrooms" id="bedrooms">
+                    Спален:
+                    <input type="radio" id="bedroomsChoice1" name="bedrooms" value="Студия">
+                    <label for="bedroomsChoice1">Студия</label>
+                    <input type="radio" id="bedroomsChoice2" name="bedrooms" value="1">
+                    <label for="bedroomsChoice2">1</label>
+                    <input type="radio" id="bedroomsChoice3" name="bedrooms" value="2">
+                    <label for="bedroomsChoice3">2</label>
+                    <input type="radio" id="bedroomsChoice4" name="bedrooms" value="3">
+                    <label for="bedroomsChoice4">3</label>
+                    <input type="radio" id="bedroomsChoice5" name="bedrooms" value="4">
+                    <label for="bedroomsChoice5">4</label>
+                    <input type="radio" id="bedroomsChoice6" name="bedrooms" value="5+">
+                    <label for="bedroomsChoice6">5+</label>
+                </div>
+            </div>
+
+            <p id="wet_spots">
+                <label for="wet_spots">Мокрые точки</label>
+                <input type="text" name="wet_spots" value="0" maxlength="150" id="id_price_square_year">
+            </p>
+
+            <p id="total_area">
+                <label for="total_area">Общая площадь</label>
+                <input type="text" name="total_area" value="0" maxlength="150" id="id_price_square_year">
+            </p>
+        </div>
+    </div>
+
+
+
+     <div class="user" id="user-{{ i.pk }}">
+        <a href="{{ i.pk }}">{{ i }}</a>
+        <div class="status" id="status{{ i.pk }}">
+            {% if i.status == True %}
+                <a class="update_status_user_button" id="user_status{{ i.pk }}" onclick="status_user({{ i.pk }});" href="#" data-userid="{{ i.pk }}" data-status="0">Деактивировать</a>
+            {% else %}
+                <a class="update_status_user_button" id="user_status{{ i.pk }}" onclick="status_user({{ i.pk }});" href="#" data-userid="{{ i.pk }}" data-status="1">Активировать</a>
+            {% endif %}
+        </div>
+        <a class="" id="" href="{% url 'update' i.pk %}" data-catid="{{ i.pk }}">Редактировать</a>
+        <a class="delete_user_button" id="user{{ i.pk }}" href="#" data-catid="{{ i.pk }}">Удалить</a>
+        </div>

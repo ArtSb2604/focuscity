@@ -1,0 +1,91 @@
+{% for i in user %}
+    {% if i.is_superuser %}
+{% else %}
+    <hr class="hr-uder-2">
+                    <div class="d-flex admin-users-block-2" id="user-{{ i.pk }}">
+                        <div class="d-flex p-2 flex-fill align-items-start user-admin-block">
+                            <div class="d-flex p-2 user-admin-col">
+                                <a href="#"><img class="user-picture" src="{{ i.img.url }}" alt="Focus City"></a>
+                                <p class="user-text">{{ i.last_name }} {{ i.first_name }}</p>
+                            </div>
+                            <div class="d-flex p-2 user-admin-col-mob">
+                                <a href="#"><img class="user-picture" src="{{ i.img.url }}" alt="Focus City"></a>
+                                <div class="d-flex p-2 user-admin-col-1-mob">
+                                    <p class="user-text-name">{{ i.last_name }} {{ i.first_name }}</p>
+                                    <p class="user-text-company">{{ i.company }}</p>
+                                </div>
+                            </div>
+                            <hr class="hr-user-mob">
+                            <div class="d-flex p-2 user-admin-col-3-mob">
+                                <h1 class="filter-text-admin">Телефон</h1>
+                                <p class="user-text-tel">{{ i.number_phone }}</p>
+                            </div>
+                            <div class="d-flex p-2 user-admin-col-2-mob">
+                                <h1 class="filter-text-admin">Mail</h1>
+                                <p class="user-text-mail">{{ i.mail }}</p>
+                            </div>
+                            <div class="d-flex p-2 user-admin-col-1">
+                                <p class="user-text-company">{{ i.company }}</p>
+                            </div>
+                            <div class="d-flex p-2 user-admin-col-2">
+                                <p class="user-text-mail">{{ i.mail }}</p>
+                            </div>
+                            <div class="d-flex p-2 user-admin-col-3">
+                                <p class="user-text-tel">{{ i.number_phone }}</p>
+                            </div>
+                            <div class="d-flex p-2 user-admin-col-4-mob">
+                                <div class="status" id="status{{ i.pk }}">
+                                    {% if i.status == True %}
+                                        <button type="button" class="btn btn-dark button-admin-1" id="user_status_mob{{ i.pk }}" onclick="status_user_mob({{ i.pk }});" href="#" data-userid="{{ i.pk }}" data-status="0">Заблокировать</button>
+                                    {% else %}
+                                        <button type="button" class="btn btn-dark button-admin-4" id="user_status_mob{{ i.pk }}" onclick="status_user_mob({{ i.pk }});" href="#" data-userid="{{ i.pk }}" data-status="1">Активировать</button>
+                                    {% endif %}
+                                </div>
+                                <div class="p-2 button-admin-2-mob">
+                                    <button type="button" class="btn btn-dark button-admin-2" onclick="window.location.href='{% url 'update' i.pk %}';">
+                                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M12.7904 6.21638L3.37521 15.6356C3.1019 15.9089 3.1019 16.3536 3.37521 16.6269C3.50983 16.7615 3.68933 16.8309 3.86882 16.8309C4.04831 16.8309 4.2278 16.7615 4.36242 16.6269L13.7776 7.21175C14.0509 6.93843 14.0509 6.49378 13.7776 6.22046C13.5083 5.94307 13.0637 5.94307 12.7904 6.21638Z" fill="#3C3C3B"/>
+                                        <path d="M17.5885 7.82775C17.768 7.82775 17.9474 7.7584 18.0821 7.62378L19.1101 6.59578C20.2972 5.40869 20.2972 3.47915 19.1101 2.29614L17.7068 0.89284C17.1316 0.31765 16.3687 0.00354004 15.5569 0.00354004C14.7451 0.00354004 13.9823 0.32173 13.4071 0.89284L12.3791 1.92084C12.1058 2.19415 12.1058 2.6388 12.3791 2.91212L17.0949 7.62786C17.2295 7.7584 17.409 7.82775 17.5885 7.82775ZM14.3984 1.87596C14.7084 1.56593 15.1204 1.3946 15.561 1.3946C15.9975 1.3946 16.4136 1.56593 16.7236 1.87596L18.1269 3.27926C18.7674 3.91972 18.7674 4.95996 18.1269 5.60042L17.5885 6.13889L13.8599 2.41036L14.3984 1.87596Z" fill="#3C3C3B"/>
+                                        <path d="M6.6428 19.0582L16.576 9.125C16.8494 8.85168 16.8494 8.40703 16.576 8.13372C16.3027 7.8604 15.8581 7.8604 15.5848 8.13372L5.82285 17.9038L1.51505 18.483L2.09432 14.1752L11.4197 4.84984C11.693 4.57652 11.693 4.13187 11.4197 3.85855C11.1464 3.58524 10.7018 3.58524 10.4284 3.85855L0.93986 13.3553C0.829718 13.4654 0.760369 13.6041 0.739972 13.7551L0.00568762 19.2051C-0.0228679 19.4213 0.0505605 19.6375 0.205576 19.7925C0.336116 19.9231 0.515607 19.9965 0.699178 19.9965C0.731813 19.9965 0.760369 19.9924 0.793003 19.9883L6.24302 19.254C6.39396 19.2377 6.53674 19.1684 6.6428 19.0582Z" fill="#3C3C3B"/>
+                                    </svg>
+                                    </button>
+                                    <button type="button" class="btn btn-dark button-admin-3" id="user{{ i.pk }}" data-catid="{{ i.pk }}">
+                                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M17.5 4.98332C14.725 4.70832 11.9333 4.56665 9.15 4.56665C7.5 4.56665 5.85 4.64998 4.2 4.81665L2.5 4.98332" stroke="#3C3C3B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M7.08331 4.14169L7.26665 3.05002C7.39998 2.25835 7.49998 1.66669 8.90831 1.66669H11.0916C12.5 1.66669 12.6083 2.29169 12.7333 3.05835L12.9166 4.14169" stroke="#3C3C3B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M15.7087 7.61664L15.167 16.0083C15.0753 17.3166 15.0003 18.3333 12.6753 18.3333H7.32533C5.00033 18.3333 4.92533 17.3166 4.83366 16.0083L4.29199 7.61664" stroke="#3C3C3B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M8.6084 13.75H11.3834" stroke="#3C3C3B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M7.91669 10.4167H12.0834" stroke="#3C3C3B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="d-flex p-2 user-admin-col-4">
+                                <div class="status" id="status{{ i.pk }}">
+                                    {% if i.status == True %}
+                                        <button type="button" class="btn btn-dark button-admin-1" id="user_status{{ i.pk }}" onclick="status_user({{ i.pk }});" href="#" data-userid="{{ i.pk }}" data-status="0">Заблокировать</button>
+                                    {% else %}
+                                        <button type="button" class="btn btn-dark button-admin-4" id="user_status{{ i.pk }}" onclick="status_user({{ i.pk }});" href="#" data-userid="{{ i.pk }}" data-status="1">Активировать</button>
+                                    {% endif %}
+                                </div>
+                                <button type="button" class="btn btn-dark button-admin-2" onclick="window.location.href='{% url 'update' i.pk %}';">
+                                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M12.7904 6.21638L3.37521 15.6356C3.1019 15.9089 3.1019 16.3536 3.37521 16.6269C3.50983 16.7615 3.68933 16.8309 3.86882 16.8309C4.04831 16.8309 4.2278 16.7615 4.36242 16.6269L13.7776 7.21175C14.0509 6.93843 14.0509 6.49378 13.7776 6.22046C13.5083 5.94307 13.0637 5.94307 12.7904 6.21638Z" fill="#3C3C3B"/>
+                                        <path d="M17.5885 7.82775C17.768 7.82775 17.9474 7.7584 18.0821 7.62378L19.1101 6.59578C20.2972 5.40869 20.2972 3.47915 19.1101 2.29614L17.7068 0.89284C17.1316 0.31765 16.3687 0.00354004 15.5569 0.00354004C14.7451 0.00354004 13.9823 0.32173 13.4071 0.89284L12.3791 1.92084C12.1058 2.19415 12.1058 2.6388 12.3791 2.91212L17.0949 7.62786C17.2295 7.7584 17.409 7.82775 17.5885 7.82775ZM14.3984 1.87596C14.7084 1.56593 15.1204 1.3946 15.561 1.3946C15.9975 1.3946 16.4136 1.56593 16.7236 1.87596L18.1269 3.27926C18.7674 3.91972 18.7674 4.95996 18.1269 5.60042L17.5885 6.13889L13.8599 2.41036L14.3984 1.87596Z" fill="#3C3C3B"/>
+                                        <path d="M6.6428 19.0582L16.576 9.125C16.8494 8.85168 16.8494 8.40703 16.576 8.13372C16.3027 7.8604 15.8581 7.8604 15.5848 8.13372L5.82285 17.9038L1.51505 18.483L2.09432 14.1752L11.4197 4.84984C11.693 4.57652 11.693 4.13187 11.4197 3.85855C11.1464 3.58524 10.7018 3.58524 10.4284 3.85855L0.93986 13.3553C0.829718 13.4654 0.760369 13.6041 0.739972 13.7551L0.00568762 19.2051C-0.0228679 19.4213 0.0505605 19.6375 0.205576 19.7925C0.336116 19.9231 0.515607 19.9965 0.699178 19.9965C0.731813 19.9965 0.760369 19.9924 0.793003 19.9883L6.24302 19.254C6.39396 19.2377 6.53674 19.1684 6.6428 19.0582Z" fill="#3C3C3B"/>
+                                    </svg>
+                                </button>
+                                <button type="button" class="btn btn-dark button-admin-3" id="user{{ i.pk }}" data-catid="{{ i.pk }}">
+                                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M17.5 4.98332C14.725 4.70832 11.9333 4.56665 9.15 4.56665C7.5 4.56665 5.85 4.64998 4.2 4.81665L2.5 4.98332" stroke="#3C3C3B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M7.08331 4.14169L7.26665 3.05002C7.39998 2.25835 7.49998 1.66669 8.90831 1.66669H11.0916C12.5 1.66669 12.6083 2.29169 12.7333 3.05835L12.9166 4.14169" stroke="#3C3C3B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M15.7087 7.61664L15.167 16.0083C15.0753 17.3166 15.0003 18.3333 12.6753 18.3333H7.32533C5.00033 18.3333 4.92533 17.3166 4.83366 16.0083L4.29199 7.61664" stroke="#3C3C3B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M8.6084 13.75H11.3834" stroke="#3C3C3B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M7.91669 10.4167H12.0834" stroke="#3C3C3B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+{% endif %}
+{% endfor %}
