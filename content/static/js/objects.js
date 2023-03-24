@@ -1,3 +1,41 @@
+var myMap;
+
+ymaps.ready(init)
+function init() {
+    myMap = new ymaps.Map("mapa", {center: [1, 2], zoom: 14}, {searchControlProvider: 'yandex#search'});
+    myMap.geoObjects.add(new ymaps.Placemark([1, 2], {balloonContent: 'цвет <strong>красный</strong>',
+        iconCaption: 'f'}, {preset: 'islands#redDotIconWithCaption'}))
+}
+
+function NextSlide(num) {
+    var Menu = document.querySelectorAll('#inner-'+num+' .carousel-item');
+    a = 0
+    for (let el of Menu) {
+        a += 1
+        if (el.className.indexOf('active') > -1) {
+            if (a == Menu.length) {
+                $('#tek_slide-'+num).text(1)
+            } else {
+                $('#tek_slide-'+num).text(a+1)
+            }
+        }
+    }
+}
+function BackSlide(num) {
+    var Menu = document.querySelectorAll('#inner-'+num+' .carousel-item');
+    a = 0
+    for (let el of Menu) {
+        a += 1
+        if (el.className.indexOf('active') > -1) {
+            if (a-1 == 0) {
+                $('#tek_slide-'+num).text(Menu.length)
+            } else {
+                $('#tek_slide-'+num).text(a-1)
+            }
+        }
+    }
+}
+
 function pu(num) {
     if ($('#info_con-'+num).css("display") == 'none') {
         $("#info_con-"+num).css("display", "block");
@@ -32,7 +70,23 @@ function price_rent(num, id) {
     }
 }
 
-function pu_maps(num) {
+function pu_maps(num, x, y, tower, subtower) {
+    var ls = myMap.container._parentElement.id
+    if (myMap.container._parentElement.id.indexOf('-') > -1) {
+        console.log(ls.substr(ls.indexOf("-") + 1))
+        $("#carouselExample-"+ls.substr(ls.indexOf("-") + 1)).css("display", "block");
+        $("#maps-"+ls.substr(ls.indexOf("-") + 1)).css("display", "none");
+        $("#info_con-"+ls.substr(ls.indexOf("-") + 1)).css("display", "none");
+    }
+    myMap.destroy();
+    ymaps.ready(init)
+    function init() {
+    var x1 = parseFloat(x.replace(",", "."));
+    var y1 = parseFloat(y.replace(",", "."));
+    myMap = new ymaps.Map("map-"+num, {center: [x1,y1], zoom: 14}, {searchControlProvider: 'yandex#search'});
+    myMap.geoObjects.add(new ymaps.Placemark([x1,y1], {balloonContent: 'цвет <strong>красный</strong>',
+        iconCaption: tower+' '+subtower}, {preset: 'islands#redDotIconWithCaption'}))
+    }
     if ($('#maps-'+num).css("display") == 'none') {
         $("#info_con-"+num).css("display", "none");
         $("#carouselExample-"+num).css("display", "none");
@@ -49,17 +103,17 @@ function tristate(control) {
         case "":
             $(control).data("type", 1);
             $(control).css("background-color", "#27CC8C");
-            console.log($(control).data("type"))
+            console.log($("#flexCheckDefault-1").data("type"))
             break;
         case 1:
              $(control).data("type", 0);
              $(control).css("background-color", "#FF693B");
-             console.log($(control).data("type"))
+             console.log($("#flexCheckDefault-1").data("type"))
              break;
         case 0:
             $(control).data("type", "");
             $(control).css("background-color", "#ffffff");
-            console.log($(control).data("type"))
+            console.log($("#flexCheckDefault-1").data("type"))
             break;
     }
 }
@@ -536,32 +590,94 @@ document.querySelector("#type_prop").addEventListener('change', function (e) {
             case "Апартамент":
                 filter_ak()
                 filter_ak_apart()
+                $('#text_appart_filter').text('Спален')
+                document.getElementById("filter_var").innerHTML = "";
+                $("#filter_var").append(`<option class="apart-list-2" value="" selected>Выбрать</option>
+                                <option class="apart-list-2" value="Студия">Студия</option>
+                                <option class="apart-list-1" value="1">1</option>
+                                <option class="apart-list-1" value="2">2</option>
+                                <option class="apart-list-1" value="3">3</option>
+                                <option class="apart-list-1" value="4">4</option>
+                                <option class="apart-list-1" value="5+">5+</option>`)
                 break;
             case "Квартира":
                 filter_ak()
                 filter_ak_apart()
+                $('#text_appart_filter').text('Спален')
+                document.getElementById("filter_var").innerHTML = "";
+                $("#filter_var").append(`<option class="apart-list-2" value="" selected>Выбрать</option>
+                                <option class="apart-list-2" value="Студия">Студия</option>
+                                <option class="apart-list-1" value="1">1</option>
+                                <option class="apart-list-1" value="2">2</option>
+                                <option class="apart-list-1" value="3">3</option>
+                                <option class="apart-list-1" value="4">4</option>
+                                <option class="apart-list-1" value="5+">5+</option>`)
                 break;
             case "Офис":
                 filter_ots()
                 filter_ost_apart()
+                $('#text_appart_filter').text('Комнат')
+                document.getElementById("filter_var").innerHTML = "";
+                $("#filter_var").append(`<option class="apart-list-2" value="" selected>Выбрать</option>
+                                <option class="apart-list-2" value="openspace">openspace</option>
+                                <option class="apart-list-1" value="1">1</option>
+                                <option class="apart-list-1" value="2">2</option>
+                                <option class="apart-list-1" value="3">3</option>
+                                <option class="apart-list-1" value="4">4</option>
+                                <option class="apart-list-1" value="5+">5+</option>`)
                 break;
             case "Торговая площадь":
                 filter_ots()
                 filter_ost_apart()
+                $('#text_appart_filter').text('Комнат')
+                document.getElementById("filter_var").innerHTML = "";
+                $("#filter_var").append(`<option class="apart-list-2" value="" selected>Выбрать</option>
+                                <option class="apart-list-2" value="openspace">openspace</option>
+                                <option class="apart-list-1" value="1">1</option>
+                                <option class="apart-list-1" value="2">2</option>
+                                <option class="apart-list-1" value="3">3</option>
+                                <option class="apart-list-1" value="4">4</option>
+                                <option class="apart-list-1" value="5+">5+</option>`)
                 break;
 
             case "Свободного назначения":
                 filter_ots()
                 filter_ost_apart()
+                $('#text_appart_filter').text('Комнат')
+                document.getElementById("filter_var").innerHTML = "";
+                $("#filter_var").append(`<option class="apart-list-2" value="" selected>Выбрать</option>
+                                <option class="apart-list-2" value="openspace">openspace</option>
+                                <option class="apart-list-1" value="1">1</option>
+                                <option class="apart-list-1" value="2">2</option>
+                                <option class="apart-list-1" value="3">3</option>
+                                <option class="apart-list-1" value="4">4</option>
+                                <option class="apart-list-1" value="5+">5+</option>`)
                 break;
 
             case "Паркинг":
                 filter_park_apart()
+                $('#text_appart_filter').text('Обременение')
+                document.getElementById("filter_var").innerHTML = "";
+                $("#filter_var").append(`<option class="apart-list-2" value="" selected>Выбрать</option>
+                                <option class="apart-list-2" value="Без обременений">Без обременений</option>
+                                <option class="apart-list-1" value="Арест">Арест</option>
+                                <option class="apart-list-1" value="Ипотека (залог недвижимости)">Ипотека (залог недвижимости)</option>
+                                <option class="apart-list-1" value="Аренда (субаренда)">Аренда (субаренда)</option>`)
                 break;
 
             case "Коворкинг":
                 filter_ots()
                 filter_kov_apart()
+                $('#text_appart_filter').text('Комнат')
+                document.getElementById("filter_var").innerHTML = "";
+                $("#filter_var").append(`<option class="apart-list-2" value="" selected>Выбрать</option>
+                                <option class="apart-list-2" value="openspace">openspace</option>
+                                <option class="apart-list-1" value="рабочее место">рабочее место</option>
+                                <option class="apart-list-1" value="1">1</option>
+                                <option class="apart-list-1" value="2">2</option>
+                                <option class="apart-list-1" value="3">3</option>
+                                <option class="apart-list-1" value="4">4</option>
+                                <option class="apart-list-1" value="5+">5+</option>`)
                 break;
         }
     })
@@ -692,6 +808,8 @@ function mob_prop_type(num) {
                                 <input type="radio" class="btn-check button-apart-mob-6" name="options_bed" id="option9" value="Аренда (субаренда)" autocomplete="off">
                                 <label class="btn btn-secondary button-apart-mob-6" for="option9">Аренда (субаренда)</label>
                             </div>`)
+
+
                 break;
 
             case "Коворкинг":
@@ -730,7 +848,6 @@ $(document).ready(function () {
                 } else {
                     one = 'sale'
                 }
-                console.log($('#flexCheckDefault-6').data('type'))
                 var data = {
                             type_prop : $('#type_prop').val(),
                             type_operation : one,
@@ -767,6 +884,7 @@ $(document).ready(function () {
                         data["bedrooms"] = $('#filter_var').val();
                         data["rooms"] = ''
                         data["encumbrance"] = ''
+                        console.log($('#flexCheckDefault-1').data('type'))
                         data['gorod_view'] = $('#flexCheckDefault-1').data('type')
                         data['city_view'] = $('#flexCheckDefault-2').data('type')
                         data['furniture'] = $('#flexCheckDefault-3').data('type')

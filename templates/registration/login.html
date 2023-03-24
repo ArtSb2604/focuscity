@@ -1,5 +1,8 @@
 {% extends 'base.html' %}
 {% load static %}
+{% block css %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style_v2.css' %}">
+{% endblock %}
 {% block content %}
     <form method="post" class="section-admin">
     {% csrf_token %}
@@ -15,9 +18,9 @@
                     <input type="text" class="form-control container-password-recovery-3-input" id="mail" name="mail" placeholder="Почта" aria-label="first-name-broker" aria-describedby="addon-wrapping">
                     <input type="text" class="form-control container-password-recovery-3-input" id="password" name="password" placeholder="Пароль" aria-label="first-name-broker" aria-describedby="addon-wrapping">
                     <div class="col container-password-recovery-6">
-                        <div class="p-2 container-password-recovery-7" style="width: 154px;">
+                        <div class="p-2 container-password-recovery-7" style="width: 100%;">
                             <input class="form-check-input checkbox-ud" type="checkbox" value="" id="flexCheckDefault-1" style="width: 24px; height: 24px;">
-                            <label class="form-check-label" for="flexCheckDefault-1">Запомнить меня</label>
+                            <label class="form-check-label" for="flexCheckDefault-1" style="width: 100%;">Запомнить меня</label>
                         </div>
                         <a class="text-decoration-none" href="password-recovery.html"><p class="container-password-recovery-7-text">Забыли пароль?</p></a>
                     </div>

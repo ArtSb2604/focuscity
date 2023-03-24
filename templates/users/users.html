@@ -1,6 +1,10 @@
 {% extends "base.html" %}
 {% load static %}
+{% block css %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style_v2.css' %}">
+{% endblock %}
 {% block content %}
+    {% if request.user.is_superuser %}
 <div class="section-admin">
     <div class="container">
         <div class="row">
@@ -255,7 +259,7 @@
                                         <path d="M6.6428 19.0582L16.576 9.125C16.8494 8.85168 16.8494 8.40703 16.576 8.13372C16.3027 7.8604 15.8581 7.8604 15.5848 8.13372L5.82285 17.9038L1.51505 18.483L2.09432 14.1752L11.4197 4.84984C11.693 4.57652 11.693 4.13187 11.4197 3.85855C11.1464 3.58524 10.7018 3.58524 10.4284 3.85855L0.93986 13.3553C0.829718 13.4654 0.760369 13.6041 0.739972 13.7551L0.00568762 19.2051C-0.0228679 19.4213 0.0505605 19.6375 0.205576 19.7925C0.336116 19.9231 0.515607 19.9965 0.699178 19.9965C0.731813 19.9965 0.760369 19.9924 0.793003 19.9883L6.24302 19.254C6.39396 19.2377 6.53674 19.1684 6.6428 19.0582Z" fill="#3C3C3B"/>
                                     </svg>
                                 </button>
-                                <button type="button" class="btn btn-dark button-admin-3" id="user{{ i.pk }}" data-catid="{{ i.pk }}">
+                                <button type="button" class="btn btn-dark button-admin-3 delete_user_button" id="user{{ i.pk }}" data-catid="{{ i.pk }}">
                                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M17.5 4.98332C14.725 4.70832 11.9333 4.56665 9.15 4.56665C7.5 4.56665 5.85 4.64998 4.2 4.81665L2.5 4.98332" stroke="#3C3C3B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                         <path d="M7.08331 4.14169L7.26665 3.05002C7.39998 2.25835 7.49998 1.66669 8.90831 1.66669H11.0916C12.5 1.66669 12.6083 2.29169 12.7333 3.05835L12.9166 4.14169" stroke="#3C3C3B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -271,48 +275,63 @@
 {% endfor %}
                     </div>
                 </div>
-                <div class="container-fluid admin-users-search-1">
-                    <div class="py-4">
-                        <div class="col-12 col-4 col-md-4"></div>
-                        <div class="col-12 col-4 col-md-4 block-search-admin-2">
-                            <div class="d-flex align-items-center text-white justify-content-center mb-4 mb-xl-0 block-search-admin">
+                <div class="container-fluid admin-users-search">
+                <div class="py-4">
+                    <div class="col-12 col-4 col-md-4"></div>
+                    <div class="col-12 col-4 col-md-4 block-search-admin-2">
+                        <div class="d-flex align-items-center text-white justify-content-center mb-4 mb-xl-0 block-search-admin">
+                            {% if user.has_previous %}
+                                <a href="?page=1" type="button" class="btn btn-dark button-admin-search">
                                 <svg width="29" height="28" viewBox="0 0 29 28" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <a href="#">
-                                        <path d="M21.5 7.5L14.4552 13.2239C13.9627 13.6241 13.9627 14.3759 14.4552 14.7761L21.5 20.5" stroke="#959697"/>
-                                        <path d="M15.5 7.5L8.45522 13.2239C7.96267 13.6241 7.96267 14.3759 8.45522 14.7761L15.5 20.5" stroke="#959697"/>
+                                    <path d="M21.5 7.5L14.4552 13.2239C13.9627 13.6241 13.9627 14.3759 14.4552 14.7761L21.5 20.5" stroke="#959697"/>
+                                    <path d="M15.5 7.5L8.45522 13.2239C7.96267 13.6241 7.96267 14.3759 8.45522 14.7761L15.5 20.5" stroke="#959697"/>
                                     </a>
                                 </svg>
+                            </a>
+                                <a href="?page={{ user.previous_page_number }}" type="button" class="btn btn-dark button-admin-search">
                                 <svg width="29" height="28" viewBox="0 0 29 28" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <a href="#">
-                                        <path d="M18.5 7.5L11.4552 13.2239C10.9627 13.6241 10.9627 14.3759 11.4552 14.7761L18.5 20.5" stroke="#959697"/>
+                                    <path d="M18.5 7.5L11.4552 13.2239C10.9627 13.6241 10.9627 14.3759 11.4552 14.7761L18.5 20.5" stroke="#959697"/>
                                     </a>
                                 </svg>
-                                <input type="text" class="admin-serch" size="32" value="1" name="fee" />
-                                <div class="search-text">
-                                    <p class="search-text-1">/</p>
-                                </div>
-                                <div class="search-text">
-                                    <p class="search-text-1">78</p>
-                                </div>
-                                <svg width="29" height="28" viewBox="0 0 29 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <a href="#">
-                                        <path d="M10.5 20.5L17.5448 14.7761C18.0373 14.3759 18.0373 13.6241 17.5448 13.2239L10.5 7.5" stroke="#959697"/>
-                                    </a>
-                                </svg>
-                                <svg width="29" height="28" viewBox="0 0 29 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <a href="#">
-                                        <path d="M7.5 20.5L14.5448 14.7761C15.0373 14.3759 15.0373 13.6241 14.5448 13.2239L7.5 7.5" stroke="#959697"/>
-                                        <path d="M13.5 20.5L20.5448 14.7761C21.0373 14.3759 21.0373 13.6241 20.5448 13.2239L13.5 7.5" stroke="#959697"/>
-                                    </a>
-                                </svg>
+                                </a>
+                            {% endif %}
+
+
+                            <input type="text" class="admin-serch" size="32" value="{{ user.number }}" name="fee" />
+                            <div class="search-text">
+                                <p class="search-text-1">/</p>
                             </div>
+                            <div class="search-text">
+                                <p class="search-text-1">{{ user.paginator.num_pages }}</p>
+                            </div>
+                        {% if user.has_next %}
+                            <a href="?page={{ user.next_page_number }}" type="button" class="btn btn-dark button-admin-search">
+                                <svg width="29" height="28" viewBox="0 0 29 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <a href="#">
+                                    <path d="M10.5 20.5L17.5448 14.7761C18.0373 14.3759 18.0373 13.6241 17.5448 13.2239L10.5 7.5" stroke="#959697"/>
+                                    </a>
+                                </svg>
+                            </a>
+                           <a href="?page={{ user.paginator.num_pages }}" type="button" class="btn btn-dark button-admin-search">
+                                <svg width="29" height="28" viewBox="0 0 29 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <a href="#">
+                                    <path d="M7.5 20.5L14.5448 14.7761C15.0373 14.3759 15.0373 13.6241 14.5448 13.2239L7.5 7.5" stroke="#959697"/>
+                                    <path d="M13.5 20.5L20.5448 14.7761C21.0373 14.3759 21.0373 13.6241 20.5448 13.2239L13.5 7.5" stroke="#959697"/>
+                                    </a>
+                                </svg>
+                            </a>
+                        {% endif %}
                         </div>
                     </div>
                 </div>
             </div>
+            </div>
         </div>
     </div>
 </div>
+    {% endif %}
 {% endblock content %}
 {% block js %}
     <script src="{% static 'js/user.js' %}"></script>

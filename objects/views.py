@@ -1,6 +1,7 @@
 import json
 
 from django.core import serializers
+from django.core.paginator import Paginator
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.template.loader import render_to_string
@@ -14,6 +15,7 @@ class AllObjects(ListView):
     model = Objects
     template_name = "objects/objects.html"
     context_object_name = 'objects'
+    paginate_by = 0
 
     def get_context_data(self, **kwargs):
         context = super(AllObjects, self).get_context_data(**kwargs)
@@ -21,6 +23,58 @@ class AllObjects(ListView):
             'images': Images.objects.all(),
         })
         return context
+    def get(self, request, *args, **kwargs):
+        if self.request.GET.get('filter') == '1':
+            object = Objects.objects.filter(type_operation=request.GET.get('type'),
+                                            property_type__contains=request.GET.get('apart'),
+                                            tower__contains=request.GET.get('tower'),
+                                            price__range=(request.GET['price_min'], request.GET['price_max']),
+                                            price_metr__range=(request.GET['price_metr_min'], request.GET['price_metr_max']),
+                                            price_month__range=(request.GET['price_month_min'], request.GET['price_month_max']),
+                                            price_square_month__range=(request.GET['price_square_month_min'],request.GET['price_square_month_max']),
+                                            price_square_year__range=(request.GET['price_square_year_min'],request.GET['price_square_year_max']), )
+            return render(request, 'objects/objects.html',
+                          {'objects': object, 'images': Images.objects.all(), 'page_obj':len(object)})
+
+        elif request.GET.get('filter') == '2':
+                object = Objects.objects.filter(property_type__contains=request.GET.get('apart'))
+                return render(request, 'objects/objects.html',
+                              {'objects': object, 'images': Images.objects.all(), 'page_obj':len(object)})
+        elif request.GET.get('filter') == '3':
+                object = Objects.objects.filter(type_operation=request.GET.get('type'))
+                return render(request, 'objects/objects.html',
+                              {'objects': object, 'images': Images.objects.all(), 'page_obj':len(object)})
+        else:
+            obj = Objects.objects.all()
+            paginator = Paginator(obj, 5)  # Show 25 contacts per page.
+            page_obj = paginator.get_page(request.GET.get('page'))
+            return render(request, 'objects/objects.html',
+                              {'objects': page_obj, 'images': Images.objects.all(), 'page_obj':len(obj)})
+def all_objects(request):
+    print(request.GET)
+    if request.GET.get('filter') == '1':
+        object = Objects.objects.filter(type_operation=request.GET.get('type'),
+                                        property_type__contains=request.GET.get('apart'),
+                                        tower__contains=request.GET.get('tower'),
+                                        price__range=(request.GET['price_min'], request.GET['price_max']),
+                                        price_metr__range=(
+                                        request.GET['price_metr_min'], request.GET['price_metr_max']),
+                                        price_month__range=(
+                                        request.GET['price_month_min'], request.GET['price_month_max']),
+                                        price_square_month__range=(
+                                        request.GET['price_square_month_min'], request.GET['price_square_month_max']),
+                                        price_square_year__range=(
+                                        request.GET['price_square_year_min'], request.GET['price_square_year_max']),)
+        return render(request, 'objects/objects.html',
+                      {'objects': object, 'images': Images.objects.all()})
+    else:
+        if request.GET.get('filter') == '2':
+            object = Objects.objects.filter(property_type__contains=request.GET.get('apart'))
+            return render(request, 'objects/objects.html',
+                          {'objects': object, 'images': Images.objects.all()})
+        else:
+            return render(request, 'objects/objects.html',
+                          {'objects': Objects.objects.all(), 'images': Images.objects.all()})
 
 class ObjectDetailView(DetailView):
     model = Objects
@@ -131,20 +185,22 @@ def add_object(request):
                               laundry_room=r.get('flexCheckDefault-10'),
                               shower=r.get('flexCheckDefault-11'),
                               bath=r.get('flexCheckDefault-12'),
-                              your_own_farm=r.get('departure'),
+                              your_own_farm=r.get('flexCheckDefault-5'),
                               user=request.user.pk,
                               description=request.POST['desc'],
                               note=request.POST['note'],
                               plan=request.FILES['upload_plan'],
-                              pdf=request.FILES['upload_pdf']
+                              pdf=request.FILES['upload_pdf'],
+                              x=request.POST['address_coords_x'],
+                              y=request.POST['address_coords_y'],
                               )
 
             objects.save()
-            print(request.FILES)
-            for k, v in request.FILES.items():
-                if k != 'upload_plan' and k != 'upload_pdf':
-                    img = Images(note=objects, image=v)
-                    img.save()
+
+            for k in request.FILES.getlist('file'):
+                img = Images(note=objects, image=k)
+                img.save()
+
         else:
 
             print(request.POST)
@@ -361,3 +417,5 @@ def filter_ind(request):
                                         )
         response_data = render_to_string('objects/render_obj.html', {'objects': object, 'user': request.user})
         return HttpResponse(response_data)
+
+

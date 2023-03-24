@@ -3,6 +3,8 @@ from django.contrib.auth.models import User, AbstractUser
 from django.db import models
 
 # Create your models here.
+from django.db.models import Model
+
 from users.choices import choices_property_type, choices_type_of_transaction
 
 
@@ -35,3 +37,10 @@ class CustomUser(AbstractUser):
     def __str__(self):
         return self.mail
 
+class HistoryAuth(models.Model):
+    pk_user = models.IntegerField(verbose_name="PK пользователя")
+    user = models.CharField(max_length=40, verbose_name="Адрес пользователя")
+    data = models.DateTimeField(verbose_name="Дата входв")
+
+    def __str__(self):
+        return self.user + " " + str(self.data)

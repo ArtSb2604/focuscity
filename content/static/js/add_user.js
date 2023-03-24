@@ -132,3 +132,54 @@ $('#password').bind('input', function() {
     $('#id_password1').val($(this).val())
     $('#id_password2').val($(this).val())
 });
+
+
+var dt = new DataTransfer();
+
+$('.input-file input[type=file]').on('change', function(){
+	let $files_list = $(this).closest('.input-file').next();
+	$files_list.empty();
+
+	for(var i = 0; i < this.files.length; i++){
+		let file = this.files.item(i);
+		dt.items.add(file);
+
+		let reader = new FileReader();
+		reader.readAsDataURL(file);
+		reader.onloadend = function(){
+			let new_file_input = '<div class="input-file-list-item">' +
+				'<img class="input-file-list-img" src="' + reader.result + '">' +
+				'<span class="input-file-list-name">' + file.name + '</span>' +
+				'<a href="#" onclick="removeFilesItem(this); return false;" class="input-file-list-remove">x</a>' +
+			'</div>';
+			$files_list.append(new_file_input);
+		}
+	};
+	this.files = dt.files;
+    $('#file_text_save').html(`<svg width="21" height="20" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M7.99999 18.3333H13C17.1667 18.3333 18.8333 16.6667 18.8333 12.5V7.5C18.8333 3.33334 17.1667 1.66667 13 1.66667H7.99999C3.83332 1.66667 2.16666 3.33334 2.16666 7.5V12.5C2.16666 16.6667 3.83332 18.3333 7.99999 18.3333Z" stroke="#D19B33" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                                        <path d="M8 7.92499L10.5 5.42499L13 7.92499" stroke="#D19B33" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                                        <path d="M10.5 5.42499V12.0917" stroke="#D19B33" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                                        <path d="M5.5 13.7583C8.74167 14.8417 12.2583 14.8417 15.5 13.7583" stroke="#D19B33" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                                    </svg>
+                                                    Заменить`)
+});
+
+function removeFilesItem(target){
+	let name = $(target).prev().text();
+	let input = $(target).closest('.input-file-row').find('input[type=file]');
+	$(target).closest('.input-file-list-item').remove();
+	for(let i = 0; i < dt.items.length; i++){
+		if(name === dt.items[i].getAsFile().name){
+			dt.items.remove(i);
+		}
+	}
+	input[0].files = dt.files;
+    $('#file_text_save').html(`<svg width="21" height="20" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M7.99999 18.3333H13C17.1667 18.3333 18.8333 16.6667 18.8333 12.5V7.5C18.8333 3.33334 17.1667 1.66667 13 1.66667H7.99999C3.83332 1.66667 2.16666 3.33334 2.16666 7.5V12.5C2.16666 16.6667 3.83332 18.3333 7.99999 18.3333Z" stroke="#D19B33" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                                        <path d="M8 7.92499L10.5 5.42499L13 7.92499" stroke="#D19B33" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                                        <path d="M10.5 5.42499V12.0917" stroke="#D19B33" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                                        <path d="M5.5 13.7583C8.74167 14.8417 12.2583 14.8417 15.5 13.7583" stroke="#D19B33" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                                    </svg>
+                                                    Загрузить`)
+}

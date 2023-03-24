@@ -1,8 +1,11 @@
 {% extends 'base.html' %}
 {% load poll_extras %}
 {% load static %}
+{% block css %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/objects.css' %}">
+{% endblock %}
 {% block content %}
-<div class="section-admin" id="filter_set" style="height: 100%;display: none">
+<div class="section-admin" id="filter_set" style="height: 100%;">
     <div class="d-flex text-filter-mob-1" id="filter_mob">
         <div class="d-flex p-2 flex-fill block-filter">
             <div class="d-flex p-2 block-text-filter-mob-2">
@@ -21,6 +24,7 @@
             </div>
         </div>
     </div>
+<div id="mapa" style="display: none"></div>
     <form method="get">
         <div class="container container-11">
         <div class="row container-10 filter_con">
@@ -47,7 +51,7 @@
                             <p class="text-apart">Башня</p>
                         </div>
                         <div class="d-flex p-2 block-text-filter-3">
-                            <p class="text-apart">Спален</p>
+                            <p class="text-apart" id="text_appart_filter">Спален</p>
                         </div>
                     </div>
                 </div>
@@ -170,8 +174,8 @@
                         <p class="text-apart-mob">Удобства</p>
                         <div class="input-group mb-6 container-apart-mob">
                             <div class="str-apart-mob">
-                                <span class="button-apart-mob-10" id="option14" data-type="" onclick="tristate_1(this);">
-                                    <label class="btn btn-secondary button-apart-mob-18 opt-button" id="option_label24" for="option23">
+                                <span class="button-apart-mob-10 udob_mob" id="option14" data-type="" onclick="tristate_1(this);">
+                                    <label class="btn btn-secondary button-apart-mob-10 opt-button udob_mob" id="option_label24" for="option23">
                                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <g clip-path="url(#clip0_567_18109)">
                                         <path d="M19.5918 8.97959H12.2449V0.408163C12.2449 0.182776 12.0622 0 11.8367 0H0.408163C0.182735 0 0 0.182776 0 0.408163V19.5918C0 19.8172 0.182735 20 0.408163 20H11.2245C11.4499 20 11.6327 19.8172 11.6327 19.5918V18.3673H16.5306V19.5918C16.5306 19.8172 16.7133 20 16.9388 20H18.3673C18.5928 20 18.7755 19.8172 18.7755 19.5918V18.3673H18.9796C19.205 18.3673 19.3878 18.1846 19.3878 17.9592V11.2245H19.5918C19.8173 11.2245 20 11.0417 20 10.8163V9.38775C20 9.16237 19.8173 8.97959 19.5918 8.97959ZM5.71429 19.1837H0.816326V15.7143H5.71429V19.1837ZM5.71429 14.898H0.816326V0.816326H5.71429V14.898ZM9.38775 19.1837H6.53061V0.816326H11.4286V8.97959H8.36735C8.14192 8.97959 7.95918 9.16237 7.95918 9.38775V10.8163C7.95918 11.0417 8.14192 11.2245 8.36735 11.2245H8.77551V17.9592C8.77551 18.1846 8.95824 18.3673 9.18367 18.3673H9.38775V19.1837ZM10.8163 19.1837H10.2041V18.3673H10.8163V19.1837ZM17.9592 19.1837H17.3469V18.3673H17.9592V19.1837ZM18.5714 17.551H9.59184V14.6939H18.5714V17.551ZM18.5714 13.8776H9.59184V11.2245H18.5714V13.8776ZM19.1837 10.4082H8.77551V9.79592H19.1837V10.4082Z" fill="#3C3C3B"/>
@@ -190,8 +194,8 @@
                                     Мебель
                                 </label>
                                 </span>
-                                <span class="button-apart-mob-11" id="option15" data-type="" onclick="tristate_1(this);">
-                                    <label class="btn btn-secondary button-apart-mob-18 opt-button" id="option_label24" for="option23">
+                                <span class="button-apart-mob-11 udob_mob" id="option15" data-type="" onclick="tristate_1(this);">
+                                    <label class="btn btn-secondary button-apart-mob-11 opt-button udob_mob" id="option_label24" for="option23">
                                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <g clip-path="url(#clip0_567_18123)">
                                         <path d="M2.49102 4.69711L1.38815 19.5728H0L1.03245 7.0101L2.49102 4.69711Z" fill="#3C3C3B"/>
@@ -212,8 +216,8 @@
                                 </span>
                             </div>
                             <div class="str-apart-mob">
-                                <span class="button-apart-mob-12" id="option16" data-type="" onclick="tristate_1(this);">
-                                    <label class="btn btn-secondary button-apart-mob-18 opt-button" id="option_label24" for="option23">
+                                <span class="button-apart-mob-12 udob_mob" id="option16" data-type="" onclick="tristate_1(this);">
+                                    <label class="btn btn-secondary button-apart-mob-12 opt-button udob_mob" id="option_label24" for="option23">
                                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <g clip-path="url(#clip0_567_18134)">
                                         <path d="M19.5804 0H0.422681C0.206978 0 0.0320947 0.174883 0.0320557 0.390547L0.0289307 19.6093C0.0289307 19.7129 0.0700635 19.8123 0.143306 19.8855C0.216548 19.9588 0.315962 20 0.419556 20H11.4056C11.6214 20 11.7963 19.8251 11.7963 19.6094V11.7673H19.5804C19.7962 11.7673 19.971 11.5924 19.971 11.3767V0.390625C19.971 0.174922 19.7962 0 19.5804 0ZM5.52198 19.2188H0.810259L0.813227 0.78125H19.1897V5.49305H7.54784V4.60621C7.54784 4.39051 7.37295 4.21559 7.15721 4.21559H4.60233C4.38659 4.21559 4.2117 4.39051 4.2117 4.60621V7.16109C4.2117 7.3768 4.38659 7.55172 4.60233 7.55172H5.52198V19.2188ZM6.76659 4.99684V6.77047H4.99295V4.99684H6.76659ZM19.1898 10.9861H11.4056C11.1899 10.9861 11.015 11.161 11.015 11.3767V19.2188H6.30323V7.55172H7.15721C7.37295 7.55172 7.54784 7.3768 7.54784 7.16109V6.2743H19.1898V10.9861Z" fill="#3C3C3B"/>
@@ -227,8 +231,8 @@
                                     Угол
                                 </label>
                                 </span>
-                                <span class="button-apart-mob-13" id="option17" data-type="" onclick="tristate_1(this);">
-                                    <label class="btn btn-secondary button-apart-mob-18 opt-button" id="option_label24" for="option23">
+                                <span class="button-apart-mob-13 udob_mob" id="option17" data-type="" onclick="tristate_1(this);">
+                                    <label class="btn btn-secondary button-apart-mob-13 opt-button udob_mob" id="option_label24" for="option23">
                                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <g clip-path="url(#clip0_567_18140)">
                                         <path d="M16.6667 1.66666H3.33332C2.41285 1.66666 1.66666 2.41285 1.66666 3.33332V16.6667C1.66666 17.5871 2.41285 18.3333 3.33332 18.3333H16.6667C17.5871 18.3333 18.3333 17.5871 18.3333 16.6667V3.33332C18.3333 2.41285 17.5871 1.66666 16.6667 1.66666Z" stroke="#3C3C3B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="bevel"/>
@@ -249,8 +253,8 @@
                                 </span>
                             </div>
                             <div class="str-apart-mob">
-                                <span class="button-apart-mob-14" id="option18" data-type="" onclick="tristate_1(this);">
-                                    <label class="btn btn-secondary button-apart-mob-18 opt-button" id="option_label24" for="option23">
+                                <span class="button-apart-mob-14 udob_mob" id="option18" data-type="" onclick="tristate_1(this);">
+                                    <label class="btn btn-secondary button-apart-mob-14 opt-button udob_mob" id="option_label24" for="option23">
                                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <g clip-path="url(#clip0_567_18151)">
                                         <path d="M0.9375 17.8125H5.3125V11.875H0.9375V17.8125ZM4.12123 14.4922C4.32623 14.4922 4.49247 14.6584 4.49247 14.8634C4.49247 15.0684 4.32623 15.2347 4.12123 15.2347C3.91623 15.2347 3.74998 15.0681 3.74998 14.8631C3.74998 14.6584 3.91623 14.4922 4.12123 14.4922Z" fill="#3C3C3B"/>
@@ -279,8 +283,8 @@
                                     Кухня гостиная
                                 </label>
                                 </span>
-                                <span class="button-apart-mob-15" id="option19" data-type="" onclick="tristate_1(this);">
-                                    <label class="btn btn-secondary button-apart-mob-18 opt-button" id="option_label24" for="option23">
+                                <span class="button-apart-mob-15 udob_mob" id="option19" data-type="" onclick="tristate_1(this);">
+                                    <label class="btn btn-secondary button-apart-mob-15 opt-button udob_mob" id="option_label24" for="option23">
                                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M9.3487 6.53827H4.3887V9.68046H9.3487V6.53827Z" fill="#3C3C3B"/>
                                         <path d="M15.6113 6.53827H10.6513V9.68046H15.6113V6.53827Z" fill="#3C3C3B"/>
@@ -292,8 +296,8 @@
                                 </span>
                             </div>
                             <div class="str-apart-mob">
-                                <span class="button-apart-mob-16" id="option20" data-type="" onclick="tristate_1(this);">
-                                    <label class="btn btn-secondary button-apart-mob-18 opt-button" id="option_label24" for="option23">
+                                <span class="button-apart-mob-16 udob_mob" id="option20" data-type="" onclick="tristate_1(this);">
+                                    <label class="btn btn-secondary button-apart-mob-16 opt-button udob_mob" id="option_label24" for="option23">
                                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <g clip-path="url(#clip0_567_18188)">
                                         <path d="M7.52414 3.97096C6.72443 3.23704 5.65913 2.78815 4.49075 2.78815C2.01455 2.78815 0 4.80269 0 7.2789C0 8.85247 0.814237 10.2387 2.04283 11.0409C2.3652 12.4563 2.93369 13.8461 3.49754 15.1022C4.00899 16.2323 4.74405 17.6508 6.25851 17.0821C7.52304 16.6074 7.51997 15.3547 7.12155 14.2963C6.81605 13.4846 6.43472 12.4609 6.19121 11.4343C6.90148 11.1425 7.52059 10.674 7.99423 10.0835L13.166 9.02358L15.2303 9.25448V4.89635L13.166 5.12715L7.52414 3.97096ZM4.2075 4.59044C4.10462 4.67669 3.99248 4.77873 3.86768 4.90354C3.44597 5.32529 3.27929 5.60547 3.13225 5.85268C2.99453 6.08411 2.87566 6.28402 2.53293 6.62676C2.20524 6.95444 2.00814 7.07747 1.78922 7.20795C1.82453 5.84513 2.87264 4.73003 4.2075 4.59044ZM2.31327 8.87862C2.15503 8.66386 2.02809 8.42488 1.93845 8.1684C2.0334 8.10267 2.12206 8.0498 2.21582 7.99401C2.46297 7.84702 2.74315 7.68039 3.16486 7.25864C3.58656 6.83688 3.75324 6.5567 3.90028 6.30949C4.038 6.07807 4.15687 5.87815 4.49961 5.53541C4.84234 5.19273 5.04215 5.07381 5.27358 4.9362C5.3526 4.88921 5.4351 4.84004 5.52438 4.78134C5.79269 4.89281 6.03896 5.04652 6.25564 5.23372C6.12985 5.32738 6.01922 5.39332 5.9004 5.464C5.65325 5.61105 5.37312 5.77767 4.95136 6.19938C4.52961 6.62113 4.36298 6.90126 4.21588 7.14842C4.07816 7.37984 3.9593 7.57976 3.61651 7.92249C3.27382 8.26523 3.07401 8.38415 2.84259 8.52176C2.68794 8.61386 2.52037 8.71355 2.31327 8.87862ZM3.99316 9.68364C3.90263 9.73749 3.80762 9.79411 3.70287 9.8648C3.43618 9.78344 3.18699 9.66171 2.96213 9.50701C3.08063 9.42023 3.18637 9.35725 3.29955 9.2899C3.54671 9.14286 3.82684 8.97623 4.24849 8.55448C4.67025 8.13272 4.83687 7.85259 4.98397 7.60544C5.12164 7.37401 5.24055 7.1741 5.58329 6.83141C5.92608 6.48867 6.12589 6.36981 6.35737 6.23214C6.49696 6.14911 6.64708 6.05978 6.82725 5.92175C6.94851 6.12974 7.04321 6.35491 7.10577 6.59316C7.08764 6.604 7.06941 6.61488 7.05097 6.62582C6.80381 6.77286 6.52369 6.93955 6.10198 7.3612C5.68023 7.78295 5.51355 8.06313 5.3665 8.31029C5.22878 8.54171 5.10992 8.74163 4.76713 9.08436C4.42434 9.42705 4.22453 9.54597 3.99316 9.68364ZM5.23019 9.87855C5.28394 9.82886 5.33994 9.77536 5.39901 9.71629C5.82076 9.29454 5.98744 9.01436 6.13449 8.7672C6.27221 8.53578 6.39107 8.33592 6.73386 7.99313C6.91028 7.8167 7.04868 7.69982 7.17317 7.60893C7.04019 8.69605 6.25981 9.58524 5.23019 9.87855ZM10.5291 5.5314C10.507 5.64756 10.4054 5.72845 10.2914 5.72845C10.2763 5.72845 10.2611 5.72705 10.2457 5.72413L8.56256 5.40363C8.43109 5.37863 8.34478 5.25174 8.36983 5.12027C8.39484 4.9888 8.52209 4.90255 8.65319 4.92755L10.3364 5.24805C10.4679 5.27305 10.5541 5.39999 10.5291 5.5314ZM12.268 5.86253C12.2459 5.97868 12.1443 6.05957 12.0303 6.05957C12.0152 6.05957 11.9999 6.05817 11.9846 6.05525L11.2273 5.91102C11.0958 5.88597 11.0095 5.75908 11.0345 5.62761C11.0596 5.49614 11.1867 5.40983 11.318 5.43488L12.0753 5.57917C12.2068 5.60417 12.2931 5.73106 12.268 5.86253Z" fill="#3C3C3B"/>
@@ -310,8 +314,8 @@
                                     Бытовые приборы
                                 </label>
                                 </span>
-                                <span class="button-apart-mob-17" id="option21" data-type="" onclick="tristate_1(this);">
-                                    <label class="btn btn-secondary button-apart-mob-18 opt-button" id="option_label24" for="option23">
+                                <span class="button-apart-mob-17 udob_mob" id="option21" data-type="" onclick="tristate_1(this);">
+                                    <label class="btn btn-secondary button-apart-mob-17 opt-button udob_mob" id="option_label24" for="option23">
                                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M20 9.31188C20 9.5206 19.8308 9.68983 19.622 9.68983H18.9921V12.1889C18.9921 13.4553 18.3226 14.5679 17.3195 15.1928L18.0753 16.5986C18.1741 16.7825 18.1052 17.0116 17.9214 17.1105C17.8644 17.1411 17.8032 17.1557 17.7427 17.1557C17.608 17.1557 17.4777 17.0835 17.4095 16.9567L16.6381 15.5218C16.2679 15.6536 15.8698 15.726 15.4549 15.726H4.54506C4.19026 15.726 3.84774 15.6729 3.5244 15.5753L2.78173 16.9567C2.71351 17.0836 2.58311 17.1557 2.44856 17.1557C2.38809 17.1557 2.32686 17.1412 2.26989 17.1105C2.08601 17.0116 2.01713 16.7825 2.11597 16.5986L2.82576 15.2784C1.74245 14.6731 1.0079 13.5154 1.0079 12.1888V9.68974H0.377952C0.169228 9.68974 0 9.52051 0 9.31179C0 9.10306 0.169228 8.93383 0.377952 8.93383H1.38586H18.6141H19.622C19.8308 8.93393 20 9.10316 20 9.31188ZM0.377952 5.74619H4.44878C4.78743 5.74619 5.06295 6.02171 5.06295 6.36036V7.16351C5.06295 7.37223 5.23218 7.54146 5.4409 7.54146C5.64963 7.54146 5.81886 7.37223 5.81886 7.16351V6.36036C5.81886 5.60493 5.20421 4.99028 4.44878 4.99028H0.377952C0.169228 4.99028 0 5.15951 0 5.36823C0 5.57696 0.169228 5.74619 0.377952 5.74619ZM0.874014 4.5923H1.51965C1.72838 4.5923 1.8976 4.42307 1.8976 4.21435V3.22222C1.8976 3.0135 1.72838 2.84427 1.51965 2.84427H0.874014C0.392031 2.84427 0 3.2363 0 3.71828C0 4.20027 0.392031 4.5923 0.874014 4.5923Z" fill="#3C3C3B"/>
                                     </svg>
@@ -320,8 +324,8 @@
                                 </span>
                             </div>
                             <div class="str-apart-mob">
-                                <span class="button-apart-mob-18" id="option22" data-type="" onclick="tristate_1(this);">
-                                    <label class="btn btn-secondary button-apart-mob-18 opt-button" id="option_label24" for="option23">
+                                <span class="button-apart-mob-18 udob_mob" id="option22" data-type="" onclick="tristate_1(this);">
+                                    <label class="btn btn-secondary button-apart-mob-18 opt-button udob_mob" id="option_label24" for="option23">
                                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <g clip-path="url(#clip0_567_18201)">
                                         <path d="M16.174 1.06167C15.8946 0.419667 15.2743 0 14.5623 0H2.10431C1.12798 0 0.333313 0.794667 0.333313 1.771V18.6667H0.99998V20H2.53931L3.20598 18.6667H14.1273L14.794 20H16.3333V18.6667V18V17.983L19.6666 18.752V1.724L16.174 1.06167ZM15.6666 18H13.794H3.53931H0.99998V1.771C0.99998 1.162 1.49531 0.666667 2.10431 0.666667H14.5623C14.9023 0.666667 15.21 0.820333 15.4133 1.07333C15.405 1.07633 15.3976 1.08133 15.3893 1.08467C15.3693 1.09267 15.3506 1.10267 15.3313 1.11167C15.2883 1.132 15.2466 1.154 15.207 1.17933C15.1876 1.19133 15.169 1.20367 15.1506 1.21667C15.1093 1.24633 15.0706 1.27867 15.0336 1.313C15.0226 1.32333 15.0106 1.33167 15.0003 1.34233C14.7913 1.13133 14.5023 1 14.183 1H8.66665H7.99998H2.48365C1.84931 1 1.33331 1.516 1.33331 2.15033V17.6667H7.99998H8.66665H14.9613L15.6666 17.8293V18ZM8.66665 14.6667V6.66667H9.66665V7.33333C9.66665 7.51767 9.81598 7.66667 9.99998 7.66667C10.184 7.66667 10.3333 7.51767 10.3333 7.33333V6.66667H10.6666V7.33333C10.6666 7.51767 10.816 7.66667 11 7.66667C11.184 7.66667 11.3333 7.51767 11.3333 7.33333V6.66667H11.6666V7.33333C11.6666 7.51767 11.816 7.66667 12 7.66667C12.184 7.66667 12.3333 7.51767 12.3333 7.33333V6.66667H12.6666V7.33333C12.6666 7.51767 12.816 7.66667 13 7.66667C13.184 7.66667 13.3333 7.51767 13.3333 7.33333V6.66667H14.6666V14.6667H8.66665ZM14.6666 15.3333V17H8.66665V15.3333H14.6666ZM13.3333 6V5.66667C13.3333 5.48233 13.184 5.33333 13 5.33333C12.816 5.33333 12.6666 5.48233 12.6666 5.66667V6H12.3333V5.66667C12.3333 5.48233 12.184 5.33333 12 5.33333C11.816 5.33333 11.6666 5.48233 11.6666 5.66667V6H11.3333V5.66667C11.3333 5.48233 11.184 5.33333 11 5.33333C10.816 5.33333 10.6666 5.48233 10.6666 5.66667V6H10.3333V5.66667C10.3333 5.48233 10.184 5.33333 9.99998 5.33333C9.81598 5.33333 9.66665 5.48233 9.66665 5.66667V6H8.66665V5H14.6666V6H13.3333ZM8.66665 4.33333V1.66667H14.183C14.4496 1.66667 14.6666 1.88367 14.6666 2.15033V4.33333H8.66665ZM6.99998 8.66667V10.3333C6.99998 10.5177 6.85065 10.6667 6.66665 10.6667C6.48265 10.6667 6.33331 10.5177 6.33331 10.3333V8.66667C6.33331 8.48233 6.48265 8.33333 6.66665 8.33333C6.85065 8.33333 6.99998 8.48233 6.99998 8.66667Z" fill="#3C3C3B"/>
@@ -335,8 +339,8 @@
                                     Гардеробная
                                 </label>
                                 </span>
-                                <span class="button-apart-mob-19" id="option23" data-type="" onclick="tristate_1(this);">
-                                    <label class="btn btn-secondary button-apart-mob-20 opt-button" id="option_label24" for="option23">
+                                <span class="button-apart-mob-19 udob_mob" id="option23" data-type="" onclick="tristate_1(this);">
+                                    <label class="btn btn-secondary button-apart-mob-19 opt-button udob_mob" id="option_label24" for="option23">
                                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M16.9036 15.9755C16.7739 15.7081 16.1667 14.6631 16.0979 14.5448L15.5341 13.5759L14.9704 14.5448C14.9016 14.6631 14.2944 15.7081 14.1648 15.9755C13.9755 16.3659 13.9286 16.9902 14.2509 17.5046C14.5193 17.9331 14.975 18.1689 15.5341 18.1689C16.0932 18.1689 16.549 17.933 16.8174 17.5046C17.1397 16.9902 17.0929 16.3659 16.9036 15.9755Z" fill="#3C3C3B"/>
                                         <path d="M9.98692 15.9755C9.85731 15.7081 9.25004 14.6631 9.18122 14.5448L8.6175 13.5759L8.05379 14.5448C7.98497 14.6631 7.37774 15.7081 7.24813 15.9755C7.05879 16.3659 7.012 16.9902 7.33426 17.5046C7.60262 17.933 8.05836 18.1689 8.61747 18.1689C9.17657 18.1689 9.63235 17.933 9.90067 17.5046C10.2231 16.9903 10.1763 16.366 9.98692 15.9755Z" fill="#3C3C3B"/>
@@ -349,8 +353,8 @@
                                 </span>
                             </div>
                             <div class="str-apart-mob">
-                                <span class="button-apart-mob-20" id="option24" data-type="" onclick="tristate_1(this);">
-                                    <label class="btn btn-secondary button-apart-mob-20 opt-button" id="option_label24" for="option24">
+                                <span class="button-apart-mob-20 udob_mob" id="option24" data-type="" onclick="tristate_1(this);">
+                                    <label class="btn btn-secondary button-apart-mob-20 opt-button udob_mob" id="option_label24" for="option24">
                                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <g clip-path="url(#clip0_567_18223)">
                                         <path d="M5.05071 3.41136C5.94369 3.41136 6.66759 2.68746 6.66759 1.79449C6.66759 0.901511 5.94369 0.177612 5.05071 0.177612C4.15774 0.177612 3.43384 0.901511 3.43384 1.79449C3.43384 2.68746 4.15774 3.41136 5.05071 3.41136Z" fill="#3C3C3B"/>
@@ -369,8 +373,8 @@
                                     Постирочная
                                 </label>
                                 </span>
-                                <span class="button-apart-mob-20" id="option25" data-type="" onclick="tristate_1(this);">
-                                    <label class="btn btn-secondary button-apart-mob-20 opt-button" id="option_label25" for="option25">
+                                <span class="button-apart-mob-20 udob_mob" id="option25" data-type="" onclick="tristate_1(this);">
+                                    <label class="btn btn-secondary button-apart-mob-20 opt-button udob_mob" id="option_label25" for="option25">
                                     <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M20.6296 9.84193V2.68211H17.7969V13.0366H16.1693V8.45589H12V5.32185H8.33379V12.6734H7.42411V10.3845H3.14999V7.25043H0V10.3845V12.6734V22.3183H6.52599H7.42411H8.33379H11.3478H12H14.1H16.1693H24.0004V15.9773V13.0366V9.84153H20.6296V9.84193ZM1.93057 11.2228H0.892536V8.75805H1.93057V11.2228ZM4.42202 16.0147H3.38398V11.8367H4.42202V16.0147ZM6.13494 14.3018H5.0969V11.8367H6.13494V14.3018ZM10.0276 12.4554H8.98954V9.99062H10.0276V12.4554ZM10.0276 8.91272H8.98954V6.44759H10.0276V8.91272ZM11.7927 15.8999H10.7547V13.4356H11.7927V15.8999ZM13.7129 12.4554H12.6749V9.99062H13.7129V12.4554ZM19.578 14.6674H18.5399V12.2022H19.578V14.6674ZM19.578 10.1449H18.5399V7.68015H19.578V10.1449ZM19.578 6.035H18.5399V3.57066H19.578V6.035ZM21.7581 16.7558H20.7201V12.5785H21.7581V16.7558Z" fill="#3C3C3B"/>
                                 </svg>
@@ -698,11 +702,11 @@
 </div>
 <div class="section-admin">
      <div class="container">
-        <div class="row">
+        <div class="row" id="list_obj">
             <div class="container-fluid block-container-output-4">
                 <div class="text-output-1">
                     <h3 class="text-moscow-10">Недвижимость в Москва-Сити</h3>
-                    <p class="text-moscow-11">{{ objects.count }} объявление</p>
+                    <p class="text-moscow-11">Обьявлений: {{ page_obj }}</p>
                 </div>
                 <div class="text-output-2">
                     <div class="input-group mb-3">
@@ -727,7 +731,7 @@
                 </div>
                 <div class="d-flex p-2 text-output-2-mob">
                     <div class="p-2 text-obv">
-                        <p class="text-moscow-11">{{ objects.count }} объявление</p>
+                        <p class="text-moscow-11">Обьявлений: {{ page_obj }}</p>
                     </div>
                     <div class="input-group mb-3 filter-sort-mob">
                         <button class="btn btn-outline-secondary dropdown-toggle btn-sort" type="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -747,31 +751,36 @@
                   </div>
                 </div>
             </div>
-            <div class="container-fluid block-output-4" id="list_obj">
+            <div class="container-fluid block-output-4">
                 {% for i in objects %}
                     <div class="d-flex p-2 block-container-output-1-not-au">
                     <div id="carouselExample-{{ i.pk }}" class="carousel slide carousel-slider-1 cs-{{ i.pk }}">
-                        <div class="carousel-inner" style="height: 100%;">
+                        <div class="block-text-slider-chet">
+                            <p class="text-slider-chet"><a id="tek_slide-{{ i.pk }}">1</a> / <a id="max_slide-{{ i.pk }}">{{ i.pk|carousel_len }}</a></p>
+                        </div>
+                        <div class="carousel-inner" id="inner-{{ i.pk }}" style="height: 100%; display: flex;align-items: center;">
                             {% for a in i.pk|carousel_active %}
-                                <div class="carousel-item active" style="background-image: url('http://127.0.0.1:8000/media/{{ a.image }}'); background-position: center; background-size: 100% 100%; backdrop-filter: blur(5px); background-color: rgba(0, 0, 0, 0.61);">
+                                <div class="carousel-item active" style="height: 100%;background-image: url('http://127.0.0.1:8000/media/{{ a.image }}'); background-position: center; background-size: 100% 100%; backdrop-filter: blur(5px); background-color: rgba(0, 0, 0, 0.61);">
                                     <div class="blur" style="width: 100%; height: 100%; position:absolute; background-image: url('http://127.0.0.1:8000/media/{{ a.image }}');background-position: center;background-size: 100% 100%;filter: blur(5px);z-index: -1;"></div>
-                                    <img src="http://127.0.0.1:8000/media/{{ a.image }}" class="d-block w-70 slider-picture" alt="Focus City">
+                                    <div style="height: 100%; width: 100%; display: flex; justify-content: center">
+                                        <img src="{{ a.image.url }}" class="d-block w-70 slider-picture" alt="Focus City">
+                                    </div>
                                 </div>
                             {% endfor %}
                             {% for a in i.pk|carousel %}
-                                    <div class="carousel-item" style="background-image: url('http://127.0.0.1:8000/media/{{ a.image }}'); background-position: center; background-size: 100% 100%; backdrop-filter: blur(5px); background-color: rgba(0, 0, 0, 0.61);">
+                                    <div class="carousel-item" style="height: 100%;background-image: url('http://127.0.0.1:8000/media/{{ a.image }}'); background-position: center; background-size: 100% 100%; backdrop-filter: blur(5px); background-color: rgba(0, 0, 0, 0.61);">
                                     <div class="blur" style="width: 100%; height: 100%; position:absolute; background-image: url('http://127.0.0.1:8000/media/{{ a.image }}');background-position: center;background-size: 100% 100%;filter: blur(5px);z-index: -1;"></div>
-                                        <img src="http://127.0.0.1:8000/media/{{ a.image }}" class="d-block w-70 slider-picture" alt="Focus City">
+                                    <div style="height: 100%; width: 100%; display: flex; justify-content: center">
+                                        <img src="{{ a.image.url }}" class="d-block w-70 slider-picture" alt="Focus City">
+                                    </div>
                                     </div>
                             {% endfor %}
-
-
                         </div>
-                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample-{{ i.pk }}" data-bs-slide="prev">
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample-{{ i.pk }}" data-bs-slide="prev" onclick="BackSlide('{{ i.pk }}')">
                           <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                           <span class="visually-hidden">Previous</span>
                         </button>
-                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample-{{ i.pk }}" data-bs-slide="next">
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample-{{ i.pk }}" data-bs-slide="next" onclick="NextSlide('{{ i.pk }}')">
                           <span class="carousel-control-next-icon" aria-hidden="true"></span>
                           <span class="visually-hidden">Next</span>
                         </button>
@@ -986,7 +995,7 @@
                         </div>
                     </div>
                     <div class="carousel-slider-1" id="maps-{{ i.pk }}" style="display:none;">
-                        <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3A1eadeb8854324b5d733948f0f70f93286eafef850f8727d5fbe8a88b6af07593&amp;source=constructor" frameborder="0" style="border-radius: 8px; width: 100%; height: 100%;"></iframe>
+                        <div id="map-{{ i.pk }}" style="width: 100%; height: 100%"></div>
                     </div>
                     <div class="d-flex flex-column block-information-1-not-au">
                         <div class="p-2 block-information-2-not-au">
@@ -1840,7 +1849,7 @@
                             </div>
                             <div class="p-2 block-information-333">
                                 <div class="p-2 block-info-conveniences-6">
-                                    <a href="#"><img class="avatar-picture-5" src="http://127.0.0.1:8000/media/{{ i.user|user_img }}" alt="Focus City"></a>
+                                    <a href="#"><img class="avatar-picture-5" src="http://194.67.125.24/media/{{ i.user|user_img }}" alt="Focus City"></a>
                                 </div>
                                 <div class="p-2 block-info-conveniences-4">
                                     <a href="#" class="text-decoration-none info-block-broker-text">{{ i.user|user }}</a>
@@ -1898,10 +1907,10 @@
                             {% endif %}
                                 <div class="p-2 block-button-right-information-text-2">
                                     <button type="button" onclick="pu({{ i.pk }});" class="btn btn-dark button-output-1"><p class="btn-picture-text-1" id="text_photo{{ i.pk }}">Фото</p>/<p class="btn-picture-text-2" id="text_udob{{ i.pk }}">Удобства</p></button>
-                                    <button type="button" class="btn btn-dark button-output-2" onclick="pu_maps({{ i.pk }})">Карта</button>
+                                    <button type="button" class="btn btn-dark button-output-2" onclick="pu_maps({{ i.pk }}, '{{ i.x }}', '{{ i.y }}', '{{ i.tower }}', '{{ i.sub_tower }}')">Карта</button>
                                 </div>
                                 <div class="p-2 block-button-right-information-text-2">
-                                    <a type="button" class="btn btn-dark button-output-3" href="{% url 'object' i.pk %}">Открыть в новой вкладке
+                                    <a type="button" class="btn btn-dark button-output-3" onclick="window.open('{% url 'object' i.pk %}', '_blank');">Открыть в новой вкладке
                                         <svg width="16" height="11" viewBox="0 0 16 11" fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <path d="M15.4829 2.62941C15.5544 2.36268 15.3961 2.08851 15.1294 2.01704L10.7827 0.852352C10.516 0.78088 10.2418 0.939172 10.1703 1.2059C10.0989 1.47264 10.2572 1.74681 10.5239 1.81828L14.3876 2.85355L13.3523 6.71726C13.2808 6.98399 13.4391 7.25816 13.7059 7.32963C13.9726 7.4011 14.2468 7.24281 14.3182 6.97608L15.4829 2.62941ZM1.39355 10.933L15.25 2.93301L14.75 2.06699L0.893555 10.067L1.39355 10.933Z" fill="#3C3C3B"/>
                                         </svg>
@@ -1912,11 +1921,11 @@
                                 </div>
                                 {% if user.is_authenticated %}
                                     <div class="p-2 block-button-right-information-text-22">
-                                        <button type="button" class="btn btn-dark button-output-5">Презентация PDF</button>
+                                        <a type="button" href="http://127.0.0.1:8000/media/{{ i.pdf }}" class="btn btn-dark button-output-5">Презентация PDF</a>
                                     </div>
                                     <div class="p-2 block-button-right-information-text-2-mob-2">
                                         <button type="button" class="btn btn-dark button-output-4">{{ i.status }}</button>
-                                        <button type="button" class="btn btn-dark button-output-5">Презентация PDF</button>
+                                        <a type="button" href="http://127.0.0.1:8000/media/{{ i.pdf }}" class="btn btn-dark button-output-5">Презентация PDF</a>
                                     </div>
                                     {% else %}
                                     <div class="p-2 block-button-right-information-text-2-mob-2">
@@ -1938,43 +1947,49 @@
                     <div class="col-12 col-4 col-md-4"></div>
                     <div class="col-12 col-4 col-md-4 block-search-admin-2">
                         <div class="d-flex align-items-center text-white justify-content-center mb-4 mb-xl-0 block-search-admin">
-                            <button type="button" class="btn btn-dark button-admin-search">
+                            {% if objects.has_previous %}
+                                <a href="?page=1" type="button" class="btn btn-dark button-admin-search">
                                 <svg width="29" height="28" viewBox="0 0 29 28" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <a href="#">
                                     <path d="M21.5 7.5L14.4552 13.2239C13.9627 13.6241 13.9627 14.3759 14.4552 14.7761L21.5 20.5" stroke="#959697"/>
                                     <path d="M15.5 7.5L8.45522 13.2239C7.96267 13.6241 7.96267 14.3759 8.45522 14.7761L15.5 20.5" stroke="#959697"/>
                                     </a>
                                 </svg>
-                            </button>
-                            <button type="button" class="btn btn-dark button-admin-search">
+                            </a>
+                                <a href="?page={{ objects.previous_page_number }}" type="button" class="btn btn-dark button-admin-search">
                                 <svg width="29" height="28" viewBox="0 0 29 28" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <a href="#">
                                     <path d="M18.5 7.5L11.4552 13.2239C10.9627 13.6241 10.9627 14.3759 11.4552 14.7761L18.5 20.5" stroke="#959697"/>
                                     </a>
                                 </svg>
-                            </button>
-                            <input type="text" class="admin-serch" size="32" value="1" name="fee" />
+                                </a>
+                            {% endif %}
+
+
+                            <input type="text" class="admin-serch" size="32" value="{{ objects.number }}" name="fee" />
                             <div class="search-text">
                                 <p class="search-text-1">/</p>
                             </div>
                             <div class="search-text">
-                                <p class="search-text-1">78</p>
+                                <p class="search-text-1">{{ objects.paginator.num_pages }}</p>
                             </div>
-                            <button type="button" class="btn btn-dark button-admin-search">
+                        {% if objects.has_next %}
+                            <a href="?page={{ objects.next_page_number }}" type="button" class="btn btn-dark button-admin-search">
                                 <svg width="29" height="28" viewBox="0 0 29 28" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <a href="#">
                                     <path d="M10.5 20.5L17.5448 14.7761C18.0373 14.3759 18.0373 13.6241 17.5448 13.2239L10.5 7.5" stroke="#959697"/>
                                     </a>
                                 </svg>
-                            </button>
-                            <button type="button" class="btn btn-dark button-admin-search">
+                            </a>
+                           <a href="?page={{ objects.paginator.num_pages }}" type="button" class="btn btn-dark button-admin-search">
                                 <svg width="29" height="28" viewBox="0 0 29 28" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <a href="#">
                                     <path d="M7.5 20.5L14.5448 14.7761C15.0373 14.3759 15.0373 13.6241 14.5448 13.2239L7.5 7.5" stroke="#959697"/>
                                     <path d="M13.5 20.5L20.5448 14.7761C21.0373 14.3759 21.0373 13.6241 20.5448 13.2239L13.5 7.5" stroke="#959697"/>
                                     </a>
                                 </svg>
-                            </button>
+                            </a>
+                        {% endif %}
                         </div>
                     </div>
                 </div>
@@ -2081,5 +2096,6 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 {% endblock %}
 {% block js %}
+    <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&amp;apikey=d15b9678-d62b-4c65-9a9d-2f7381ed012e" type="text/javascript"></script>
     <script src="{% static "js/objects.js" %}"></script>
 {% endblock %}

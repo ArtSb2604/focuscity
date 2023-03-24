@@ -7,8 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Focusity</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/style_v2.css' %}">
-
+    {% block css %}
+    {% endblock %}
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -57,13 +57,13 @@
         <div class="header-2" style="z-index: 1; position: relative;">
         <div class="container d-flex align-items-center h-100 flex-header-2-admin">
             <div class="p-2 flex-fill flex-logo">
-                <a href="#"><img class="logo-picture" src="{% static 'img/logo.png' %}" alt="Focus City"></a>
+                <a href="{% url 'index' %}"><img class="logo-picture" src="{% static 'img/logo.png' %}" alt="Focus City"></a>
             </div>
             <div class="p-2 flex-fill flex-group-4">
                 <div class="menu-header">
                     <a href="{% url 'all_objects' %}" class="text-decoration-none menu-header-button">База недвижимости</a>
                     <a href="#" class="text-decoration-none menu-header-button">Избранное</a>
-                    <a href="#" class="text-decoration-none menu-header-button">Контакты</a>
+                    <a href="{% url 'contacts' %}" class="text-decoration-none menu-header-button">Контакты</a>
                 </div>
             </div>
             {% if request.user.is_authenticated %}
@@ -80,7 +80,7 @@
                             </div>
                           </button>
                           <ul class="dropdown-menu menu-header-ul" aria-labelledby="dropdownMenuButton">
-                            <li><a class="dropdown-item menu-item-header-1-active" href="{% url 'adduser' %}">Добавить клиента</a></li>
+                            <li><a class="dropdown-item menu-item-header-1" href="{% url 'adduser' %}">Добавить клиента</a></li>
                             <li><a class="dropdown-item menu-item-header-1" href="{% url 'add_object' %}">Добавить объект</a></li>
                             <li><a class="dropdown-item menu-item-header-1" href="#">Мои клиенты</a></li>
                             <li><a class="dropdown-item menu-item-header-1" href="#">Напоминания по клиентам</a></li>
@@ -116,7 +116,7 @@
                 </svg>
             </div>
             <div class="p-2 logo-mob">
-                <a href="#"><img class="logo-picture-mob" src="{% static 'img/logo.png' %}" alt="Focus City"></a>
+                <a href="{% url 'index' %}"><img class="logo-picture-mob" src="{% static 'img/logo.png' %}" alt="Focus City"></a>
             </div>
             <div class="p-2 menu-header-mob-2" onclick="hide_filter()">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -168,7 +168,7 @@
                             </clipPath>
                             </defs>
                         </svg>
-                        <a href="#" class="text-decoration-none header-mob-menu-text-1">Продажа</a>
+                        <a href="/objects?filter=3&type=sale" class="text-decoration-none header-mob-menu-text-1">Продажа</a>
                     </div>
                 </div>
                 <hr class="hr-header-mob">
@@ -191,7 +191,7 @@
                             <path d="M14.8738 6.19936H16.2072C16.5225 6.19936 16.7782 5.94374 16.7782 5.62831C16.7782 5.31287 16.5225 5.05725 16.2072 5.05725H14.8738C14.5584 5.05725 14.3027 5.31287 14.3027 5.62831C14.3027 5.94374 14.5584 6.19936 14.8738 6.19936Z" fill="#3C3C3B"/>
                             <path d="M14.8738 9.0185H16.2072C16.5225 9.0185 16.7782 8.76288 16.7782 8.44752C16.7782 8.13208 16.5225 7.87646 16.2072 7.87646H14.8738C14.5584 7.87646 14.3027 8.13208 14.3027 8.44752C14.3027 8.76288 14.5584 9.0185 14.8738 9.0185Z" fill="#3C3C3B"/>
                         </svg>
-                        <a href="#" class="text-decoration-none header-mob-menu-text-1">Аренда</a>
+                        <a href="/objects?filter=3&type=rent" class="text-decoration-none header-mob-menu-text-1">Аренда</a>
                     </div>
                 </div>
                 <hr class="hr-header-mob">
@@ -224,7 +224,7 @@
                             </clipPath>
                             </defs>
                         </svg>
-                        <a href="#" class="text-decoration-none header-mob-menu-text-1">Добавить клиента</a>
+                        <a href="{% url 'add_object' %}" class="text-decoration-none header-mob-menu-text-1">Добавить клиента</a>
                     </div>
                 </div>
                 <hr class="hr-header-mob">
@@ -275,7 +275,7 @@
                             <path d="M12.1601 10.87C12.0601 10.86 11.9401 10.86 11.8301 10.87C9.45006 10.79 7.56006 8.84 7.56006 6.44C7.56006 3.99 9.54006 2 12.0001 2C14.4501 2 16.4401 3.99 16.4401 6.44C16.4301 8.84 14.5401 10.79 12.1601 10.87Z" stroke="#292D32" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                             <path d="M7.16021 14.56C4.74021 16.18 4.74021 18.82 7.16021 20.43C9.91021 22.27 14.4202 22.27 17.1702 20.43C19.5902 18.81 19.5902 16.17 17.1702 14.56C14.4302 12.73 9.92021 12.73 7.16021 14.56Z" stroke="#292D32" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                         </svg>
-                        <a href="#" class="text-decoration-none header-mob-menu-text-1">Выйти</a>
+                        <a href="{% url 'logout' %}" class="text-decoration-none header-mob-menu-text-1">Выйти</a>
                     </div>
                 </div>
                     <hr class="hr-header-mob">
@@ -286,7 +286,7 @@
                             <path d="M12.1601 10.87C12.0601 10.86 11.9401 10.86 11.8301 10.87C9.45006 10.79 7.56006 8.84 7.56006 6.44C7.56006 3.99 9.54006 2 12.0001 2C14.4501 2 16.4401 3.99 16.4401 6.44C16.4301 8.84 14.5401 10.79 12.1601 10.87Z" stroke="#292D32" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                             <path d="M7.16021 14.56C4.74021 16.18 4.74021 18.82 7.16021 20.43C9.91021 22.27 14.4202 22.27 17.1702 20.43C19.5902 18.81 19.5902 16.17 17.1702 14.56C14.4302 12.73 9.92021 12.73 7.16021 14.56Z" stroke="#292D32" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                         </svg>
-                        <a href="#" class="text-decoration-none header-mob-menu-text-1">Войти</a>
+                        <a href="{% url 'login' %}" class="text-decoration-none header-mob-menu-text-1">Войти</a>
                     </div>
                 </div>
                     <hr class="hr-header-mob">
@@ -356,20 +356,20 @@
                       <div class="col-xs footer-block-1">
                       <h2 class="footer-h2-1">Недвижимость</h2>
                         <div class="row py-4 footer-block-2">
-                            <a href="#" class="text-decoration-none text-footer-1">Апартаменты</a>
-                            <a href="#" class="text-decoration-none text-footer-1">Офис</a>
-                            <a href="#" class="text-decoration-none text-footer-1">Торговая площадь</a>
-                            <a href="#" class="text-decoration-none text-footer-1">Свободное пространство</a>
-                            <a href="#" class="text-decoration-none text-footer-1">Коворкинг</a>
-                            <a href="#" class="text-decoration-none text-footer-1">Паркинги</a>
+                            <a href="/objects?filter=2&apart=Апартамент" class="text-decoration-none text-footer-1">Апартаменты</a>
+                            <a href="/objects?filter=2&apart=Офис" class="text-decoration-none text-footer-1">Офис</a>
+                            <a href="/objects?filter=2&apart=Торговая площадь" class="text-decoration-none text-footer-1">Торговая площадь</a>
+                            <a href="/objects?filter=2&apart=Свободное пространство" class="text-decoration-none text-footer-1">Свободное пространство</a>
+                            <a href="/objects?filter=2&apart=Коворкинг" class="text-decoration-none text-footer-1">Коворкинг</a>
+                            <a href="/objects?filter=2&apart=Паркинг" class="text-decoration-none text-footer-1">Паркинги</a>
                         </div>
                       </div>
 
                    <div class="col-xs footer-block-1">
                     <h2 class="footer-h2-1">Услуги</h2>
                     <div class="row py-4 footer-block-3">
-                        <a href="#" class="text-decoration-none text-footer-1">Снять</a>
-                        <a href="#" class="text-decoration-none text-footer-1">Купить</a>
+                        <a href="/objects?filter=3&type=rent" class="text-decoration-none text-footer-1">Снять</a>
+                        <a href="/objects?filter=3&type=sale" class="text-decoration-none text-footer-1">Купить</a>
                     </div>
                     </div>
                     <div class="col-xs footer-block-1">

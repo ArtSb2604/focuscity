@@ -1,4 +1,7 @@
+import json
+
 from django import template
+from django.core import serializers
 
 from objects.models import Images
 from users.models import CustomUser
@@ -19,6 +22,26 @@ def carousel_active(value):
 def carousel(value):
     r = Images.objects.filter(note=value)
     return r[1:]
+
+@register.filter
+def carousel_len(value):
+    r = Images.objects.filter(note=value)
+    return len(r)
+
+@register.filter
+def carousel_v(value):
+    r = Images.objects.filter(note=value)
+    return r[1:4]
+
+@register.filter
+def carousel_vs(value):
+    r = Images.objects.filter(note=value).last().image.url
+    return r
+
+@register.filter
+def carousel_v_len(value):
+    r = Images.objects.filter(note=value)
+    return len(r[5:])
 
 @register.filter
 def user_img(value):

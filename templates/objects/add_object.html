@@ -1,6 +1,9 @@
 {% extends 'base.html' %}
 {% load poll_extras %}
 {% load static %}
+{% block css %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/add_object.css' %}">
+{% endblock %}
 {% block content %}
 <form action="" method="post" enctype="multipart/form-data" class="form" name="form">
 {% csrf_token %}
@@ -176,13 +179,15 @@
                         </div>
                         <hr class="hr-add">
                         <div class="d-flex p-2 add-address-2">
-                            <input type="text" class="form-control add-address-input" name="address" id="address" placeholder="Адрес заполняется автоматически" aria-label="address" aria-describedby="addon-wrapping">
-                            <input type="text" class="form-control add-address-input-2" name="floor" id="floor" placeholder="Этаж" aria-label="address" aria-describedby="addon-wrapping">
-                            <input type="text" class="form-control add-address-input-3" name="number_of_floors" id="number_of_floors" placeholder="97" aria-label="address" aria-describedby="addon-wrapping">
+                            <input type="text" class="form-control add-address-input" name="address" id="address" value="Москва, Пресненская набережная, 12" placeholder="Адрес заполняется автоматически" aria-label="address" aria-describedby="addon-wrapping" required>
+                            <input type="text" class="form-control add-address-input-2" name="floor" id="floor" placeholder="Этаж" aria-label="address" aria-describedby="addon-wrapping" required>
+                            <input type="text" class="form-control add-address-input-3" name="number_of_floors" id="number_of_floors" placeholder="97" value="97" aria-label="address" aria-describedby="addon-wrapping" required>
+                            <input type="text" class="form-control add-address-input" name="address_coords_x" id="address_coords_x" value="55.7498682028503">
+                            <input type="text" class="form-control add-address-input" name="address_coords_y" id="address_coords_y" value="37.53772679764558">
                         </div>
                     </div>
                     <div class="p-2 block-filter-add-5">
-                        <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3A1eadeb8854324b5d733948f0f70f93286eafef850f8727d5fbe8a88b6af07593&amp;source=constructor" frameborder="0" style="width: 100%; height: 100%;"></iframe>
+                        <div id="map" style="width: 100%; height: 100%"></div>
                     </div>
 <!--Блок 2 БЛОК МОБ ЭТАЖ-->
                     <div class="d-flex p-2 add-address-2-mob">
@@ -194,7 +199,7 @@
                                 <input type="text" name="floor_mob" id="floor_mob" class="form-control add-address-input" placeholder="от" aria-label="address" aria-describedby="addon-wrapping" style="border-width: 2px 0px 2px 2px;">
                             </div>
                             <div class="p-2 add-text-address-2-mob-3">
-                                <input type="text" name="number_of_floors_mob" id="number_of_floors_mob" class="form-control add-address-input" placeholder="до" aria-label="address" aria-describedby="addon-wrapping" style="border-width: 2px">
+                                <input type="text" name="number_of_floors_mob" id="number_of_floors_mob" class="form-control add-address-input" value="97" placeholder="до" aria-label="address" aria-describedby="addon-wrapping" style="border-width: 2px">
                             </div>
                             <input type="text" id="user" value="{{ user.pk }}" style="display: none;">
                         </div>
@@ -251,20 +256,20 @@
                     <div class="p-2 block-filter-add-7">
                         <h1 class="text-filter-add-2">Номер телефона</h1>
                         <div class="input-group mb-3 add-type-5">
-                            <input id="number_phone" name="number_phone" type="text" class="form-control input-add-tel" placeholder="+7 (_ _ _ ) _ _ _ - _ _ - _ _" aria-label="tower" aria-describedby="addon-wrapping">
+                            <input id="number_phone" name="number_phone" type="text" class="form-control input-add-tel" placeholder="+7 (_ _ _ ) _ _ _ - _ _ - _ _" aria-label="tower" aria-describedby="addon-wrapping" required>
                             <button type="button" class="btn button-add-tel">+</button>
                         </div>
                     </div>
                     <div class="p-2 block-filter-add-8">
                         <h1 class="text-filter-add-3">Размер<br> вознаграждение</h1>
                         <div class="input-group mb-3 add-type-5">
-                            <input type="text" name="amount_remuneration" id="amount_remuneration" class="form-control input-add-tel" placeholder="Напишите размер вознаграждения" aria-label="tower" aria-describedby="addon-wrapping">
+                            <input type="text" name="amount_remuneration" id="amount_remuneration" class="form-control input-add-tel" placeholder="Напишите размер вознаграждения" aria-label="tower" aria-describedby="addon-wrapping" required>
                         </div>
                     </div>
                     <div class="p-2 block-filter-add-8">
                         <h1 class="text-filter-add-3">Назначить<br> ответственного</h1>
                         <div class="input-group mb-3 add-type-5">
-                            <select class="form-select menu-tower-1" id="Appoint_responsible_person" name="Appoint_responsible_person" aria-label="Default select example">
+                            <select class="form-select menu-tower-1" id="Appoint_responsible_person" name="Appoint_responsible_person" aria-label="Default select example" required>
                                 {% for i in user %}
                                     <option class="apart-list-2" value="{{ i.pk }}">{{ i.last_name }} {{ i.first_name }} - {{ i.username }}</option>
                                 {% endfor %}
@@ -1169,8 +1174,8 @@
                     <div class="p-2 block-filter-add-12">
                         <h1 class="text-filter-add-6">Заезд / Отъезд</h1>
                         <div class="input-group mb-3 add-select-admin-5">
-                            <input type="date" name="check_in" id="check_in" class="form-control add-calendar-input" placeholder="Дата, от" aria-label="address" aria-describedby="addon-wrapping"/>
-                            <input type="date" name="departure" id="departure" class="form-control add-calendar-input" placeholder="Дата, до" aria-label="address" aria-describedby="addon-wrapping">
+                            <input type="date" name="check_in" id="check_in" class="form-control add-calendar-input" value="2023-03-21" placeholder="Дата, от" aria-label="address" aria-describedby="addon-wrapping"/>
+                            <input type="date" name="departure" id="departure" class="form-control add-calendar-input" value="2024-03-21" placeholder="Дата, до" aria-label="address" aria-describedby="addon-wrapping">
                         </div>
                     </div>
                 </div>
@@ -1178,14 +1183,20 @@
                 <div class="container admin-users-block-add-5" style="height: 100%">
                     <h1 class="text-filter-add-7">Фото</h1>
                     <div class="p-2 add-object-img">
-
-                        <button type="button" class="btn button-add-img" onclick="add_file()">Добавить фото</button>
-                        <div class="p-2 continer-text-img">
-                            <a class="text-decoration-none" href="#"><h3 class="text-add-img-1">или перетащите в выделенную область</h3></a>
+                        <div class="input-file-row-img">
+                            <label class="input-file">
+                                <div id="inputs">
+                                    <input type="file" id="input_photo" name="file" accept="image/*">
+                                </div>
+                                <div id="block_add_photo">
+                                    <span class="input-photo" style="width: 300px;">Добавить фото</span>
+                                    <span class="input-photo_list">или перетащите в выделенную область</span>
+                                </div>
+                            </label>
+                            <div class="input-file-list_photo"></div>
                         </div>
-                    </div>
-                    <div id="add_file">
-                        <input type="file" name="upload_photo" id="upload_photo"/>
+
+
                     </div>
                 </div>
 
@@ -1193,39 +1204,39 @@
                 <div class="container admin-users-block-add-6">
                     <div class="p-2 add-object-planir">
                         <h1 class="text-filter-add-8">Планировка</h1>
-                        <div class="p-2 add-object-planir-2" style="display: none">
-                            <button style="border: none !important; background: transparent;padding: 0px !important;">
-                                <svg width="81" height="82" viewBox="0 0 81 82" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <a href="#">
+                        <div class="p-2 add-object-planir-2">
+                            <div class="input-file-row">
+                                <label class="input-file">
+                                    <input type="file" name="upload_plan" id="upload_plan" accept="image/*" required>
+                                    <span id="file_text_save"><svg width="81" height="82" viewBox="0 0 81 82" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M20.75 41H60.125" stroke="#292D32" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                 <path d="M40.9414 61.1922V20.8076" stroke="#292D32" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                 <rect x="1.25" y="0.5" width="79" height="81" rx="39.5" stroke="#959697"/>
                                 </a>
                                 </svg>
-                            </button>
-                            <div class="p-2 continer-text-planir">
-                                <a class="text-decoration-none" href="#"><h3 class="text-add-planir">Загрузить планировку</h3></a>
+                                        <h3 class="text-add-planir">Загрузить планировку</h3></span>
+                                </label>
+                                <div class="input-file-list"></div>
                             </div>
                         </div>
-                        <input type="file" name="upload_plan" id="upload_plan"/>
                     </div>
                     <div class="p-2 add-object-planir">
                         <h1 class="text-filter-add-8">PDF от брокеров</h1>
-                        <div class="p-2 add-object-planir-2" style="display: none">
-                            <button style="border: none !important; background: transparent;padding: 0px !important;">
-                                <svg width="81" height="82" viewBox="0 0 81 82" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <a href="#">
+                        <div class="p-2 add-object-planir-2">
+                            <div class="input-file-row">
+                                <label class="input-file">
+                                    <input type="file" name="upload_pdf" id="upload_pdf" accept="application/pdf" required>
+                                    <span id="file_pdf_save"><svg width="81" height="82" viewBox="0 0 81 82" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M20.75 41H60.125" stroke="#292D32" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                 <path d="M40.9414 61.1922V20.8076" stroke="#292D32" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                 <rect x="1.25" y="0.5" width="79" height="81" rx="39.5" stroke="#959697"/>
                                 </a>
                                 </svg>
-                            </button>
-                            <div class="p-2 continer-text-planir">
-                                <a class="text-decoration-none" href="#"><h3 class="text-add-planir">Загрузить PDF файл</h3></a>
+                                        <h3 class="text-add-planir">Загрузить PDF файл</h3></span>
+                                </label>
+                                <div class="input-file-list input_pdf"></div>
                             </div>
                         </div>
-                        <input type="file" name="upload_pdf" id="upload_pdf"/>
                     </div>
                 </div>
 <!--Блок 5 МОБИЛЬНАЯ ВЕРСИЯ-->
@@ -1353,5 +1364,52 @@
     </style>
 {% endblock %}
 {% block js %}
+    <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&amp;apikey=d15b9678-d62b-4c65-9a9d-2f7381ed012e" type="text/javascript"></script>
+    <script src="{% static 'js/select_add.js' %}" type="text/javascript"></script>
     <script src="{% static "js/add_objects.js" %}"></script>
+    <script>
+    var dt1 = new DataTransfer();
+    var image_pdf = '{% static 'img/pdf.png' %}'
+
+$('.input-file input[name=upload_pdf]').on('change', function(){
+	let $files_list = $(this).closest('.input-file').next();
+	$files_list.empty();
+
+	for(var i = 0; i < this.files.length; i++){
+		let file = this.files.item(i);
+		dt1.items.add(file);
+
+		let reader = new FileReader();
+		reader.readAsDataURL(file);
+		reader.onloadend = function(){
+			let new_file_input = '<div class="input-file-list-item">' +
+				'<img class="input-file-list-img" src="' + image_pdf + '">' +
+				'<span class="input-file-list-name">' + file.name + '</span>' +
+				'<a href="#" onclick="removeFilesItem_1(this); return false;" class="input-file-list-remove">x</a>' +
+			'</div>';
+			$files_list.append(new_file_input);
+		}
+	};
+	this.files = dt1.files;
+    $('#file_pdf_save').html(``)
+});
+
+function removeFilesItem_1(target){
+	let name = $(target).prev().text();
+	let input = $(target).closest('.input-file-row').find('input[type=file]');
+	$(target).closest('.input-file-list-item').remove();
+	for(let i = 0; i < dt1.items.length; i++){
+		if(name === dt1.items[i].getAsFile().name){
+			dt1.items.remove(i);
+		}
+	}
+	input[0].files = dt1.files;
+    $('#file_pdf_save').html(`<svg width="81" height="82" viewBox="0 0 81 82" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M20.75 41H60.125" stroke="#292D32" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M40.9414 61.1922V20.8076" stroke="#292D32" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                <rect x="1.25" y="0.5" width="79" height="81" rx="39.5" stroke="#959697"/>
+                                </a>
+                                </svg><h3 class="text-add-planir">Загрузить PDF файл</h3>`)
+}
+    </script>
 {% endblock %}

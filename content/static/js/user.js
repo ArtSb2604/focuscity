@@ -50,6 +50,7 @@ $(document).ready(function () {
 $('.delete_user_button').click(function(){
     var catid;
     catid = $(this).attr("data-catid");
+    console.log(catid)
     $.ajax(
     {
         type:"GET",

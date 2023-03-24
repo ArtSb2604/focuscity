@@ -38,7 +38,8 @@ class Objects(models.Model):
     ready_made_business = models.CharField(max_length=150, verbose_name="Готовый бизнес", null=True, blank=True)
     check_in = models.DateField(verbose_name="Заезд", null=True, blank=True)
     departure = models.DateField(verbose_name="Отъезд", null=True, blank=True)
-
+    x = models.FloatField(null=True, blank=True, default=None)
+    y = models.FloatField(null=True, blank=True, default=None)
     gorod_view = models.IntegerField(null=True, blank=True, verbose_name="Вид на город")
     city_view = models.IntegerField(verbose_name="Вид на сити", null=True, blank=True)
     master_bedroom = models.IntegerField(null=True, blank=True, verbose_name="Мастер-спальня")

@@ -1,27 +1,81 @@
+<div class="container-fluid block-container-output-4">
+                <div class="text-output-1">
+                    <h3 class="text-moscow-10">Недвижимость в Москва-Сити</h3>
+                    <p class="text-moscow-11">Обьявлений: {{ objects.count }}</p>
+                </div>
+                <div class="text-output-2">
+                    <div class="input-group mb-3">
+                        <button class="btn btn-outline-secondary dropdown-toggle btn-sort" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <svg class="svg-2" width="18" height="15" viewBox="0 0 18 1 5" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M0 1.5C0 0.67157 0.67157 0 1.5 0H16.5C17.3284 0 18 0.67157 18 1.5C18 2.32843 17.3284 3 16.5 3H1.5C0.67157 3 0 2.32843 0 1.5ZM0 7.5C0 6.6716 0.67157 6 1.5 6H12.5C13.3284 6 14 6.6716 14 7.5C14 8.3284 13.3284 9 12.5 9H1.5C0.67157 9 0 8.3284 0 7.5ZM1.5 12C0.67157 12 0 12.6716 0 13.5C0 14.3284 0.67157 15 1.5 15H8.5C9.3284 15 10 14.3284 10 13.5C10 12.6716 9.3284 12 8.5 12H1.5Z" fill="#3C3C3B"/>
+                            </svg>
+                            по умолчанию
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end nav-sort">
+                            <li class="nav-li-sort"><a class="dropdown-item" onclick="filtering('По этажу вверх')">По этажу вверх</a></li>
+                            <li class="nav-li-sort"><a class="dropdown-item" onclick="filtering('По этажу вниз')">По этажу вниз</a></li>
+                            <li class="nav-li-sort"><a class="dropdown-item" onclick="filtering('По цене вверх')">По цене вверх</a></li>
+                            <li class="nav-li-sort"><a class="dropdown-item" onclick="filtering('По цене вниз')">По цене вниз</a></li>
+                            <li class="nav-li-sort"><a class="dropdown-item" onclick="filtering('По площади вверх')">По площади вверх</a></li>
+                            <li class="nav-li-sort"><a class="dropdown-item" onclick="filtering('По площади вниз')">По площади вниз</a></li>
+                        </ul>
+                  </div>
+                </div>
+                <div class="d-flex p-2 text-output-1-mob">
+                    <h3 class="text-moscow-10">Недвижимость в Москва-Сити</h3>
+                </div>
+                <div class="d-flex p-2 text-output-2-mob">
+                    <div class="p-2 text-obv">
+                        <p class="text-moscow-11">Обьявлений: {{ objects.count }}</p>
+                    </div>
+                    <div class="input-group mb-3 filter-sort-mob">
+                        <button class="btn btn-outline-secondary dropdown-toggle btn-sort" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M2 3.66669C2 3.1144 2.44771 2.66669 3 2.66669H13C13.5523 2.66669 14 3.1144 14 3.66669C14 4.21897 13.5523 4.66669 13 4.66669H3C2.44771 4.66669 2 4.21897 2 3.66669ZM2 7.66669C2 7.11442 2.44771 6.66669 3 6.66669H10.3333C10.8856 6.66669 11.3333 7.11442 11.3333 7.66669C11.3333 8.21895 10.8856 8.66669 10.3333 8.66669H3C2.44771 8.66669 2 8.21895 2 7.66669ZM3 10.6667C2.44771 10.6667 2 11.1144 2 11.6667C2 12.219 2.44771 12.6667 3 12.6667H7.66667C8.21893 12.6667 8.66667 12.219 8.66667 11.6667C8.66667 11.1144 8.21893 10.6667 7.66667 10.6667H3Z" fill="#3C3C3B"/>
+                            </svg>
+                            по умолчанию
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end nav-sort">
+                            <li class="nav-li-sort"><a class="dropdown-item a-sort" onclick="filtering('По этажу вверх')">По этажу вверх</a></li>
+                            <li class="nav-li-sort"><a class="dropdown-item a-sort" onclick="filtering('По этажу вниз')">По этажу вниз</a></li>
+                            <li class="nav-li-sort"><a class="dropdown-item a-sort" onclick="filtering('По цене вверх')">По цене вверх</a></li>
+                            <li class="nav-li-sort"><a class="dropdown-item a-sort" onclick="filtering('По цене вниз')">По цене вниз</a></li>
+                            <li class="nav-li-sort"><a class="dropdown-item a-sort" onclick="filtering('По площади вверх')">По площади вверх</a></li>
+                            <li class="nav-li-sort"><a class="dropdown-item a-sort" onclick="filtering('По площади вниз')">По площади вниз</a></li>
+                        </ul>
+                  </div>
+                </div>
+            </div>
+<div class="container-fluid block-output-4">
 {% for i in objects %}
-                    <div class="d-flex p-2 block-container-output-1-not-au">
+    <div class="d-flex p-2 block-container-output-1-not-au">
                     <div id="carouselExample-{{ i.pk }}" class="carousel slide carousel-slider-1 cs-{{ i.pk }}">
-                        <div class="carousel-inner" style="height: 100%;">
+                        <div class="block-text-slider-chet">
+                            <p class="text-slider-chet"><a id="tek_slide-{{ i.pk }}">1</a> / <a id="max_slide-{{ i.pk }}">{{ i.pk|carousel_len }}</a></p>
+                        </div>
+                        <div class="carousel-inner" id="inner-{{ i.pk }}" style="height: 100%; display: flex;align-items: center;">
                             {% for a in i.pk|carousel_active %}
-                                <div class="carousel-item active" style="background-image: url('http://127.0.0.1:8000/media/{{ a.image }}'); background-position: center; background-size: 100% 100%; backdrop-filter: blur(5px); background-color: rgba(0, 0, 0, 0.61);">
+                                <div class="carousel-item active" style="height: 100%;background-image: url('http://127.0.0.1:8000/media/{{ a.image }}'); background-position: center; background-size: 100% 100%; backdrop-filter: blur(5px); background-color: rgba(0, 0, 0, 0.61);">
                                     <div class="blur" style="width: 100%; height: 100%; position:absolute; background-image: url('http://127.0.0.1:8000/media/{{ a.image }}');background-position: center;background-size: 100% 100%;filter: blur(5px);z-index: -1;"></div>
-                                    <img src="http://127.0.0.1:8000/media/{{ a.image }}" class="d-block w-70 slider-picture" alt="Focus City">
+                                    <div style="height: 100%; width: 100%; display: flex; justify-content: center">
+                                        <img src="{{ a.image.url }}" class="d-block w-70 slider-picture" alt="Focus City">
+                                    </div>
                                 </div>
                             {% endfor %}
                             {% for a in i.pk|carousel %}
-                                    <div class="carousel-item" style="background-image: url('http://127.0.0.1:8000/media/{{ a.image }}'); background-position: center; background-size: 100% 100%; backdrop-filter: blur(5px); background-color: rgba(0, 0, 0, 0.61);">
+                                    <div class="carousel-item" style="height: 100%;background-image: url('http://127.0.0.1:8000/media/{{ a.image }}'); background-position: center; background-size: 100% 100%; backdrop-filter: blur(5px); background-color: rgba(0, 0, 0, 0.61);">
                                     <div class="blur" style="width: 100%; height: 100%; position:absolute; background-image: url('http://127.0.0.1:8000/media/{{ a.image }}');background-position: center;background-size: 100% 100%;filter: blur(5px);z-index: -1;"></div>
-                                        <img src="http://127.0.0.1:8000/media/{{ a.image }}" class="d-block w-70 slider-picture" alt="Focus City">
+                                    <div style="height: 100%; width: 100%; display: flex; justify-content: center">
+                                        <img src="{{ a.image.url }}" class="d-block w-70 slider-picture" alt="Focus City">
+                                    </div>
                                     </div>
                             {% endfor %}
-
-
                         </div>
-                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample-{{ i.pk }}" data-bs-slide="prev">
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample-{{ i.pk }}" data-bs-slide="prev" onclick="BackSlide('{{ i.pk }}')">
                           <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                           <span class="visually-hidden">Previous</span>
                         </button>
-                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample-{{ i.pk }}" data-bs-slide="next">
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample-{{ i.pk }}" data-bs-slide="next" onclick="NextSlide('{{ i.pk }}')">
                           <span class="carousel-control-next-icon" aria-hidden="true"></span>
                           <span class="visually-hidden">Next</span>
                         </button>
@@ -224,12 +278,12 @@
                                 {% endif %}
                                 {% if i.your_own_farm == True %}
                                     <div class="p-2 info-text-col-1">
-                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <path d="M16.3533 0H14.612V12.4952H0.243652V13.9326H16.3533V0Z" fill="#FF693B"/>
                                             <path d="M17.2241 3.04829V13.4973L19.0747 13.4977V15.6118C19.0747 16.0437 18.7233 16.395 18.2915 16.395H16.315C16.3384 16.3282 16.3493 16.2913 16.3492 16.2913C16.5159 15.6853 16.6155 15.0467 16.6155 14.3678H0.243652C0.243652 21.6333 5.83408 24 5.83408 24H10.7337V22.1777L11.2026 21.2772L11.2105 21.2773C11.3576 21.2335 11.5082 21.1946 11.6501 21.1406C13.6209 20.3904 14.8312 19.045 15.529 17.9613H18.2915C19.5871 17.9613 20.6411 16.9073 20.6411 15.6118V13.498L22.4506 13.4984L23.7561 3.04864L17.2241 3.04829Z" fill="#FF693B"/>
                                             <path d="M23.7549 1.30618H17.2241V2.61195H23.7549V1.30618Z" fill="#FF693B"/>
                                         </svg>
-                                    <p class="info-text-str-2">Свой с/у</p>
+                                        <p class="info-text-str-2">Свой с/у</p>
                                     </div>
                                 {% endif %}
                             </div>
@@ -1090,7 +1144,7 @@
                             </div>
                             <div class="p-2 block-information-333">
                                 <div class="p-2 block-info-conveniences-6">
-                                    <a href="#"><img class="avatar-picture-5" src="http://127.0.0.1:8000/media/{{ i.user|user_img }}" alt="Focus City"></a>
+                                    <a href="#"><img class="avatar-picture-5" src="http://194.67.125.24/media/{{ i.user|user_img }}" alt="Focus City"></a>
                                 </div>
                                 <div class="p-2 block-info-conveniences-4">
                                     <a href="#" class="text-decoration-none info-block-broker-text">{{ i.user|user }}</a>
@@ -1151,33 +1205,33 @@
                                     <button type="button" class="btn btn-dark button-output-2" onclick="pu_maps({{ i.pk }})">Карта</button>
                                 </div>
                                 <div class="p-2 block-button-right-information-text-2">
-                                    <a type="button" class="btn btn-dark button-output-3" href="{% url 'object' i.pk %}">Открыть в новой вкладке
+                                    <a type="button" class="btn btn-dark button-output-3" onclick="window.open('{% url 'object' i.pk %}', '_blank');">Открыть в новой вкладке
                                         <svg width="16" height="11" viewBox="0 0 16 11" fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <path d="M15.4829 2.62941C15.5544 2.36268 15.3961 2.08851 15.1294 2.01704L10.7827 0.852352C10.516 0.78088 10.2418 0.939172 10.1703 1.2059C10.0989 1.47264 10.2572 1.74681 10.5239 1.81828L14.3876 2.85355L13.3523 6.71726C13.2808 6.98399 13.4391 7.25816 13.7059 7.32963C13.9726 7.4011 14.2468 7.24281 14.3182 6.97608L15.4829 2.62941ZM1.39355 10.933L15.25 2.93301L14.75 2.06699L0.893555 10.067L1.39355 10.933Z" fill="#3C3C3B"/>
                                         </svg>
                                     </a>
                                 </div>
                                 <div class="p-2 block-button-right-information-text-22">
-                                    <button type="button" class="btn btn-dark button-output-4">Сдается</button>
+                                    <button type="button" class="btn btn-dark button-output-4">{{ i.status }}</button>
                                 </div>
                                 {% if user.is_authenticated %}
                                     <div class="p-2 block-button-right-information-text-22">
-                                        <button type="button" class="btn btn-dark button-output-5">Презентация PDF</button>
+                                        <a type="button" href="http://127.0.0.1:8000/media/{{ i.pdf }}" class="btn btn-dark button-output-5">Презентация PDF</a>
                                     </div>
                                     <div class="p-2 block-button-right-information-text-2-mob-2">
-                                        <button type="button" class="btn btn-dark button-output-4">Сдается</button>
-                                        <button type="button" class="btn btn-dark button-output-5">Презентация PDF</button>
+                                        <button type="button" class="btn btn-dark button-output-4">{{ i.status }}</button>
+                                        <a type="button" href="http://127.0.0.1:8000/media/{{ i.pdf }}" class="btn btn-dark button-output-5">Презентация PDF</a>
                                     </div>
                                     {% else %}
                                     <div class="p-2 block-button-right-information-text-2-mob-2">
-                                        <button type="button" class="btn btn-dark button-output-4" style="width: 100%;">Сдается</button>
+                                        <button type="button" class="btn btn-dark button-output-4" style="width: 100%;">{{ i.status }}</button>
                                     </div>
                                 {% endif %}
                                 <div class="p-2 block-button-right-information-text-2">
-                                    <button type="button" class="btn btn-dark button-output-6">Назначить просмотр</button>
+                                    <button type="button" class="btn btn-dark button-output-6" onclick="modal('{{ i.number_phone }}')" data-bs-toggle="modal" data-bs-target="#Modal-3">Назначить просмотр</button>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                {% endfor %}
+{% endfor %}

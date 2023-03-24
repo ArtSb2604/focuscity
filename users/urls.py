@@ -1,10 +1,9 @@
 from django.urls import include, path
-from rest_framework import routers
 from . import views
 
 # Wire up our API using automatic URL routing.
 # Additionally, we include login URLs for the browsable API.
-from .views import register, AllUsersView, UsersDetail
+from .views import register, AllUsersView, UsersDetail, SettingsView
 
 urlpatterns = [
     path('adduser/', views.register, name="adduser"),
@@ -14,4 +13,7 @@ urlpatterns = [
     path("users/user_update_status", views.user_update_status, name="user_update_status"),
     path('users/update/<int:pk>/', views.update, name="update"),
     path('users/filter/', views.filter, name="filter"),
+
+    path('setting/', SettingsView.as_view(), name="setting"),
+    path('setting/auth_history', views.auth_history, name="auth_history"),
 ]
