@@ -9,5 +9,6 @@ from index.views import Index, ContactsView
 urlpatterns = [
     path('', Index.as_view(), name="index"),
     path('login/', views.login_ac, name='login'),
-    path('contacts', ContactsView.as_view(), name='contacts')
+    path('contacts', ContactsView.as_view(), name='contacts'),
+    path('pdf', views.pdf, name="pdf"),
 ]

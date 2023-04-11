@@ -2,20 +2,11 @@ function type_operation_user(num) {
     if (num == 'rent') {
         document.getElementById("type_nedv").innerHTML = "";
         $('#type_nedv').append(`
-<input type="radio" class="btn-check button-add-type-4" name="user-apart-agent" id="user-apart-agent7" autocomplete="off">
-<label class="btn btn-secondary button-add-type-4" for="user-apart-agent7" style="width: 120px; padding: 8px 22px;">Коворкинг</label>`)
+<input type="radio" class="btn-check button-add-type-4" name="user-apart-agent" id="user-apart-agent7" value="Коворкинг" autocomplete="off">
+<label class="btn btn-secondary button-add-type-4" for="user-apart-agent7" style="width: 120px; padding: 8px 22px;">Коворкинг</label> `)
 
-        document.getElementById("type_nedv_mob").innerHTML = "";
-        $('#type_nedv_mob').append(`
-<input type="radio" class="btn-check button-add-type-4" name="user-apart-agent_mob" id="user-apart-agent3_mob" value="Офис" autocomplete="off">
-                                                <label class="btn btn-secondary button-add-type-4" for="user-apart-agent3_mob" style="width: 86px;">Офис</label>
-<input type="radio" class="btn-check button-add-type-4" name="user-apart-agent" value="Коворкинг" id="user-apart-agent7" autocomplete="off">
-<label class="btn btn-secondary button-add-type-4" for="user-apart-agent7" style="width: 120px; padding: 8px 22px;">Коворкинг</label>`)
     } else {
         document.getElementById("type_nedv").innerHTML = "";
-        $('#type_nedv_mob').append(`
-<input type="radio" class="btn-check button-add-type-4" name="user-apart-agent_mob" value="Офис" id="user-apart-agent3_mob" autocomplete="off">
-                                                <label class="btn btn-secondary button-add-type-4" for="user-apart-agent3_mob" style="width: 86px;">Офис</label>`)
     }
 }
 
@@ -118,11 +109,6 @@ function add_tag_soc(num) {
     }
 }
 
-if ($('#type_nedv_mob').css('display') == 'none') {
-    $('#type_nedv_mob').append("<input type='text' name='adaptive' value='desktop' style='display:none;'/>")
-} else {
-    $('#type_nedv_mob').append("<input type='text' name='adaptive' value='mobile' style='display:none;'/>")
-}
 
 $('#mail').bind('input', function() {
     $('#id_username').val($(this).val())
@@ -147,14 +133,11 @@ $('.input-file input[type=file]').on('change', function(){
 		let reader = new FileReader();
 		reader.readAsDataURL(file);
 		reader.onloadend = function(){
-			let new_file_input = '<div class="input-file-list-item">' +
-				'<img class="input-file-list-img" src="' + reader.result + '">' +
-				'<span class="input-file-list-name">' + file.name + '</span>' +
-				'<a href="#" onclick="removeFilesItem(this); return false;" class="input-file-list-remove">x</a>' +
-			'</div>';
-			$files_list.append(new_file_input);
+            $('#user_photo').empty()
+            $('#user_photo').append('<img id="user_photo_img" class="img-picture-info-user-agent" src="'+reader.result+'" alt="Focus City">')
 		}
 	};
+
 	this.files = dt.files;
     $('#file_text_save').html(`<svg width="21" height="20" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                         <path d="M7.99999 18.3333H13C17.1667 18.3333 18.8333 16.6667 18.8333 12.5V7.5C18.8333 3.33334 17.1667 1.66667 13 1.66667H7.99999C3.83332 1.66667 2.16666 3.33334 2.16666 7.5V12.5C2.16666 16.6667 3.83332 18.3333 7.99999 18.3333Z" stroke="#D19B33" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -183,3 +166,9 @@ function removeFilesItem(target){
                                                     </svg>
                                                     Загрузить`)
 }
+
+var element_number_phone = document.getElementById('number_phone');
+var maskOptions_number_phone = {
+  mask: '+{7}(000)000-00-00'
+};
+var mask_number_phone = IMask(element_number_phone, maskOptions_number_phone);

@@ -1,4 +1,5 @@
 {% load static %}
+{% load poll_extras %}
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -9,61 +10,67 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     {% block css %}
     {% endblock %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/footer.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/header.css' %}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header>
+<header>
         <div class="d-flex flex-header" style="z-index: 1; position: relative;">
-            <div class="p-2 flex-fill flex-group-1">
-                <svg class="tel-wt-vb" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <div class="container d-flex align-items-center h-100 flex-header-2-admin">
+                <div class="p-2 flex-fill flex-group-1">
+                    <svg class="tel-wt-vb" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <a href="https://t.me/">
                     <circle cx="12" cy="12" r="12" fill="#0A0A0A" fill-opacity="0.8"/>
                     <path d="M5.61045 12.2244L8.3693 13.2531L9.44478 16.7134C9.49154 16.9472 9.77211 16.9939 9.95915 16.8537L11.5022 15.5911C11.6425 15.4509 11.8763 15.4509 12.0634 15.5911L14.8222 17.6018C15.0092 17.7421 15.2898 17.6486 15.3366 17.4148L17.394 7.59514C17.4408 7.36134 17.207 7.12755 16.9732 7.22107L5.61045 11.6165C5.32988 11.71 5.32988 12.1309 5.61045 12.2244ZM9.30451 12.7388L14.7287 9.41879C14.8222 9.37203 14.9157 9.51231 14.8222 9.55907L10.38 13.7207C10.2397 13.861 10.0994 14.048 10.0994 14.2818L9.95915 15.4041C9.95915 15.5444 9.72534 15.5911 9.67858 15.4041L9.11746 13.3466C8.97717 13.1128 9.07071 12.8323 9.30451 12.7388Z" fill="#F9FAFB"/>
                     </a>
-                </svg>
-                <svg class="tel-wt-vb" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    </svg>
+                    <svg class="tel-wt-vb" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <a href="https://t.me/">
                     <circle cx="12" cy="12" r="12" fill="#0A0A0A" fill-opacity="0.8"/>
                     <path d="M16.7561 7.2374C15.5707 6.05615 13.9902 5.3999 12.3219 5.3999C8.85366 5.3999 6.0439 8.1999 6.0439 11.6562C6.0439 12.7499 6.35122 13.8437 6.87805 14.7624L6 17.9999L9.33659 17.1249C10.2585 17.6062 11.2683 17.8687 12.3219 17.8687C15.7902 17.8687 18.6 15.0687 18.6 11.6124C18.5561 9.99365 17.9415 8.41865 16.7561 7.2374ZM15.3512 13.8874C15.2195 14.2374 14.6049 14.5874 14.2976 14.6312C14.0341 14.6749 13.6829 14.6749 13.3317 14.5874C13.1122 14.4999 12.8049 14.4124 12.4537 14.2374C10.8732 13.5812 9.86342 12.0062 9.77561 11.8749C9.68781 11.7874 9.11707 11.0437 9.11707 10.2562C9.11707 9.46865 9.51219 9.11865 9.6439 8.94365C9.77561 8.76865 9.95122 8.76865 10.0829 8.76865C10.1707 8.76865 10.3024 8.76865 10.3902 8.76865C10.478 8.76865 10.6098 8.7249 10.7415 9.03115C10.8732 9.3374 11.1805 10.1249 11.2244 10.1687C11.2683 10.2562 11.2683 10.3437 11.2244 10.4312C11.1805 10.5187 11.1366 10.6062 11.0488 10.6937C10.961 10.7812 10.8732 10.9124 10.8293 10.9562C10.7415 11.0437 10.6537 11.1312 10.7415 11.2624C10.8293 11.4374 11.1366 11.9187 11.6195 12.3562C12.2341 12.8812 12.7171 13.0562 12.8927 13.1437C13.0683 13.2312 13.1561 13.1874 13.2439 13.0999C13.3317 13.0124 13.639 12.6624 13.7268 12.4874C13.8146 12.3124 13.9463 12.3562 14.078 12.3999C14.2098 12.4437 15 12.8374 15.1317 12.9249C15.3073 13.0124 15.3951 13.0562 15.439 13.0999C15.4829 13.2312 15.4829 13.5374 15.3512 13.8874Z" fill="#F9FAFB"/>
                     </a>
-                </svg>
-                <svg class="tel-wt-vb" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    </svg>
+                    <svg class="tel-wt-vb" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <a href="https://t.me/">
                     <circle cx="12" cy="12" r="12" fill="#0A0A0A" fill-opacity="0.8"/>
                     <path d="M15.7524 6.32755C13.4654 5.89082 11.0906 5.89082 8.80366 6.32755C7.79215 6.54591 6.51675 7.76876 6.29686 8.72957C5.90105 10.6075 5.90105 12.5291 6.29686 14.4071C6.56073 15.3679 7.83612 16.5907 8.80366 16.8091C8.84764 16.8091 8.89162 16.8528 8.89162 16.8964V19.6478C8.89162 19.7789 9.06754 19.8662 9.1555 19.7352L10.4749 18.3813C10.4749 18.3813 11.5304 17.2895 11.7063 17.1148C11.7063 17.1148 11.7503 17.0711 11.7942 17.0711C13.1136 17.1148 14.477 16.9838 15.7963 16.7654C16.8079 16.5471 18.0832 15.3242 18.3031 14.3634C18.699 12.4855 18.699 10.5638 18.3031 8.6859C18.0393 7.76876 16.7639 6.54591 15.7524 6.32755ZM15.7963 14.5381C15.5764 14.9748 15.3126 15.3242 14.8728 15.5426C14.7408 15.5862 14.6089 15.6299 14.477 15.6736C14.301 15.6299 14.1691 15.5862 14.0372 15.5426C12.6298 14.9748 11.3105 14.1887 10.255 13.0532C9.68325 12.3981 9.19948 11.6557 8.80366 10.8695C8.62775 10.4765 8.45183 10.1271 8.31989 9.73405C8.18796 9.38466 8.40785 9.03528 8.62775 8.77324C8.84764 8.5112 9.11152 8.33651 9.41937 8.20549C9.63927 8.07447 9.85916 8.16182 10.0351 8.33651C10.3869 8.77324 10.7387 9.20997 11.0026 9.69038C11.1785 9.99609 11.1346 10.3455 10.8267 10.5638C10.7387 10.6075 10.6948 10.6512 10.6068 10.7385C10.5628 10.7822 10.4749 10.8259 10.4309 10.9132C10.3429 11.0442 10.3429 11.1753 10.3869 11.3063C10.7387 12.3108 11.3984 13.0969 12.4099 13.5336C12.5859 13.621 12.7178 13.6646 12.9377 13.6646C13.2455 13.621 13.3775 13.2716 13.5974 13.0969C13.8173 12.9222 14.0812 12.9222 14.345 13.0532C14.5649 13.1842 14.7848 13.3589 15.0487 13.5336C15.2686 13.7083 15.4885 13.8393 15.7084 14.014C15.8403 14.1014 15.8843 14.3197 15.7963 14.5381ZM13.9492 11.2626C13.8613 11.2626 13.9052 11.2626 13.9492 11.2626C13.7733 11.2626 13.7293 11.1753 13.6853 11.0442C13.6853 10.9569 13.6853 10.8259 13.6414 10.7385C13.5974 10.5638 13.5094 10.3891 13.3335 10.2581C13.2455 10.2145 13.1576 10.1708 13.0696 10.1271C12.9377 10.0834 12.8497 10.0834 12.7178 10.0834C12.5859 10.0398 12.5419 9.95242 12.5419 9.8214C12.5419 9.73405 12.6738 9.6467 12.7618 9.6467C13.4654 9.69038 13.9932 10.0834 14.0812 10.9132C14.0812 10.9569 14.0812 11.0442 14.0812 11.0879C14.0812 11.1753 14.0372 11.2626 13.9492 11.2626ZM13.5094 9.34099C13.2895 9.25365 13.0696 9.1663 12.8058 9.12263C12.7178 9.12263 12.5859 9.07895 12.4979 9.07895C12.366 9.07895 12.278 8.99161 12.322 8.86059C12.322 8.72957 12.4099 8.64222 12.5419 8.6859C12.9817 8.72957 13.3775 8.81691 13.7733 8.99161C14.5649 9.38467 15.0047 10.0398 15.1366 10.9132C15.1366 10.9569 15.1366 11.0006 15.1366 11.0442C15.1366 11.1316 15.1366 11.2189 15.1366 11.35C15.1366 11.3936 15.1366 11.4373 15.1366 11.481C15.0927 11.6557 14.7848 11.6993 14.7408 11.481C14.7408 11.4373 14.6969 11.35 14.6969 11.3063C14.6969 10.9132 14.6089 10.5202 14.433 10.1708C14.1691 9.77772 13.8613 9.51568 13.5094 9.34099ZM15.8843 11.9614C15.7524 11.9614 15.6644 11.8304 15.6644 11.6993C15.6644 11.4373 15.6204 11.1753 15.5764 10.9132C15.4005 9.51568 14.2571 8.38018 12.8937 8.16182C12.6738 8.11814 12.4539 8.11815 12.278 8.07447C12.1461 8.07447 11.9702 8.07447 11.9262 7.89978C11.8822 7.76876 12.0141 7.63774 12.1461 7.63774C12.1901 7.63774 12.234 7.63774 12.234 7.63774C12.322 7.63774 14.0372 7.68141 12.234 7.63774C14.0812 7.68141 15.6204 8.90426 15.9283 10.7385C15.9722 11.0442 16.0162 11.35 16.0162 11.6993C16.1042 11.8304 16.0162 11.9614 15.8843 11.9614Z" fill="#F9FAFB"/>
                     </a>
-                </svg>
-            </div>
-            <div class="p-2 flex-fill flex-group-2">
-                <div class="mail-header">
-                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M12.75 15.375H5.25C3 15.375 1.5 14.25 1.5 11.625V6.375C1.5 3.75 3 2.625 5.25 2.625H12.75C15 2.625 16.5 3.75 16.5 6.375V11.625C16.5 14.25 15 15.375 12.75 15.375Z" stroke="#292D32" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M12.75 6.75L10.4025 8.625C9.63 9.24 8.3625 9.24 7.59 8.625L5.25 6.75" stroke="#292D32" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
-                    <a class="mail-header-text" href="mailto:Hello@focuscity.ru">Hello@focuscity.ru</a>
                 </div>
-            </div>
-            <div class="p-2 flex-fill flex-group-3">
-                <div class="tel-header">
-                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M16.4775 13.7475C16.4775 14.0175 16.4175 14.295 16.29 14.565C16.1625 14.835 15.9975 15.09 15.78 15.33C15.4125 15.735 15.0075 16.0275 14.55 16.215C14.1 16.4025 13.6125 16.5 13.0875 16.5C12.3225 16.5 11.505 16.32 10.6425 15.9525C9.78 15.585 8.9175 15.09 8.0625 14.4675C7.2 13.8375 6.3825 13.14 5.6025 12.3675C4.83 11.5875 4.1325 10.77 3.51 9.915C2.895 9.06 2.4 8.205 2.04 7.3575C1.68 6.5025 1.5 5.685 1.5 4.905C1.5 4.395 1.59 3.9075 1.77 3.4575C1.95 3 2.235 2.58 2.6325 2.205C3.1125 1.7325 3.6375 1.5 4.1925 1.5C4.4025 1.5 4.6125 1.545 4.8 1.635C4.995 1.725 5.1675 1.86 5.3025 2.055L7.0425 4.5075C7.1775 4.695 7.275 4.8675 7.3425 5.0325C7.41 5.19 7.4475 5.3475 7.4475 5.49C7.4475 5.67 7.395 5.85 7.29 6.0225C7.1925 6.195 7.05 6.375 6.87 6.555L6.3 7.1475C6.2175 7.23 6.18 7.3275 6.18 7.4475C6.18 7.5075 6.1875 7.56 6.2025 7.62C6.225 7.68 6.2475 7.725 6.2625 7.77C6.3975 8.0175 6.63 8.34 6.96 8.73C7.2975 9.12 7.6575 9.5175 8.0475 9.915C8.4525 10.3125 8.8425 10.68 9.24 11.0175C9.63 11.3475 9.9525 11.5725 10.2075 11.7075C10.245 11.7225 10.29 11.745 10.3425 11.7675C10.4025 11.79 10.4625 11.7975 10.53 11.7975C10.6575 11.7975 10.755 11.7525 10.8375 11.67L11.4075 11.1075C11.595 10.92 11.775 10.7775 11.9475 10.6875C12.12 10.5825 12.2925 10.53 12.48 10.53C12.6225 10.53 12.7725 10.56 12.9375 10.6275C13.1025 10.695 13.275 10.7925 13.4625 10.92L15.945 12.6825C16.14 12.8175 16.275 12.975 16.3575 13.1625C16.4325 13.35 16.4775 13.5375 16.4775 13.7475Z" stroke="#292D32" stroke-width="1.5" stroke-miterlimit="10"/>
-                    </svg>
-                    <a class="tel-header-text" href="tel:+79517037041">+7 951 703 70 41</a>
+                <div class="p-2 flex-fill flex-group-2-3-all">
+                    <div class="p-2 flex-fill flex-group-2">
+                        <div class="mail-header">
+                            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12.75 15.375H5.25C3 15.375 1.5 14.25 1.5 11.625V6.375C1.5 3.75 3 2.625 5.25 2.625H12.75C15 2.625 16.5 3.75 16.5 6.375V11.625C16.5 14.25 15 15.375 12.75 15.375Z" stroke="#292D32" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M12.75 6.75L10.4025 8.625C9.63 9.24 8.3625 9.24 7.59 8.625L5.25 6.75" stroke="#292D32" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            <a class="mail-header-text" href="mailto:Hello@focuscity.ru">Hello@focuscity.ru</a>
+                        </div>
+                    </div>
+                    <div class="p-2 flex-fill flex-group-3">
+                        <div class="tel-header">
+                            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M16.4775 13.7475C16.4775 14.0175 16.4175 14.295 16.29 14.565C16.1625 14.835 15.9975 15.09 15.78 15.33C15.4125 15.735 15.0075 16.0275 14.55 16.215C14.1 16.4025 13.6125 16.5 13.0875 16.5C12.3225 16.5 11.505 16.32 10.6425 15.9525C9.78 15.585 8.9175 15.09 8.0625 14.4675C7.2 13.8375 6.3825 13.14 5.6025 12.3675C4.83 11.5875 4.1325 10.77 3.51 9.915C2.895 9.06 2.4 8.205 2.04 7.3575C1.68 6.5025 1.5 5.685 1.5 4.905C1.5 4.395 1.59 3.9075 1.77 3.4575C1.95 3 2.235 2.58 2.6325 2.205C3.1125 1.7325 3.6375 1.5 4.1925 1.5C4.4025 1.5 4.6125 1.545 4.8 1.635C4.995 1.725 5.1675 1.86 5.3025 2.055L7.0425 4.5075C7.1775 4.695 7.275 4.8675 7.3425 5.0325C7.41 5.19 7.4475 5.3475 7.4475 5.49C7.4475 5.67 7.395 5.85 7.29 6.0225C7.1925 6.195 7.05 6.375 6.87 6.555L6.3 7.1475C6.2175 7.23 6.18 7.3275 6.18 7.4475C6.18 7.5075 6.1875 7.56 6.2025 7.62C6.225 7.68 6.2475 7.725 6.2625 7.77C6.3975 8.0175 6.63 8.34 6.96 8.73C7.2975 9.12 7.6575 9.5175 8.0475 9.915C8.4525 10.3125 8.8425 10.68 9.24 11.0175C9.63 11.3475 9.9525 11.5725 10.2075 11.7075C10.245 11.7225 10.29 11.745 10.3425 11.7675C10.4025 11.79 10.4625 11.7975 10.53 11.7975C10.6575 11.7975 10.755 11.7525 10.8375 11.67L11.4075 11.1075C11.595 10.92 11.775 10.7775 11.9475 10.6875C12.12 10.5825 12.2925 10.53 12.48 10.53C12.6225 10.53 12.7725 10.56 12.9375 10.6275C13.1025 10.695 13.275 10.7925 13.4625 10.92L15.945 12.6825C16.14 12.8175 16.275 12.975 16.3575 13.1625C16.4325 13.35 16.4775 13.5375 16.4775 13.7475Z" stroke="#292D32" stroke-width="1.5" stroke-miterlimit="10"/>
+                            </svg>
+                            <a class="tel-header-text" href="tel:+79517037041">+7 951 703 70 41</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="header-2" style="z-index: 1; position: relative;">
+        <div class="header-2" style="z-index: 1; position: relative; {% if request.path != '/' %}background-color: #0A0A0A !important{% endif %}">
         <div class="container d-flex align-items-center h-100 flex-header-2-admin">
             <div class="p-2 flex-fill flex-logo">
                 <a href="{% url 'index' %}"><img class="logo-picture" src="{% static 'img/logo.png' %}" alt="Focus City"></a>
             </div>
             <div class="p-2 flex-fill flex-group-4">
                 <div class="menu-header">
-                    <a href="{% url 'all_objects' %}" class="text-decoration-none menu-header-button">База недвижимости</a>
+                    <a href="{% url 'all_objects' %}" class="text-decoration-none menu-header-button {% active_page request "all_objects" %}">База недвижимости</a>
                     <a href="#" class="text-decoration-none menu-header-button">Избранное</a>
-                    <a href="{% url 'contacts' %}" class="text-decoration-none menu-header-button">Контакты</a>
+                    <a href="{% url 'contacts' %}" class="text-decoration-none menu-header-button {% active_page request "contacts" %}">Контакты</a>
                 </div>
             </div>
             {% if request.user.is_authenticated %}
@@ -73,36 +80,34 @@
                         <button class="btn dropdown-toggle button-menu-header" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
                             <div class="col header-name">
                                 <a class="text-decoration-none header-name-right">{{ request.user.last_name }} {{ request.user.first_name }}</a>
-                                <a class="text-decoration-none header-broker">Брокер {{ request.user.company }}</a>
+                            <a class="text-decoration-none header-broker">Брокер {{ request.user.company }}</a>
                             </div>
                             <div class="p-2 menu-header-right-2">
                                 <img class="avatar-picture" src="{{ request.user.img.url }}" alt="Focus City">
                             </div>
                           </button>
                           <ul class="dropdown-menu menu-header-ul" aria-labelledby="dropdownMenuButton">
-                            <li><a class="dropdown-item menu-item-header-1" href="{% url 'adduser' %}">Добавить клиента</a></li>
-                            <li><a class="dropdown-item menu-item-header-1" href="{% url 'add_object' %}">Добавить объект</a></li>
-                            <li><a class="dropdown-item menu-item-header-1" href="#">Мои клиенты</a></li>
-                            <li><a class="dropdown-item menu-item-header-1" href="#">Напоминания по клиентам</a></li>
-                            <li><a class="dropdown-item menu-item-header-1" href="admin-my-object.html">Мои объекты</a></li>
-                            <li><a class="dropdown-item menu-item-header-1" href="admin-favourites.html">Избранное</a></li>
-                            <li><a class="dropdown-item menu-item-header-1" href="{% url 'logout' %}">Выйти</a></li>
+                              <li><a class="dropdown-item menu-item-header-1" href="{% url 'adduser' %}">Добавить клиента</a></li>
+                              <li><a class="dropdown-item menu-item-header-1" href="{% url 'add_object' %}">Добавить объект</a></li>
+                              <li><a class="dropdown-item menu-item-header-1" href="#">Мои клиенты</a></li>
+                              <li><a class="dropdown-item menu-item-header-1" href="#">Напоминания по клиентам</a></li>
+                              <li><a class="dropdown-item menu-item-header-1" href="#">Мои объекты</a></li>
+                              <li><a class="dropdown-item menu-item-header-1" href="#">Избранное</a></li>
+                              <li><a class="dropdown-item menu-item-header-1" href="{% url 'logout' %}">Выйти</a></li>
                           </ul>
                     </div>
                 </div>
-            </div>
+                </div>
             {% else %}
                 <div class="d-flex flex-column mb-3 flex-group-5-login">
                 <div class="d-flex flex-column mb-3 menu-header-right-3">
                     <div class="d-flex flex-column mb-3 header-login">
-                        <div class="p-2 box-register-2">
-                        </div>
                         <div class="p-2 box-register">
                             <a href="{% url 'login' %}" class="text-decoration-none menu-header-text-login-2">Войти в кабинет</a>
                         </div>
                     </div>
                 </div>
-            </div>
+                </div>
             {% endif %}
 
           </div>
@@ -134,20 +139,19 @@
         </div>
         <div class="container d-flex align-items-center h-100 header-mob-2" id="header-mob-2">
             <div class="p-2 menu-header-mob-3">
-            {% if request.user.is_authenticated %}
-                <div class="p-2 str-header-mob-1">
-                    <div class="p-2 logo-broker-mob">
-                        <a href="#"><img class="avatar-picture" src="{{ request.user.img.url }}" alt="Focus City"></a>
-                        <div class="text-broker-mob-1">
-                            <a href="#" class="text-decoration-none header-mob-name">{{ request.user.last_name }} {{ request.user.first_name }}</a>
-                            <a href="#" class="text-decoration-none header-mob-broker">Брокер {{ request.user.company }}</a>
+                {% if request.user.is_authenticated %}
+                    <div class="p-2 str-header-mob-1">
+                        <div class="p-2 logo-broker-mob">
+                            <a href="#"><img class="avatar-picture" src="{{ request.user.img.url }}" alt="Focus City"></a>
+                            <div class="text-broker-mob-1">
+                                <a href="#" class="text-decoration-none header-mob-name">{{ request.user.last_name }} {{ request.user.first_name }}</a>
+                                <a href="#" class="text-decoration-none header-mob-broker">Брокер {{ request.user.company }}</a>
+                            </div>
                         </div>
                     </div>
-                </div>
+                    <hr class="hr-header-mob">
+                {% endif %}
                 <hr class="hr-header-mob">
-            {% endif %}
-
-
                 <div class="p-2 str-header-mob-2">
                     <div class="p-2 menu-1-mob">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -195,8 +199,7 @@
                     </div>
                 </div>
                 <hr class="hr-header-mob">
-                {% if request.user.is_authenticated %}
-                    <div class="p-2 str-header-mob-2">
+                <div class="p-2 str-header-mob-2">
                     <div class="p-2 menu-1-mob">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <g clip-path="url(#clip0_610_17624)">
@@ -258,40 +261,29 @@
                     </div>
                 </div>
                 <hr class="hr-header-mob">
-                {% endif %}
-                <div class="p-2 str-header-mob-2">
-                    <div class="p-2 menu-1-mob">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M21.97 18.33C21.97 18.69 21.89 19.06 21.72 19.42C21.55 19.78 21.33 20.12 21.04 20.44C20.55 20.98 20.01 21.37 19.4 21.62C18.8 21.87 18.15 22 17.45 22C16.43 22 15.34 21.76 14.19 21.27C13.04 20.78 11.89 20.12 10.75 19.29C9.6 18.45 8.51 17.52 7.47 16.49C6.44 15.45 5.51 14.36 4.68 13.22C3.86 12.08 3.2 10.94 2.72 9.81C2.24 8.67 2 7.58 2 6.54C2 5.86 2.12 5.21 2.36 4.61C2.6 4 2.98 3.44 3.51 2.94C4.15 2.31 4.85 2 5.59 2C5.87 2 6.15 2.06 6.4 2.18C6.66 2.3 6.89 2.48 7.07 2.74L9.39 6.01C9.57 6.26 9.7 6.49 9.79 6.71C9.88 6.92 9.93 7.13 9.93 7.32C9.93 7.56 9.86 7.8 9.72 8.03C9.59 8.26 9.4 8.5 9.16 8.74L8.4 9.53C8.29 9.64 8.24 9.77 8.24 9.93C8.24 10.01 8.25 10.08 8.27 10.16C8.3 10.24 8.33 10.3 8.35 10.36C8.53 10.69 8.84 11.12 9.28 11.64C9.73 12.16 10.21 12.69 10.73 13.22C11.27 13.75 11.79 14.24 12.32 14.69C12.84 15.13 13.27 15.43 13.61 15.61C13.66 15.63 13.72 15.66 13.79 15.69C13.87 15.72 13.95 15.73 14.04 15.73C14.21 15.73 14.34 15.67 14.45 15.56L15.21 14.81C15.46 14.56 15.7 14.37 15.93 14.25C16.16 14.11 16.39 14.04 16.64 14.04C16.83 14.04 17.03 14.08 17.25 14.17C17.47 14.26 17.7 14.39 17.95 14.56L21.26 16.91C21.52 17.09 21.7 17.3 21.81 17.55C21.91 17.8 21.97 18.05 21.97 18.33Z" stroke="#292D32" stroke-width="1.5" stroke-miterlimit="10"/>
-                        </svg>
-                        <a href="#" class="text-decoration-none header-mob-menu-text-1">Контакты</a>
-                    </div>
-                </div>
-                <hr class="hr-header-mob">
                 {% if request.user.is_authenticated %}
-                    <div class="p-2 str-header-mob-2">
-                    <div class="p-2 menu-1-mob">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M12.1601 10.87C12.0601 10.86 11.9401 10.86 11.8301 10.87C9.45006 10.79 7.56006 8.84 7.56006 6.44C7.56006 3.99 9.54006 2 12.0001 2C14.4501 2 16.4401 3.99 16.4401 6.44C16.4301 8.84 14.5401 10.79 12.1601 10.87Z" stroke="#292D32" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                            <path d="M7.16021 14.56C4.74021 16.18 4.74021 18.82 7.16021 20.43C9.91021 22.27 14.4202 22.27 17.1702 20.43C19.5902 18.81 19.5902 16.17 17.1702 14.56C14.4302 12.73 9.92021 12.73 7.16021 14.56Z" stroke="#292D32" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                        <a href="{% url 'logout' %}" class="text-decoration-none header-mob-menu-text-1">Выйти</a>
-                    </div>
+                <div class="p-2 str-header-mob-2">
+                <div class="p-2 menu-1-mob">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12.1601 10.87C12.0601 10.86 11.9401 10.86 11.8301 10.87C9.45006 10.79 7.56006 8.84 7.56006 6.44C7.56006 3.99 9.54006 2 12.0001 2C14.4501 2 16.4401 3.99 16.4401 6.44C16.4301 8.84 14.5401 10.79 12.1601 10.87Z" stroke="#292D32" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M7.16021 14.56C4.74021 16.18 4.74021 18.82 7.16021 20.43C9.91021 22.27 14.4202 22.27 17.1702 20.43C19.5902 18.81 19.5902 16.17 17.1702 14.56C14.4302 12.73 9.92021 12.73 7.16021 14.56Z" stroke="#292D32" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <a href="{% url 'logout' %}" class="text-decoration-none header-mob-menu-text-1">Выйти</a>
                 </div>
-                    <hr class="hr-header-mob">
-                    {% else %}
-                    <div class="p-2 str-header-mob-2">
-                    <div class="p-2 menu-1-mob">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M12.1601 10.87C12.0601 10.86 11.9401 10.86 11.8301 10.87C9.45006 10.79 7.56006 8.84 7.56006 6.44C7.56006 3.99 9.54006 2 12.0001 2C14.4501 2 16.4401 3.99 16.4401 6.44C16.4301 8.84 14.5401 10.79 12.1601 10.87Z" stroke="#292D32" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                            <path d="M7.16021 14.56C4.74021 16.18 4.74021 18.82 7.16021 20.43C9.91021 22.27 14.4202 22.27 17.1702 20.43C19.5902 18.81 19.5902 16.17 17.1702 14.56C14.4302 12.73 9.92021 12.73 7.16021 14.56Z" stroke="#292D32" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                        <a href="{% url 'login' %}" class="text-decoration-none header-mob-menu-text-1">Войти</a>
-                    </div>
+            </div>
+                <hr class="hr-header-mob">
+                {% else %}
+                <div class="p-2 str-header-mob-2">
+                <div class="p-2 menu-1-mob">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12.1601 10.87C12.0601 10.86 11.9401 10.86 11.8301 10.87C9.45006 10.79 7.56006 8.84 7.56006 6.44C7.56006 3.99 9.54006 2 12.0001 2C14.4501 2 16.4401 3.99 16.4401 6.44C16.4301 8.84 14.5401 10.79 12.1601 10.87Z" stroke="#292D32" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M7.16021 14.56C4.74021 16.18 4.74021 18.82 7.16021 20.43C9.91021 22.27 14.4202 22.27 17.1702 20.43C19.5902 18.81 19.5902 16.17 17.1702 14.56C14.4302 12.73 9.92021 12.73 7.16021 14.56Z" stroke="#292D32" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <a href="{% url 'login' %}" class="text-decoration-none header-mob-menu-text-1">Войти</a>
                 </div>
-                    <hr class="hr-header-mob">
-                {% endif %}
-
+            </div>
+                <hr class="hr-header-mob">
+            {% endif %}
             </div>
             <div class="p-2 menu-header-mob-4">
                 <div class="p-2 menu-header-block-mob-4">
@@ -334,65 +326,70 @@
             </div>
         </div>
 <!-- Мобильная версия header menu end-->
-
     </header>
 {% block content %}
 
 {% endblock content %}
 <footer>
-    <div class="container-fluid container-7">
+<div class="container container-11-index" style="background-color: #0A0A0A;">
+    <div class="container d-flex align-items-center h-100 container-10-index-footer">
         <div class="row py-4">
             <div class="col-12 col-xxl-4 col-md-4"></div>
             <div class="col-12 col-xxl-4 col-md-4">
                 <div class="d-flex align-items-center text-white justify-content-center mb-4 mb-xl-0">
-                    <a href="#"><img class="logo-picture-footer" src="{% static 'img/logo-footer.png' %}" alt="Focus City"></a>
+                    <a href="{% url 'index' %}"><img class="logo-picture-footer" src="{% static 'img/logo-footer.png' %}" alt="Focus City"></a>
                 </div>
             </div>
             <div class="col-12 col-xxl-4 col-md-4"></div>
         </div>
         <div class="container container-8">
-                <div class="container d-flex align-items-center h-100">
-                   <div class="row">
-                      <div class="col-xs footer-block-1">
-                      <h2 class="footer-h2-1">Недвижимость</h2>
-                        <div class="row py-4 footer-block-2">
-                            <a href="/objects?filter=2&apart=Апартамент" class="text-decoration-none text-footer-1">Апартаменты</a>
+                <div class="p-2 footer-for-mob" style="padding: 0px !important; flex-direction: row !important;display: flex;">
+                        <div class="col-12 col-md-3 footer-column">
+                            <div class="col-xs footer-block-1">
+                                <h2 class="footer-h2-1">Недвижимость</h2>
+                                <div class="row py-4 footer-block-2">
+                                    <a href="/objects?filter=2&apart=Апартамент" class="text-decoration-none text-footer-1">Апартаменты</a>
                             <a href="/objects?filter=2&apart=Офис" class="text-decoration-none text-footer-1">Офис</a>
                             <a href="/objects?filter=2&apart=Торговая площадь" class="text-decoration-none text-footer-1">Торговая площадь</a>
                             <a href="/objects?filter=2&apart=Свободное пространство" class="text-decoration-none text-footer-1">Свободное пространство</a>
                             <a href="/objects?filter=2&apart=Коворкинг" class="text-decoration-none text-footer-1">Коворкинг</a>
                             <a href="/objects?filter=2&apart=Паркинг" class="text-decoration-none text-footer-1">Паркинги</a>
-                        </div>
-                      </div>
-
-                   <div class="col-xs footer-block-1">
-                    <h2 class="footer-h2-1">Услуги</h2>
-                    <div class="row py-4 footer-block-3">
-                        <a href="/objects?filter=3&type=rent" class="text-decoration-none text-footer-1">Снять</a>
-                        <a href="/objects?filter=3&type=sale" class="text-decoration-none text-footer-1">Купить</a>
-                    </div>
-                    </div>
-                    <div class="col-xs footer-block-1">
-                        <h2 class="footer-h2-1">Контакты</h2>
-                        <div class="row py-4 footer-block-3">
-                            <a href="#" class="text-decoration-none text-footer-2">Башня “Федерация”, офис №6906</a>
-                            <a class="text-decoration-none text-footer-1" href="tel:+79517037041">+7 951 703 70 41</a>
-                            <a class="text-decoration-none text-footer-1" href="mailto:Hello@focuscity.ru">hallo@focuscity.ru</a>
-                        </div>
-                        </div>
-                        <div class="col-xs footer-block-1">
-                            <h2 class="footer-h2-1">Обратная связь</h2>
-                            <div class="input-group flex-nowrap footer-block-4">
-                                <input type="text" class="form-control form-name-1" placeholder="Ваше имя" aria-label="Username" aria-describedby="addon-wrapping">
-                            </div>
-                            <div class="input-group flex-nowrap footer-block-4">
-                                <input type="text" class="form-control form-name-1" placeholder="Ваш телефон" aria-label="telephone" aria-describedby="addon-wrapping">
-                            </div>
-                            <div class="btn-1">
-                            <button type="button" class="btn btn-dark button-footer">Свяжись со мной</button>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                        <div class="col-12 col-md-3 footer-column">
+                            <div class="col-xs footer-block-1">
+                                <h2 class="footer-h2-1">Услуги</h2>
+                                <div class="row py-4 footer-block-3">
+                                    <a href="/objects?filter=3&type=rent" class="text-decoration-none text-footer-1">Снять</a>
+                                    <a href="/objects?filter=3&type=sale" class="text-decoration-none text-footer-1">Купить</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-3 footer-column">
+                            <div class="col-xs footer-block-1">
+                                <h2 class="footer-h2-1">Контакты</h2>
+                                <div class="row py-4 footer-block-3">
+                                    <a href="#" class="text-decoration-none text-footer-2">Башня “Федерация”, офис №6906</a>
+                                    <a class="text-decoration-none text-footer-1" href="tel:+79517037041">+7 951 703 70 41</a>
+                                    <a class="text-decoration-none text-footer-1" href="mailto:Hello@focuscity.ru">hallo@focuscity.ru</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-3 footer-column">
+                            <div class="col-xs footer-block-1">
+                                <h2 class="footer-h2-1">Обратная связь</h2>
+                                <div class="input-group flex-nowrap footer-block-4">
+                                    <input type="text" class="form-control form-name-1" placeholder="Ваше имя" aria-label="Username" aria-describedby="addon-wrapping">
+                                </div>
+                                <div class="input-group flex-nowrap footer-block-4">
+                                    <input type="text" class="form-control form-name-1" placeholder="Ваш телефон" aria-label="telephone" aria-describedby="addon-wrapping">
+                                </div>
+                                <div class="btn-1">
+                                    <button type="button" class="btn btn-dark button-footer">Свяжись со мной</button>
+                                </div>
+                            </div>
+                        </div>
                 </div>
         </div>
         <div class="row footer-block-5">
@@ -423,17 +420,60 @@
             </div>
         </div>
         <hr class="hr-footer">
-        <div class="row footer-block-5">
+        <div class="row footer-block-5" style="justify-content: center !important;">
             <div class="p-2 container-footer-1">
                 <p class="text-seo-footer"> © 2016 - 2023 | focuscity.ru</p>
             </div>
         </div>
     </div>
+</div>
 </footer>
+
+    <style>
+        .active {
+            color: #D19B33!important;
+        }
+    </style>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script src="https://unpkg.com/imask"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
     <script src="{% static 'js/header.js' %}"></script>
     {% block js %}
 {% endblock %}
 </body>
+<style>
+    .box-register {
+        display: flex;
+        width: 179px;
+        background-image: url("{% static "img/Group 25.png" %}");
+        height: auto;
+        padding: 12px 12px 12px 24px !important;
+        flex-direction: row;
+        align-items: center;
+        border: 0px solid #fff;
+        transition: none;
+    }
+
+    .menu-header-text-login-2 {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0px !important;
+    height: 20px;
+    font-family: 'Inter';
+    font-style: normal;
+    width: 100%;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 19px;
+    display: flex;
+    color: #FFFFFF;
+    z-index: 2;
+    position: relative;
+}
+    .box-register {
+    border: 0px solid #fff;
+    transition: none;
+    }
+
+</style>
 </html>

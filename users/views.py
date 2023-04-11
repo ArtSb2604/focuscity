@@ -1,5 +1,6 @@
 import json
 import uuid
+from datetime import datetime, timedelta
 
 from django.contrib import messages
 from django.contrib.auth.forms import UserCreationForm
@@ -13,8 +14,29 @@ from django.template.loader import render_to_string
 from django.views.generic import TemplateView, ListView, DetailView
 
 from users.forms import CustomUserCreationForm
-from users.models import CustomUser, HistoryAuth
+from users.models import CustomUser, HistoryAuth, Callback
 
+
+class Admin(TemplateView):
+    template_name = "admin_panel/base_admin.html"
+
+class CallbackView(ListView):
+    model = Callback
+    template_name = "admin_panel/callback.html"
+    context_object_name = "objects"
+    paginate_by = 11
+
+    def get_context_data(self, **kwargs):
+        context = super(CallbackView, self).get_context_data(**kwargs)
+        context.update({'call': len(Callback.objects.all()),})
+        return context
+
+def callback_save(request):
+    if request.GET:
+        d = datetime.now() + timedelta(hours=3)
+        call = Callback(number_phone=request.GET['number'], name=request.GET['name'], pk_user=request.GET['user'], time_of_appeal=d.time(), date_of_appeal=d.date())
+        call.save()
+        return HttpResponse('s')
 
 def home(request):
     return render(request,"users/login.html")
@@ -41,68 +63,36 @@ def register(request):
             if not r.get('attaacs'): r['attaacs'] = 'False'
             if not r.get('attcas'): r['attcas'] = 'False'
 
-            if request.POST['adaptive'] == 'desktop':
-                if CustomUser.objects.filter(username=r.get('mail')).exists():
-                    return redirect('adduser')
-                else:
-                    CustomUser.objects.create_user(username=r.get('mail'),
-                                                   status=True,
-                                                   last_name=r.get('last_name'),
-                                                   first_name=r.get('first_name'),
-                                                   patronymic=r.get('patronymic'),
-                                                   password=r.get('password'),
-                                                   company=r.get('company'),
-                                                   number_phone=r.get('number_phone'),
-                                                   mail=r.get('mail'),
-                                                   email=r.get('mail'),
-                                                   type_of_transaction=r.get('type_of_transaction'),
-                                                   property_type=r.get('property_type'),
-                                                   viewing_phone_numbers=r.get('viewing_phone_numbers'),
-                                                   editing_objects=r.get('editing_objects'),
-                                                   adding_objects=r.get('adding_objects'),
-                                                   deleting_objects=r.get('deleting_objects'),
-                                                   attcs=r.get('attcs'),
-                                                   attraos=r.get('attraos'),
-                                                   attclients=r.get('attclients'),
-                                                   attcrs=r.get('attcrs'),
-                                                   attaacs=r.get('attaacs'),
-                                                   attcas=r.get('attcas'),
-                                                   vk=r.get('vk'),
-                                                   instagram=r.get('inst'),
-                                                   telegram=r.get('telegram'),
-                                                   img=request.FILES['user_image'])
-                    return redirect('all_users')
+            if CustomUser.objects.filter(username=r.get('mail')).exists():
+                return redirect('adduser')
             else:
-                if CustomUser.objects.filter(username=r.get('mail')).exists():
-                    return redirect('adduser')
-                else:
-                    CustomUser.objects.create_user(username=r.get('mail'),
-                                                   status=True,
-                                                   last_name=r.get('last_name'),
-                                                   first_name=r.get('first_name'),
-                                                   patronymic=r.get('patronymic'),
-                                                   password=r.get('password'),
-                                                   company=r.get('company'),
-                                                   number_phone=r.get('number_phone'),
-                                                   mail=r.get('mail'),
-                                                   email=r.get('mail'),
-                                                   type_of_transaction=r.get('type_of_transaction'),
-                                                   property_type=r.get('user-apart-agent_mob'),
-                                                   viewing_phone_numbers=r.get('viewing_phone_numbers'),
-                                                   editing_objects=r.get('editing_objects'),
-                                                   adding_objects=r.get('adding_objects'),
-                                                   deleting_objects=r.get('deleting_objects'),
-                                                   attcs=r.get('attcs'),
-                                                   attraos=r.get('attraos'),
-                                                   attclients=r.get('attclients'),
-                                                   attcrs=r.get('attcrs'),
-                                                   attaacs=r.get('attaacs'),
-                                                   attcas=r.get('attcas'),
-                                                   vk=r.get('vk'),
-                                                   instagram=r.get('inst'),
-                                                   telegram=r.get('telegram'),
-                                                   img=request.FILES['user_image'])
-                    return redirect('all_users')
+                CustomUser.objects.create_user(username=r.get('mail'),
+                                               status=True,
+                                               last_name=r.get('last_name'),
+                                               first_name=r.get('first_name'),
+                                               patronymic=r.get('patronymic'),
+                                               password=r.get('password'),
+                                               company=r.get('company'),
+                                               number_phone=r.get('number_phone'),
+                                               mail=r.get('mail'),
+                                               email=r.get('mail'),
+                                               type_of_transaction=r.get('type_of_transaction'),
+                                               property_type=r.get('user-apart-agent'),
+                                               viewing_phone_numbers=r.get('viewing_phone_numbers'),
+                                               editing_objects=r.get('editing_objects'),
+                                               adding_objects=r.get('adding_objects'),
+                                               deleting_objects=r.get('deleting_objects'),
+                                               attcs=r.get('attcs'),
+                                               attraos=r.get('attraos'),
+                                               attclients=r.get('attclients'),
+                                               attcrs=r.get('attcrs'),
+                                               attaacs=r.get('attaacs'),
+                                               attcas=r.get('attcas'),
+                                               vk=r.get('vk'),
+                                               instagram=r.get('inst'),
+                                               telegram=r.get('telegram'),
+                                               img=request.FILES['user_image'])
+                return redirect('all_users')
         else:
             return render(request, 'users/add_user.html')
     else:
@@ -161,13 +151,13 @@ def update(request, pk):
     if request.user.is_superuser:
         if request.method == 'POST':
             res = request.POST
-            print(res)
             res._mutable = True
             res.pop('csrfmiddlewaretoken')
             user_l = ['username', 'last_name', 'first_name', 'patronymic', 'company', 'number_phone', 'mail',
                       'telegram', 'vk', 'instagram', 'type_of_transaction', 'property_type', 'viewing_phone_numbers',
                       'editing_objects', 'adding_objects', 'deleting_objects', 'attcs', 'attraos', 'attclients',
                       'attcrs', 'attaacs', 'attcas']
+
             for i in user_l:
                 if i not in res:
                     res[i] = 0
@@ -178,11 +168,19 @@ def update(request, pk):
                     result[k] = 1
                 else:
                     result[k] = v
-            print(result)
             user.update(**result)
+            user_p = user[0]
+
+            if request.FILES.get('user_image'):
+                user_photo = CustomUser.objects.get(pk=pk)
+                user_photo.img = request.FILES.get('user_image')
+                user_photo.save()
+            if request.POST['password'] != '':
+                user_p.set_password(request.POST['password'])
+                user_p.save()
             return redirect('/admin-panel/users/')
         else:
-            return render(request, 'users/update_user.html', {'user': user.get()})
+            return render(request, 'users/edit_user.html', {'user': user.get()})
     else:
         return HttpResponse('Вы не администратор')
 
@@ -206,3 +204,5 @@ class SettingsView(ListView):
 def auth_history(request):
     users = HistoryAuth.objects.all()
     return render(request, 'users/settings/settings_history.html', {'user': users})
+
+

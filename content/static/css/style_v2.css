@@ -4,7 +4,7 @@
     left: 0px;
     top: 0px;
     backdrop-filter: blur(10px);
-}
+} 
 .button-menu-header {
     display: flex !important;
     flex-direction: row;
@@ -304,36 +304,7 @@
     flex-direction: row !important;
     margin-bottom: 20px !important;
 }
-.box-register {
-    display: inline-block;
-    width: 179px;
-    position: relative;
-    border: 2px solid #fff;
-    transition: all .3s ease;
-    height: 42px;
-}
-.box-register:before, 
-.box-register:after {
-    content: "";
-    z-index: 1;
-    display: block;
-    position: absolute;
-    background: #0A0A0A;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    transform-origin: 50% 50%;
-}
-.box-register:before {
-    width: calc(100% + 4px);
-    height: 80%;
-    transition: height 0.6s;
-}
-.box-register:after {
-    height: calc(100% + 4px);
-    width: 90%;
-    transition: width 0.6s;
-}
+
 .box-register-2 {
     display: flex;
     flex-direction: row;
@@ -520,6 +491,7 @@
     height: 40px;
     left: -1px;
     top: -0.67px;
+    border-radius: 31px;
 }
 .flex-group-6 {
     width: 60px;
@@ -1517,7 +1489,11 @@
 }
 .section-password-recovery {
     height: 841px;
-    padding: 156px 442px !important;
+    padding: 156px 0px !important;
+}
+.section-password-recovery-2 {
+    height: 841px;
+    padding: 197px 0px !important;
 }
 .container-password-recovery {
     display: flex;
@@ -1525,7 +1501,7 @@
     align-items: center;
     padding: 56px 28px !important;
     gap: 48px;
-    width: 436px;
+    max-width: 436px;
     height: 445.5px;
     border: 1px solid rgba(149, 150, 151, 0.6);
     border-radius: 16px;
@@ -1536,7 +1512,7 @@
     align-items: center;
     padding: 56px 28px !important;
     gap: 48px;
-    width: 436px;
+    max-width: 436px;
     height: 528.5px;
     border: 1px solid rgba(149, 150, 151, 0.6);
     border-radius: 16px;
@@ -19566,6 +19542,120 @@ button:focus {
     line-height: 20px;
     color: #3C3C3B;
     margin-top: 0px !important;
+    }
+    .container-password-recovery-22 {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 0px !important;
+        gap: 28px;
+        width: 100%;
+        height: 100.5px;
+    }
+    .logo-password-recovery {
+        width: 100%;
+        height: auto;
+    }
+    .container-password-recovery-3-input {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        padding: 14px 10px !important;
+        gap: 10px;
+        width: 100%;
+        height: 47px;
+        background: #FFFFFF;
+        border: 2px solid #E8E8E8;
+        border-radius: 4px;
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 19px;
+        color: rgba(149, 150, 151, 0.8);
+    }
+    .container-password-recovery-6 {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding: 8px 0px !important;
+        gap: 8px;
+        width: 100%;
+        height: auto;
+    }
+    .container-password-recovery-4-button {
+        width: 100%;
+        height: 46px;
+        background: #D19B33;
+        border-radius: 4px;
+        box-shadow: none;    
+        padding: 0px !important;
+        --bs-btn-active-bg: #D19B33 !important;
+        --bs-btn-active-border-color: #D19B33;
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 14px;
+        line-height: 17px;
+        color: #FFFFFF;
+        border: none;
+    }
+    .container-password-recovery-4-button:hover, .container-password-recovery-4-button:focus, .container-password-recovery-4-button:active, .container-password-recovery-4-button.active, .open>.dropdown-toggle.container-password-recovery-4-button {
+        width: 100%;
+        height: 46px;
+        background: #D19B33;
+        border-radius: 4px;
+        box-shadow: none;    
+        padding: 0px !important;
+        --bs-btn-active-bg: #D19B33 !important;
+        --bs-btn-active-border-color: #D19B33;
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 14px;
+        line-height: 17px;
+        color: #FFFFFF;
+        border: none;
+    }
+    .container-password-recovery-33 {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 0px !important;
+        gap: 20px;
+        width: 100%;
+        height: 174px;
+    }
+    .container-password-recovery-2-text {
+        height: auto;
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 500;
+        font-size: 24px;
+        line-height: 29px;
+        color: #000000;
+        margin-bottom: 0px !important;
+        text-align: center;
+    }
+    .container-password-recovery-4 {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        padding: 0px !important;
+        gap: 8px;
+        width: 100%;
+        height: 46px;
+    }
+    .container-password-recovery-7 {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        padding: 0px !important;
+        gap: 8px;
+        width: 146px;
+        height: auto;
     }
 }
 

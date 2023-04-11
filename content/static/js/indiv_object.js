@@ -112,3 +112,72 @@ function BackSlide(num) {
         }
     }
 }
+
+function modal(num, pk) {
+    $('#number_broker').text(num)
+    $('#modal_pk').val(pk)
+}
+
+function modal_form() {
+    if ($('.modal_checkbox').is(":checked")) {
+        $.ajax(
+            {
+                type:"GET",
+                url: "http://194.67.125.24/admin-panel/callback/save/",
+                data: {
+                    number : $('#modal_number').val(),
+                    name : $('#modal_name').val(),
+                    user : $('#modal_pk').val(),
+                },
+                success: function( data ) {}
+            });
+    }
+}
+
+function wishlist(num, user) {
+    $.ajax(
+            {
+                type:"GET",
+                url: "http://194.67.125.24/objects/add_wishlist/",
+                data: {
+                    num : num,
+                    user : user,
+                },
+                success: function( data ) {}
+            });
+}
+
+function wishlist_mob(num, user) {
+    $.ajax(
+            {
+                type:"GET",
+                url: "http://194.67.125.24/objects/add_wishlist/",
+                data: {
+                    num : num,
+                    user : user,
+                },
+                success: function( data ) {}
+            });
+}
+
+function down_photo(num) {
+    if (num == '0') {
+        $('#type_photo').val('0')
+    } else {
+        $('#type_photo').val('1')
+    }
+}
+
+function edit_status(num, pk, type) {
+    $.ajax(
+        {
+            type:"GET",
+            url: "http://194.67.125.24/objects/edit_status_ind",
+            data: {status : num, pk : pk, type : type},
+            success: function( data )
+            {
+                document.getElementById("status_b").innerHTML = "";
+                $("#status_b").append(data)
+            }
+        });
+}

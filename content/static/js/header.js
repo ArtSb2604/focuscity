@@ -16,3 +16,11 @@ function header() {
     }
 
 }
+console.log(document.URL)
+if (window.location.href == 'http://194.67.125.24/objects/' || window.location.href == 'http://http://127.0.0.1:8000/objects/') {
+    $('#contacts').css("color", "#D19B33");
+
+}
+if (window.location.href == 'http://194.67.125.24/contacts/' || window.location.href == 'http://http://127.0.0.1:8000/contacts/') {
+    $('#base_nedv').css("color", "#D19B33");
+}

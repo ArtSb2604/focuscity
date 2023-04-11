@@ -56,6 +56,7 @@ class Objects(models.Model):
     user = models.IntegerField(verbose_name="Пользователь", null=True, blank=True)
     plan = models.FileField(verbose_name="Планировка", null=True, blank=True)
     pdf = models.FileField(verbose_name="PDF", null=True, blank=True)
+    youtube_url = models.CharField(max_length=15000,verbose_name="Ссылка на видео", null=True, blank=True)
     description = models.CharField(max_length=15000,verbose_name="Описание", null=True, blank=True)
     note = models.CharField(max_length=15000,verbose_name="Примечание", null=True, blank=True)
 

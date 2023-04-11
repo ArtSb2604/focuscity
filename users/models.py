@@ -16,7 +16,7 @@ class CustomUser(AbstractUser):
     patronymic = models.CharField(max_length=40, verbose_name="Отчество")
     company = models.CharField(max_length=40, verbose_name="Компания")
     number_phone = models.CharField(max_length=40, verbose_name="Номер телефона")
-    mail = models.CharField(max_length=40, verbose_name="Mail", unique=True)
+    mail = models.CharField(max_length=40, verbose_name="Mail", null=True, unique=True)
     telegram = models.CharField(max_length=40, verbose_name="Telegram", null=True, blank=True)
     vk = models.CharField(max_length=40, verbose_name="VK", null=True, blank=True)
     instagram = models.CharField(max_length=40, verbose_name="Instagram", null=True, blank=True)
@@ -35,7 +35,7 @@ class CustomUser(AbstractUser):
     img = models.ImageField(upload_to='user_img/')
 
     def __str__(self):
-        return self.mail
+        return self.email
 
 class HistoryAuth(models.Model):
     pk_user = models.IntegerField(verbose_name="PK пользователя")
@@ -44,3 +44,21 @@ class HistoryAuth(models.Model):
 
     def __str__(self):
         return self.user + " " + str(self.data)
+
+
+class Callback(models.Model):
+    name = models.CharField(max_length=40, verbose_name="Имя")
+    pk_user = models.CharField(max_length=40, verbose_name="Пользователь")
+    number_phone = models.CharField(max_length=40, verbose_name="Номер телефона")
+    mail = models.CharField(max_length=40, verbose_name="Электронная почта")
+    time_of_appeal = models.TimeField(verbose_name="Время обращения")
+    date_of_appeal = models.DateField(verbose_name="Дата обращения")
+
+    def __str__(self):
+        return self.name + " " + self.number_phone
+
+
+class Wishlist(models.Model):
+    note = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
+    pk_obj = models.CharField(max_length=40, verbose_name="Номер объекта", unique=True)
+

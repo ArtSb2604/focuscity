@@ -4,140 +4,188 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}">
 {% endblock %}
 {% block content %}
-    <div class="d-flex p-2 section-1">
-  <div class="container">
-        <div class="d-flex flex-column mb-3 container-1">
-            <div class="d-inline-flex p-2 container-moscow">
-                <p class="text-center container-1-text-moscow">MOSCOW</p>
-                <img class="city-picture" src="{% static 'img/city.png' %}" alt="Focus City">
-            </div>
+    <div class="section-1">
+    <div class="container container-11-index">
+        <div class="row h-100 justify-content-center align-items-center container-10-index">
+            <div class="d-flex flex-column mb-3 container-1">
+                <div class="d-inline-flex p-2 container-moscow">
+                    <p class="text-center container-1-text-moscow">MOSCOW</p>
+                    <img class="city-picture" src="{% static 'img/city.png' %}" alt="Focus City">
+                </div>
                 <p class="text-center container-2-text-moscow">На нашей площадке собраны варианты от собственников и всех брокеров в локации Москва-Сити. Только здесь можно ознакомиться с актуальными и реальными предложениями, доступными на рынке недвижимости.</p>
+            </div>
         </div>
-        <div class="d-inline-flex p-2 container-2">
-            <form class="p-2 container-22">
+    </div>
+    <div class="container container-11-index-2">
+        <form class="row h-100 justify-content-center align-items-center container-10-index-3">
+            <div class="p-2 container-22">
+
                 <div class="input-group mb-3" style="margin-bottom: 0px !important;max-width: 200px;">
-                    <select class="form-select select-index-1" id="prop" aria-label="Default select example">
-                        <option class="apart-list-2" value="rent" selected>Аренда</option>
-                        <option class="apart-list-1" value="sale">Продажа</option>
-                    </select>
+                <select class="form-select select-index-1" id="prop" aria-label="Default select example">
+                    <option class="apart-list-2" value="rent" selected>Аренда</option>
+                    <option class="apart-list-1" value="sale">Продажа</option>
+                </select>
+                <p class="text-select-index-str">Что вам нужно?</p>
                 </div>
                 <div class="input-group mb-3" style="margin-bottom: 0px !important;max-width: 290px;">
-                    <select class="form-select select-index-1" aria-label="Default select example" id="apart" style="max-width: 290px; border: none !important;">
-                        <option class="apart-list-1" value="Апартамент" selected>Апартамент</option>
-                        <option class="apart-list-1" value="Офис">Офис</option>
-                        <option class="apart-list-1" value="Торговая площадь">Торговая площадь</option>
-                        <option class="apart-list-1" value="Свободного назначения">Свободного назначения</option>
-                        <option class="apart-list-1" value="Паркинг">Паркинг</option>
-                        <option class="apart-list-1" value="Коворкинг">Коворкинг</option>
-                    </select>
+                <select class="form-select select-index-1" aria-label="Default select example" id="apart" style="max-width: 290px; border: none !important;">
+                    <option class="apart-list-1" value="Апартамент" selected>Апартамент</option>
+                    <option class="apart-list-1" value="Офис">Офис</option>
+                    <option class="apart-list-1" value="Торговая площадь">Торговая площадь</option>
+                    <option class="apart-list-1" value="Свободного назначения">Свободного назначения</option>
+                    <option class="apart-list-1" value="Паркинг">Паркинг</option>
+                    <option class="apart-list-1" value="Коворкинг">Коворкинг</option>
+                </select>
+                <p class="text-select-index-str">Тип недвижимости</p>
                 </div>
                 <div class="input-group mb-3" style="margin-bottom: 0px !important;max-width: 290px;">
-                    <select class="form-select select-index-1" id="tower" aria-label="Default select example" style="max-width: 290px; border-radius: 0px !important;">
-                        <option class="apart-list-1" value="Башня “Федерация”" selected>Башня Федерация</option>
-                                <option class="apart-list-1" value="Neva towers">Neva towers</option>
-                                <option class="apart-list-1" value="ОКО">ОКО</option>
-                                <option class="apart-list-1" value="Меркурий">Меркурий</option>
-                                <option class="apart-list-1" value="Город Столиц">Город Столиц</option>
-                                <option class="apart-list-1" value="Империя">Империя</option>
-                                <option class="apart-list-1" value="IQ квартал">IQ квартал</option>
-                                <option class="apart-list-1" value="Северная башня">Северная башня</option>
-                                <option class="apart-list-1" value="Башни на набережной">Башни на набережной</option>
-                                <option class="apart-list-1" value="Башня 2000">Башня 2000</option>
-                                <option class="apart-list-1" value="Мост Багратион">Мост Багратион</option>
-                                <option class="apart-list-1" value="Евразия">Евразия</option>
-                                <option class="apart-list-1" value="Эволюция">Эволюция</option>
-                                <option class="apart-list-1" value="Moskow Towers">Moskow Towers</option>
-                                <option class="apart-list-1" value="iCity">iCity</option>
-                                <option class="apart-list-1" value="One tower">One tower</option>
-                                <option class="apart-list-1" value="Capital Towers">Capital Towers</option>
-                                <option class="apart-list-1" value="ЖК city park">ЖК city park</option>
-                                <option class="apart-list-1" value="ЖК Headliner">ЖК Headliner</option>
-                                <option class="apart-list-1" value="ЖК Сosmopolit">ЖК Сosmopolit</option>
-                                <option class="apart-list-1" value="ЖК Бадаевский">ЖК Бадаевский</option>
-                                <option class="apart-list-1" value="ЖК Redside">ЖК Redside</option>
-                                <option class="apart-list-1" value="ЖК Victory park Residences">ЖК Victory park Residences</option>
-                                <option class="apart-list-1" value="ЖК Hide">ЖК Hide</option>
-                                <option class="apart-list-1" value="ЖК Поклонная 9">ЖК Поклонная 9</option>
-                                <option class="apart-list-1" value="ЖК Резиденция монэ">ЖК Резиденция монэ</option>
-                    </select>
+                <select class="form-select select-index-1" id="tower" aria-label="Default select example" style="max-width: 290px; border-radius: 0px !important;">
+                    <option class="apart-list-1" value="Башня “Федерация”" selected>Башня Федерация</option>
+                            <option class="apart-list-1" value="Neva towers">Neva towers</option>
+                            <option class="apart-list-1" value="ОКО">ОКО</option>
+                            <option class="apart-list-1" value="Меркурий">Меркурий</option>
+                            <option class="apart-list-1" value="Город Столиц">Город Столиц</option>
+                            <option class="apart-list-1" value="Империя">Империя</option>
+                            <option class="apart-list-1" value="IQ квартал">IQ квартал</option>
+                            <option class="apart-list-1" value="Северная башня">Северная башня</option>
+                            <option class="apart-list-1" value="Башни на набережной">Башни на набережной</option>
+                            <option class="apart-list-1" value="Башня 2000">Башня 2000</option>
+                            <option class="apart-list-1" value="Мост Багратион">Мост Багратион</option>
+                            <option class="apart-list-1" value="Евразия">Евразия</option>
+                            <option class="apart-list-1" value="Эволюция">Эволюция</option>
+                            <option class="apart-list-1" value="Moskow Towers">Moskow Towers</option>
+                            <option class="apart-list-1" value="iCity">iCity</option>
+                            <option class="apart-list-1" value="One tower">One tower</option>
+                            <option class="apart-list-1" value="Capital Towers">Capital Towers</option>
+                            <option class="apart-list-1" value="ЖК city park">ЖК city park</option>
+                            <option class="apart-list-1" value="ЖК Headliner">ЖК Headliner</option>
+                            <option class="apart-list-1" value="ЖК Сosmopolit">ЖК Сosmopolit</option>
+                            <option class="apart-list-1" value="ЖК Бадаевский">ЖК Бадаевский</option>
+                            <option class="apart-list-1" value="ЖК Redside">ЖК Redside</option>
+                            <option class="apart-list-1" value="ЖК Victory park Residences">ЖК Victory park Residences</option>
+                            <option class="apart-list-1" value="ЖК Hide">ЖК Hide</option>
+                            <option class="apart-list-1" value="ЖК Поклонная 9">ЖК Поклонная 9</option>
+                            <option class="apart-list-1" value="ЖК Резиденция монэ">ЖК Резиденция монэ</option>
+                </select>
+                <p class="text-select-index-str">Башня</p>
                 </div>
                 <div class="p-2 container-222">
-                    <div class="p-2 container-222-block-1">
-                        <div class="p-2 container-222-block-2" id="price">
-                            <p class="container-222-block-2-text">Цена</p>
-                            <div class="price_choices" style="line-height: 0;">
-                                <input type="radio" id="pricemobChoice1" class="radio-custom" name="price-mob-filter" value="1" checked>
-                                <label for="pricemobChoice1" style="line-height: 1;">в месяц</label>
-                            </div>
-                            <div class="price_choices" style="line-height: 0;">
-                                <input type="radio" id="pricemobChoice2" class="radio-custom" name="price-mob-filter" value="2">
-                                <label for="pricemobChoice2" style="line-height: 1;">м²/месяц </label>
-                            </div>
-                            <div class="price_choices" style="line-height: 0;">
-                                <input type="radio" id="pricemobChoice3" class="radio-custom" name="price-mob-filter" value="3">
-                                <label for="pricemobChoice3" style="line-height: 1;">м²/год </label>
-                            </div>
+                <div class="p-2 container-222-block-1">
+                    <div class="p-2 container-222-block-2" id="price">
+                        <p class="container-222-block-2-text">Цена</p>
+                        <div class="price_choices" style="line-height: 0;">
+                            <input type="radio" id="pricemobChoice1" class="radio-custom" name="price-mob-filter" value="1" checked>
+                            <label for="pricemobChoice1" class="container-222-block-2-text-1" style="line-height: 1;">в месяц</label>
                         </div>
-                        <div class="p-2 container-222-block-3">
-                            <div class="p-2 container-222-block-33">
-                                <p class="container-222-block-33-text">от</p>
-                                <input type="number" class="form-control input-index-1" id="price_min" placeholder="" aria-label="price" aria-describedby="addon-wrapping" required>
-                            </div>
-                            <div class="p-2 container-222-block-33">
-                                <p class="container-222-block-33-text">до</p>
-                                <input type="number" class="form-control input-index-1" id="price_max" placeholder="" aria-label="price" aria-describedby="addon-wrapping" required>
-                            </div>
+                        <div class="price_choices" style="line-height: 0;">
+                            <input type="radio" id="pricemobChoice2" class="radio-custom" name="price-mob-filter" value="2">
+                            <label for="pricemobChoice2" class="container-222-block-2-text-2" style="line-height: 1;">м²/месяц </label>
+                        </div>
+                        <div class="price_choices" style="line-height: 0;">
+                            <input type="radio" id="pricemobChoice3" class="radio-custom" name="price-mob-filter" value="3">
+                            <label for="pricemobChoice3" class="container-222-block-2-text-3" style="line-height: 1;">м²/год </label>
                         </div>
                     </div>
+                    <div class="p-2 container-222-block-3">
+                        <div class="p-2 container-222-block-33">
+                            <p class="container-222-block-33-text">от</p>
+                            <input type="number" class="form-control input-index-1" id="price_min" placeholder="" aria-label="price" aria-describedby="addon-wrapping">
+                        </div>
+                        <div class="p-2 container-222-block-33">
+                            <p class="container-222-block-33-text">до</p>
+                            <input type="number" class="form-control input-index-1" id="price_max" placeholder="" aria-label="price" aria-describedby="addon-wrapping">
+                        </div>
+                    </div>
+                    </div>
                 </div>
-                <button type="submit" class="btn button-index-1">Поиск</button>
-            </form>
+            </div>
+            <button type="submit" class="btn button-index-1">Поиск</button>
+        </form>
+    </div>
+<!-- Мобильная версия menu-->
+    <div class="container container-11-index-2-mob">
+        <div class="row h-100 justify-content-center align-items-center container-10-index-3">
+            <div class="p-2 container-22" style="display:none;">
+                <div class="input-group mb-3 index-mob-group">
+                    <button class="btn btn-index-hover-mob" type="button" data-bs-toggle="modal" data-bs-target="#Modal-5">
+                        Покупка
+                        <img src="{% static 'img/strelka-mob.png' %}">
+                    </button>
+                </div>
+                <div class="input-group mb-3 index-mob-group">
+                    <button class="btn btn-index-hover-mob" type="button" data-bs-toggle="modal" data-bs-target="#Modal-5">
+                        Аренда
+                        <img src="{% static 'img/strelka-mob.png' %}">
+                    </button>
+                </div>
+            </div>
         </div>
     </div>
-    </div>
-    <div class="container">
-        <div class="row">
-            <div class="p-2 section-index">
+<!-- Мобильная версия menu END-->
+</div>
+<div class="p-2 section-index-2">
+    <div class="container container-11-index">
+        <div class="row h-100 justify-content-center align-items-center container-10-index-2">
                 <div class="d-flex p-2 section-2">
-                    <div class="d-flex flex-row mb-3 container-category">
+                    <div class="d-flex flex-wrap mb-3 container-category">
                         <div class="p-2 category-1">
-                            <a href="/objects?filter=2&apart=Апартамент"><img class="img-category-1" src="{% static 'img/Rectangle 621.png' %}" alt="Focus City"></a>
+                            <a href="#"><img class="img-category-1" src="{% static 'img/Rectangle 621.png' %}" alt="Focus City"></a>
                             <div class="category-text-class">
-                            <h3 class="category-text-4">Апартаменты</h3>
+                                <a class="text-decoration-none index-text-adf" href=""><h3 class="category-text-4">Аппартаменты</h3></a>
+                                <div class="p-2 btn-container">
+                                    <a href="/objects?filter=5&apart=Апартамент&type_op=sale" class="btn btn-index-hover" type="button">Продажа</a>
+                                    <a href="/objects?filter=5&apart=Апартамент&type_op=rent" class="btn btn-index-hover-1" type="button">Аренда</a>
+                                </div>
                             </div>
                         </div>
                         <div class="p-2 category-1">
-                            <a href="/objects?filter=2&apart=Офис"><img class="img-category-1" src="{% static 'img/Rectangle 622.png' %}" alt="Focus City"></a>
+                            <a href="#"><img class="img-category-1" src="{% static 'img/Rectangle 622.png' %}" alt="Focus City"></a>
                             <div class="category-text-class">
-                                <h3 class="category-text-4">Офисы</h3>
+                                <a class="text-decoration-none index-text-adf" href=""><h3 class="category-text-4">Офисы</h3></a>
+                                <div class="p-2 btn-container">
+                                    <a href="/objects?filter=5&apart=Офис&type_op=sale" class="btn btn-index-hover" type="button">Продажа</a>
+                                    <a href="/objects?filter=5&apart=Офис&type_op=rent" class="btn btn-index-hover-1" type="button">Аренда</a>
+                                </div>
                             </div>
                         </div>
                         <div class="p-2 category-1">
-                            <a href="/objects?filter=2&apart=Торговая площадь"><img class="img-category-1" src="{% static 'img/Rectangle 623.png' %}" alt="Focus City"></a>
+                            <a href="#"><img class="img-category-1" src="{% static 'img/Rectangle 623.png' %}" alt="Focus City"></a>
                             <div class="category-text-class">
-                                <h3 class="category-text-4">Торговая площадь</h3>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="d-flex p-2 section-2">
-                    <div class="d-flex flex-row mb-3 container-category">
-                        <div class="p-2 category-1">
-                            <a href="/objects?filter=2&apart=Свободного назначения"><img class="img-category-1" src="{% static 'img/Rectangle 624.png' %}" alt="Focus City"></a>
-                            <div class="category-text-class">
-                                <h3 class="category-text-4">Свободное<br>назначение</h3>
+                                <a class="text-decoration-none index-text-adf" href=""><h3 class="category-text-4">Торговая площадь</h3></a>
+                                <div class="p-2 btn-container">
+                                    <a href="/objects?filter=5&apart=Торговая площадь&type_op=sale" class="btn btn-index-hover" type="button">Продажа</a>
+                                    <a href="/objects?filter=5&apart=Торговая площадь&type_op=rent" class="btn btn-index-hover-1" type="button">Аренда</a>
+                                </div>
                             </div>
                         </div>
                         <div class="p-2 category-1">
-                            <a href="/objects?filter=2&apart=Коворкинг"><img class="img-category-1" src="{% static 'img/Rectangle 625.png' %}" alt="Focus City"></a>
+                            <a href="#"><img class="img-category-1" src="{% static 'img/Rectangle 624.png' %}" alt="Focus City"></a>
                             <div class="category-text-class">
-                                <h3 class="category-text-4">Коворкинг</h3>
+                                <a class="text-decoration-none index-text-adf" href=""><h3 class="category-text-4">Свободное назначение</h3></a>
+                                <div class="p-2 btn-container">
+                                    <a href="/objects?filter=5&apart=Свободное назначение&type_op=sale" class="btn btn-index-hover" type="button">Продажа</a>
+                                    <a href="/objects?filter=5&apart=Свободное назначение&type_op=rent" class="btn btn-index-hover-1" type="button">Аренда</a>
+                                </div>
                             </div>
                         </div>
                         <div class="p-2 category-1">
-                            <a href="/objects?filter=2&apart=Паркинг"><img class="img-category-1" src="{% static 'img/Rectangle 626.png' %}" alt="Focus City"></a>
+                            <a href="#"><img class="img-category-1" src="{% static 'img/Rectangle 625.png' %}" alt="Focus City"></a>
                             <div class="category-text-class">
-                                <h3 class="category-text-4">Паркинг</h3>
+                                <a class="text-decoration-none index-text-adf" href=""><h3 class="category-text-4">Коворкинг</h3></a>
+                                <div class="p-2 btn-container">
+                                    <a href="/objects?filter=5&apart=Коворкинг&type_op=sale" class="btn btn-index-hover" type="button">Продажа</a>
+                                    <a href="/objects?filter=5&apart=Коворкинг&type_op=rent" class="btn btn-index-hover-1" type="button">Аренда</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-2 category-1">
+                            <a href="#"><img class="img-category-1" src="{% static 'img/Rectangle 626.png' %}" alt="Focus City"></a>
+                            <div class="category-text-class">
+                                <a class="text-decoration-none index-text-adf" href=""><h3 class="category-text-4">Паркинг</h3></a>
+                                <div class="p-2 btn-container">
+                                    <a href="/objects?filter=5&apart=Паркинг&type_op=sale" class="btn btn-index-hover" type="button">Продажа</a>
+                                    <a href="/objects?filter=5&apart=Паркинг&type_op=rent" class="btn btn-index-hover-1" type="button">Аренда</a>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -154,7 +202,7 @@
                                 <p class="text-contact-2">Добро пожаловать в премиум сегмент рынка недвижимости Москвы. Мы находим всё, предлагаем лучшее.</p>
                                 <p class="text-contact-2">Наша база предложений постоянно пополняется несмотря ни на что. Мы находим удачные решения, предоставляем выгодные условия, превосходящие самые смелые запросы. </p>
                                 <p class="text-contact-2">Консультации, показы и брокер-туры по сити без обязательств и навязчивых звонков. Работаем без предоплат, без комиссии для Арендатора, в сжатые сроки и по выходным</p>
-                                <button class="btn btn-outline-secondary dropdown-toggle btn-index" type="button" data-bs-toggle="modal" data-bs-target="#myModal">
+                                <button class="btn btn-primary btn-index" type="button" data-bs-toggle="modal" data-bs-target="#myModal-2">
                                     оставить заявку
                                     <svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <g clip-path="url(#clip0_384_18258)">
@@ -169,10 +217,10 @@
                                 </button>
                             </div>
                             <div class="p-2 container-contact-2-pc">
-                                <img class="img-pixels" src="{% static "img/pexels-iso-12096479 2.png" %}">
+                                <img class="img-pixels" src="{% static 'img/pexels-iso-12096479 2.png' %}">
                             </div>
                             <div class="p-2 container-contact-2-mob">
-                                <img class="img-pixels-2" src="{% static "img/pexels-iso-12096479_2.png" %}">
+                                <img class="img-pixels-2" src="{% static 'img/pexels-iso-12096479 2.png' %}">
                             </div>
                         </div>
                     </div>
@@ -185,60 +233,56 @@
             <h1 class="text-questions">Почему выбирают нас?</h1>
             <div class="p-2 text-questions-block">
                 <div class="d-flex p-2 section-3">
-                <div class="d-flex flex-row mb-3 container-questions">
-                    <div class="p-2 question-1">
-                        <div class="p-2 index-mob-1">
-                            <a href="#"><img class="img-question-1-mob" src="{% static 'img/loon-icon-1.png' %}" alt="Focus City"></a>
-                            <h3 class="category-text-3-mob">Менеджмент процессов</h3>
+                    <div class="d-flex flex-wrap mb-3 container-questions">
+                        <div class="p-2 question-1">
+                            <div class="p-2 index-mob-1">
+                                <a href="#"><img class="img-question-1-mob" src="{% static 'img/loon-icon-1.png' %}" alt="Focus City"></a>
+                                <h3 class="category-text-3-mob">Менеджмент процессов</h3>
+                            </div>
+                            <a href="#"><img class="img-question-1" src="{% static 'img/loon-icon-1.png' %}" alt="Focus City"></a>
+                            <h3 class="category-text-3">Менеджмент процессов</h3>
+                            <p class="category-text-2">Организация встреч и показов, заказ пропусков, удобные туры для осмотра. Детальная информация по соседям и виду из окон.</p>
                         </div>
-                        <a href="#"><img class="img-question-1" src="{% static 'img/loon-icon-1.png' %}" alt="Focus City"></a>
-                        <h3 class="category-text-3">Менеджмент процессов</h3>
-                        <p class="category-text-2">Организация встреч и показов, заказ пропусков, удобные туры для осмотра. Детальная информация по соседям и виду из окон.</p>
-                    </div>
-                    <div class="p-2 question-1">
-                        <div class="p-2 index-mob-1">
-                            <a href="#"><img class="img-question-1-mob" src="{% static 'img/loon-icon-2.png' %}" alt="Focus City"></a>
-                            <h3 class="category-text-3-mob">Ненавязчивость</h3>
+                        <div class="p-2 question-1">
+                            <div class="p-2 index-mob-1">
+                                <a href="#"><img class="img-question-1-mob" src="{% static 'img/loon-icon-2.png' %}" alt="Focus City"></a>
+                                <h3 class="category-text-3-mob">Ненавязчивость</h3>
+                            </div>
+                            <a href="#"><img class="img-question-1" src="{% static 'img/loon-icon-2.png' %}" alt="Focus City"></a>
+                            <h3 class="category-text-3">Ненавязчивость</h3>
+                            <p class="category-text-2">Мы ценим психологический комфорт, спокойствие и время наших клиентов, предоставляем экспертный сервис.</p>
                         </div>
-                        <a href="#"><img class="img-question-1" src="{% static 'img/loon-icon-2.png' %}" alt="Focus City"></a>
-                        <h3 class="category-text-1">Ненавязчивость</h3>
-                        <p class="category-text-2">Мы ценим психологический комфорт, спокойствие и время наших клиентов, предоставляем экспертный сервис.</p>
-                    </div>
-                    <div class="p-2 question-1">
-                        <div class="p-2 index-mob-1">
-                            <a href="#"><img class="img-question-1-mob" src="{% static 'img/loon-icon-3.png' %}" alt="Focus City"></a>
-                            <h3 class="category-text-3-mob">Масштабность</h3>
+                        <div class="p-2 question-1">
+                            <div class="p-2 index-mob-1">
+                                <a href="#"><img class="img-question-1-mob" src="{% static 'img/loon-icon-3.png' %}" alt="Focus City"></a>
+                                <h3 class="category-text-3-mob">Масштабность</h3>
+                            </div>
+                            <a href="#"><img class="img-question-1" src="{% static 'img/loon-icon-3.png' %}" alt="Focus City"></a>
+                            <h3 class="category-text-3">Масштабность</h3>
+                            <p class="category-text-2">Ценим Ваше время и собрали все базы контрагентов в одном месте, гарантируем непревзойденный выбор.</p>
                         </div>
-                        <a href="#"><img class="img-question-1" src="{% static 'img/loon-icon-3.png' %}" alt="Focus City"></a>
-                        <h3 class="category-text-3">Масштабность</h3>
-                        <p class="category-text-2">Ценим Ваше время и собрали все базы контрагентов в одном месте, гарантируем непревзойденный выбор.</p>
-                    </div>
-                </div>
-                </div>
-                <div class="d-flex p-2 section-3">
-                <div class="d-flex flex-row mb-3 container-questions">
-                    <div class="p-2 question-1">
-                        <div class="p-2 index-mob-1">
-                            <a href="#"><img class="img-question-1-mob" src="{% static 'img/loon-icon-4.png' %}" alt="Focus City"></a>
-                            <h3 class="category-text-3-mob">Командная работа</h3>
+                        <div class="p-2 question-1">
+                            <div class="p-2 index-mob-1">
+                                <a href="#"><img class="img-question-1-mob" src="{% static 'img/loon-icon-4.png' %}" alt="Focus City"></a>
+                                <h3 class="category-text-3-mob">Командная работа</h3>
+                            </div>
+                            <a href="#"><img class="img-question-1" src="{% static 'img/loon-icon-4.png' %}" alt="Focus City"></a>
+                            <h3 class="category-text-3">Командная работа</h3>
+                            <p class="category-text-2">Это единственный способ реализовать все Ваши идеи в одном объекте - мы удовлетворяем самые изысканные желания.</p>
                         </div>
-                        <a href="#"><img class="img-question-1" src="{% static 'img/loon-icon-4.png' %}" alt="Focus City"></a>
-                        <h3 class="category-text-3">Командная работа</h3>
-                        <p class="category-text-2">Это единственный способ реализовать все Ваши идеи в одном объекте - мы удовлетворяем самые изысканные желания.</p>
-                    </div>
-                    <div class="p-2 question-1">
-                        <div class="p-2 index-mob-1">
-                            <a href="#"><img class="img-question-1-mob" src="{% static 'img/loon-icon-5.png' %}" alt="Focus City"></a>
-                            <h3 class="category-text-3-mob">Индивидуальный подход</h3>
+                        <div class="p-2 question-1">
+                            <div class="p-2 index-mob-1">
+                                <a href="#"><img class="img-question-1-mob" src="{% static 'img/loon-icon-5.png' %}" alt="Focus City"></a>
+                                <h3 class="category-text-3-mob">Индивидуальный подход</h3>
+                            </div>
+                            <a href="#"><img class="img-question-1" src="{% static 'img/loon-icon-5.png' %}" alt="Focus City"></a>
+                            <h3 class="category-text-3">Индивидуальный подход</h3>
+                            <p class="category-text-2">Мы готовы идти с вами на контакт, слушать и небеспокоить в поисках обратной связи.</p>
                         </div>
-                        <a href="#"><img class="img-question-1" src="{% static 'img/loon-icon-5.png' %}" alt="Focus City"></a>
-                        <h3 class="category-text-3">Индивидуальный подход</h3>
-                        <p class="category-text-2">Мы готовы идти с вами на контакт, слушать и небеспокоить в поисках обратной связи.</p>
+                        <div class="p-2 question-2">
+                            <button class="btn button-index-all-princ" data-bs-toggle="modal" data-bs-target="#myModal-2">Узнай все наши принципы</button>
+                        </div>
                     </div>
-                    <div class="p-2 question-2">
-                        <a href="#" class="text-decoration-none text-problem">Узнать все наши принципы</a>
-                    </div>
-                </div>
                 </div>
             </div>
         </div>
@@ -247,172 +291,173 @@
         <h1 class="text-client">Наши кленты</h1>
         <p class="text-clien-mob-v">Крупные бренды и корпорации, которые работают с нами по хранению грузов и их доставки в регионы.</p>
     </div>
+    <img class="partneri-1-mob" src="{% static 'img/index-mob-client.png' %}" alt="Focus City"></a>
     <img class="partneri-1" src="{% static 'img/partner.png' %}" alt="Focus City"></a>
     <div class="container container-6">
         <h1 class="text-slider">Что еще?</h1>
         <div class="p-2 flex-text-slider-1">
             <p class="text-slider-2">Выбирайте сдесь и сейчас!</p>
             <div class="p-2 flex-text-slider-2" id="flex-text-slider-2">
-                <button class="carousel__prev" style="border: none !important; background: transparent;padding: 0px !important; width: 60px; height: 5px;">
-                    <svg width="61" height="15" viewBox="0 0 61 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M0.292889 6.79289C-0.0976333 7.18341 -0.0976334 7.81658 0.292889 8.2071L6.65685 14.5711C7.04737 14.9616 7.68054 14.9616 8.07106 14.5711C8.46159 14.1805 8.46159 13.5474 8.07106 13.1568L2.41421 7.49999L8.07106 1.84314C8.46159 1.45262 8.46159 0.819452 8.07106 0.428928C7.68054 0.0384031 7.04738 0.0384031 6.65685 0.428927L0.292889 6.79289ZM61 6.5L0.999996 6.49999L0.999996 8.49999L61 8.5L61 6.5Z" fill="#959697"/>
-                    </svg>
-                </button>
-                <button class="carousel__next" style="border: none !important; background: transparent;padding: 0px !important; width: 60px; height: 5px;">
-                    <svg width="61" height="15" viewBox="0 0 61 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M60.7071 8.20711C61.0976 7.81658 61.0976 7.18342 60.7071 6.79289L54.3432 0.428932C53.9526 0.0384078 53.3195 0.0384078 52.9289 0.428932C52.5384 0.819457 52.5384 1.45262 52.9289 1.84315L58.5858 7.5L52.9289 13.1569C52.5384 13.5474 52.5384 14.1805 52.9289 14.5711C53.3195 14.9616 53.9526 14.9616 54.3432 14.5711L60.7071 8.20711ZM0 8.5L60 8.5V6.5L0 6.5L0 8.5Z" fill="#959697"/>
-                    </svg>
-                </button>
-            </div>
+            <button class="carousel__prev" style="border: none !important; background: transparent;padding: 0px !important; width: 60px; height: 5px;">
+                <svg width="61" height="15" viewBox="0 0 61 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M0.292889 6.79289C-0.0976333 7.18341 -0.0976334 7.81658 0.292889 8.2071L6.65685 14.5711C7.04737 14.9616 7.68054 14.9616 8.07106 14.5711C8.46159 14.1805 8.46159 13.5474 8.07106 13.1568L2.41421 7.49999L8.07106 1.84314C8.46159 1.45262 8.46159 0.819452 8.07106 0.428928C7.68054 0.0384031 7.04738 0.0384031 6.65685 0.428927L0.292889 6.79289ZM61 6.5L0.999996 6.49999L0.999996 8.49999L61 8.5L61 6.5Z" fill="#959697"/>
+                </svg>
+            </button>
+            <button class="carousel__next" style="border: none !important; background: transparent;padding: 0px !important; width: 60px; height: 5px;">
+                <svg width="61" height="15" viewBox="0 0 61 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M60.7071 8.20711C61.0976 7.81658 61.0976 7.18342 60.7071 6.79289L54.3432 0.428932C53.9526 0.0384078 53.3195 0.0384078 52.9289 0.428932C52.5384 0.819457 52.5384 1.45262 52.9289 1.84315L58.5858 7.5L52.9289 13.1569C52.5384 13.5474 52.5384 14.1805 52.9289 14.5711C53.3195 14.9616 53.9526 14.9616 54.3432 14.5711L60.7071 8.20711ZM0 8.5L60 8.5V6.5L0 6.5L0 8.5Z" fill="#959697"/>
+                </svg>
+            </button>
+        </div>
         </div>
     </div>
     <div class="p-2 flex-text-slider-3">
         <div class="container container-slider-bottom" style="padding: 0px;">
             <div class="carousel">
-                <div class="carousel__body">
-                    <div class="carousel__slider">
-                        <div class="carousel__slider__item">
-                            <div class="p-2 slider-index-1-bottom-block"style="background-image: url({% static 'img/IMG_3809 1.png' %});">
-                                <div class="p-2 slider-index-1-bottom-block-2" >
-                                    <a class="text-decoration-none slider-index-1-bottom-block-2-text" href="#">Башня Федерация</a>
-                                </div>
+            <div class="carousel__body">
+                <div class="carousel__slider" style="display: flex">
+                    <div class="carousel__slider__item" onclick="window.open('http://194.67.125.24/objects/?filter=4&tower=Башня “Федерация”','_self')">
+                        <div class="p-2 slider-index-1-bottom-block"  style="background-image: url({% static 'img/IMG_3809 1.png' %});">
+                            <div class="p-2 slider-index-1-bottom-block-2" >
+                                <a class="text-decoration-none slider-index-1-bottom-block-2-text" href="#">Башня Федерация</a>
                             </div>
                         </div>
-                        <div class="carousel__slider__item">
-                            <div class="p-2 slider-index-1-bottom-block"style="background-image: url({% static 'img/IMG_3810.png' %});">
-                                <div class="p-2 slider-index-1-bottom-block-2" >
-                                    <a class="text-decoration-none slider-index-1-bottom-block-2-text" href="#">Neva towers</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="carousel__slider__item">
-                            <div class="p-2 slider-index-1-bottom-block"style="background-image: url({% static 'img/IMG_3812.png' %});">
-                                <div class="p-2 slider-index-1-bottom-block-2" >
-                                    <a class="text-decoration-none slider-index-1-bottom-block-2-text" href="#">Neva towers</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="carousel__slider__item">
-                            <div class="p-2 slider-index-1-bottom-block"style="background-image: url({% static 'img/IMG_3813.png' %});">
-                                <div class="p-2 slider-index-1-bottom-block-2" >
-                                    <a class="text-decoration-none slider-index-1-bottom-block-2-text" href="#">Башня ОКО</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="carousel__slider__item">
-                            <div class="p-2 slider-index-1-bottom-block"style="background-image: url({% static 'img/IMG_3814.png' %});">
-                                <div class="p-2 slider-index-1-bottom-block-2" >
-                                    <a class="text-decoration-none slider-index-1-bottom-block-2-text" href="#">Меркурий</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="carousel__slider__item">
-                            <div class="p-2 slider-index-1-bottom-block"style="background-image: url({% static 'img/IMG_38015.png' %});">
-                                <div class="p-2 slider-index-1-bottom-block-2" >
-                                    <a class="text-decoration-none slider-index-1-bottom-block-2-text" href="#">Башня Город Столиц</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="carousel__slider__item">
-                            <div class="p-2 slider-index-1-bottom-block"style="background-image: url({% static 'img/IMG_38016.png' %});">
-                                <div class="p-2 slider-index-1-bottom-block-2" >
-                                    <a class="text-decoration-none slider-index-1-bottom-block-2-text" href="#">Империя</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="carousel__slider__item">
-                            <div class="p-2 slider-index-1-bottom-block"style="background-image: url({% static 'img/IMG_3817.png' %});">
-                                <div class="p-2 slider-index-1-bottom-block-2" >
-                                    <a class="text-decoration-none slider-index-1-bottom-block-2-text" href="#">IQ квартал</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="carousel__slider__item">
-                            <div class="p-2 slider-index-1-bottom-block"style="background-image: url({% static 'img/IMG_3818.png' %});">
-                                <div class="p-2 slider-index-1-bottom-block-2" >
-                                    <a class="text-decoration-none slider-index-1-bottom-block-2-text" href="#">Северная башня</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="carousel__slider__item">
-                            <div class="p-2 slider-index-1-bottom-block"style="background-image: url({% static 'img/IMG_3819.png' %});">
-                                <div class="p-2 slider-index-1-bottom-block-2" >
-                                    <a class="text-decoration-none slider-index-1-bottom-block-2-text" href="#">Мост Багратион</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="carousel__slider__item">
-                            <div class="p-2 slider-index-1-bottom-block"style="background-image: url({% static 'img/IMG_38020.png' %});">
-                                <div class="p-2 slider-index-1-bottom-block-2" >
-                                    <a class="text-decoration-none slider-index-1-bottom-block-2-text" href="#">Башня 2000</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="carousel__slider__item">
-                            <div class="p-2 slider-index-1-bottom-block"style="background-image: url({% static 'img/IMG_38021.png' %});">
-                                <div class="p-2 slider-index-1-bottom-block-2" >
-                                    <a class="text-decoration-none slider-index-1-bottom-block-2-text" href="#">Евразия</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="carousel__slider__item">
-                            <div class="p-2 slider-index-1-bottom-block"style="background-image: url({% static 'img/IMG_38022.png' %});">
-                                <div class="p-2 slider-index-1-bottom-block-2" >
-                                    <a class="text-decoration-none slider-index-1-bottom-block-2-text" href="#">Эволюция</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="carousel__slider__item">
-                            <div class="p-2 slider-index-1-bottom-block"style="background-image: url({% static 'img/IMG_38023.png' %});">
-                                <div class="p-2 slider-index-1-bottom-block-2" >
-                                    <a class="text-decoration-none slider-index-1-bottom-block-2-text" href="#">Афимол</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="carousel__slider__item">
-                            <div class="p-2 slider-index-1-bottom-block"style="background-image: url({% static 'img/IMG_3824.png' %});">
-                                <div class="p-2 slider-index-1-bottom-block-2" >
-                                    <a class="text-decoration-none slider-index-1-bottom-block-2-text" href="#">Moskow Towers</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="carousel__slider__item">
-                            <div class="p-2 slider-index-1-bottom-block"style="background-image: url({% static 'img/IMG_3825.png' %});">
-                                <div class="p-2 slider-index-1-bottom-block-2" >
-                                    <a class="text-decoration-none slider-index-1-bottom-block-2-text" href="#">Башни iCity</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="carousel__slider__item">
-                            <div class="p-2 slider-index-1-bottom-block"style="background-image: url({% static 'img/IMG_3826.png' %});">
-                                <div class="p-2 slider-index-1-bottom-block-2" >
-                                    <a class="text-decoration-none slider-index-1-bottom-block-2-text" href="#">One tower</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="carousel__slider__item">
-                            <div class="p-2 slider-index-1-bottom-block"style="background-image: url({% static 'img/IMG_3827.png' %});">
-                                <div class="p-2 slider-index-1-bottom-block-2" >
-                                    <a class="text-decoration-none slider-index-1-bottom-block-2-text" href="#">Capital Towers</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="carousel__slider__item">
-                            <div class="p-2 slider-index-1-bottom-block"style="background-image: url({% static 'img/IMG_3828.png' %});">
-                                <div class="p-2 slider-index-1-bottom-block-2" >
-                                    <a class="text-decoration-none slider-index-1-bottom-block-2-text" href="#">ЖК city park(6 корпусов)</a>
-                                </div>
-                            </div>
-                        </div>
-
                     </div>
+                    <div class="carousel__slider__item" onclick="window.open('http://194.67.125.24/objects/?filter=4&tower=Neva towers','_self')">
+                        <div class="p-2 slider-index-1-bottom-block" style="background-image: url({% static 'img/IMG_3810.png' %});">
+                            <div class="p-2 slider-index-1-bottom-block-2" >
+                                <a class="text-decoration-none slider-index-1-bottom-block-2-text" href="#">Neva towers</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel__slider__item" onclick="window.open('http://194.67.125.24/objects/?filter=4&tower=ОКО','_self')">
+                        <div class="p-2 slider-index-1-bottom-block"style="background-image: url({% static 'img/IMG_3813.png' %});">
+                            <div class="p-2 slider-index-1-bottom-block-2" >
+                                <a class="text-decoration-none slider-index-1-bottom-block-2-text" href="#">Башня ОКО</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel__slider__item" onclick="window.open('http://194.67.125.24/objects/?filter=4&tower=Меркурий','_self')">
+                        <div class="p-2 slider-index-1-bottom-block"style="background-image: url({% static 'img/IMG_3814.png' %});">
+                            <div class="p-2 slider-index-1-bottom-block-2" >
+                                <a class="text-decoration-none slider-index-1-bottom-block-2-text" href="#">Меркурий</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel__slider__item" onclick="window.open('http://194.67.125.24/objects/?filter=4&tower=Город Столиц','_self')">
+                        <div class="p-2 slider-index-1-bottom-block"style="background-image: url({% static 'img/IMG_38015.png' %});">
+                            <div class="p-2 slider-index-1-bottom-block-2" >
+                                <a class="text-decoration-none slider-index-1-bottom-block-2-text" href="#">Башня Город Столиц</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel__slider__item" onclick="window.open('http://194.67.125.24/objects/?filter=4&tower=Империя','_self')">
+                        <div class="p-2 slider-index-1-bottom-block"style="background-image: url({% static 'img/IMG_38016.png' %});">
+                            <div class="p-2 slider-index-1-bottom-block-2" >
+                                <a class="text-decoration-none slider-index-1-bottom-block-2-text" href="#">Империя</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel__slider__item" onclick="window.open('http://194.67.125.24/objects/?filter=4&tower=IQ квартал','_self')">
+                        <div class="p-2 slider-index-1-bottom-block"style="background-image: url({% static 'img/IMG_3817.png' %});">
+                            <div class="p-2 slider-index-1-bottom-block-2" >
+                                <a class="text-decoration-none slider-index-1-bottom-block-2-text" href="#">IQ квартал</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel__slider__item" onclick="window.open('http://194.67.125.24/objects/?filter=4&tower=Северная башня','_self')">
+                        <div class="p-2 slider-index-1-bottom-block"style="background-image: url({% static 'img/IMG_3818.png' %});">
+                            <div class="p-2 slider-index-1-bottom-block-2" >
+                                <a class="text-decoration-none slider-index-1-bottom-block-2-text" href="#">Северная башня</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel__slider__item" onclick="window.open('http://194.67.125.24/objects/?filter=4&tower=Мост Багратион','_self')">
+                        <div class="p-2 slider-index-1-bottom-block"style="background-image: url({% static 'img/IMG_3819.png' %});">
+                            <div class="p-2 slider-index-1-bottom-block-2" >
+                                <a class="text-decoration-none slider-index-1-bottom-block-2-text" href="#">Мост Багратион</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel__slider__item" onclick="window.open('http://194.67.125.24/objects/?filter=4&tower=Башня 2000','_self')">
+                        <div class="p-2 slider-index-1-bottom-block"style="background-image: url({% static 'img/IMG_38020.png' %});">
+                            <div class="p-2 slider-index-1-bottom-block-2" >
+                                <a class="text-decoration-none slider-index-1-bottom-block-2-text" href="#">Башня 2000</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel__slider__item" onclick="window.open('http://194.67.125.24/objects/?filter=4&tower=Евразия','_self')">
+                        <div class="p-2 slider-index-1-bottom-block"style="background-image: url({% static 'img/IMG_38021.png' %});">
+                            <div class="p-2 slider-index-1-bottom-block-2" >
+                                <a class="text-decoration-none slider-index-1-bottom-block-2-text" href="#">Евразия</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel__slider__item" onclick="window.open('http://194.67.125.24/objects/?filter=4&tower=Эволюция','_self')">
+                        <div class="p-2 slider-index-1-bottom-block"style="background-image: url({% static 'img/IMG_38022.png' %});">
+                            <div class="p-2 slider-index-1-bottom-block-2" >
+                                <a class="text-decoration-none slider-index-1-bottom-block-2-text" href="#">Эволюция</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel__slider__item" onclick="window.open('http://194.67.125.24/objects/?filter=4&tower=Афимол','_self')">
+                        <div class="p-2 slider-index-1-bottom-block"style="background-image: url({% static 'img/IMG_38023.png' %});">
+                            <div class="p-2 slider-index-1-bottom-block-2" >
+                                <a class="text-decoration-none slider-index-1-bottom-block-2-text" href="#">Афимол</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel__slider__item" onclick="window.open('http://194.67.125.24/objects/?filter=4&tower=Moskow Towers','_self')">
+                        <div class="p-2 slider-index-1-bottom-block"style="background-image: url({% static 'img/IMG_3824.png' %});">
+                            <div class="p-2 slider-index-1-bottom-block-2" >
+                                <a class="text-decoration-none slider-index-1-bottom-block-2-text" href="#">Moskow Towers</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel__slider__item" onclick="window.open('http://194.67.125.24/objects/?filter=4&tower=iCity','_self')">
+                        <div class="p-2 slider-index-1-bottom-block"style="background-image: url({% static 'img/IMG_3825.png' %});">
+                            <div class="p-2 slider-index-1-bottom-block-2" >
+                                <a class="text-decoration-none slider-index-1-bottom-block-2-text" href="#">Башни iCity</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel__slider__item" onclick="window.open('http://194.67.125.24/objects/?filter=4&tower=One tower','_self')">
+                        <div class="p-2 slider-index-1-bottom-block"style="background-image: url({% static 'img/IMG_3826.png' %});">
+                            <div class="p-2 slider-index-1-bottom-block-2" >
+                                <a class="text-decoration-none slider-index-1-bottom-block-2-text" href="#">One tower</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel__slider__item" onclick="window.open('http://194.67.125.24/objects/?filter=4&tower=Capital Towers','_self')">
+                        <div class="p-2 slider-index-1-bottom-block"style="background-image: url({% static 'img/IMG_3827.png' %});">
+                            <div class="p-2 slider-index-1-bottom-block-2" >
+                                <a class="text-decoration-none slider-index-1-bottom-block-2-text" href="#">Capital Towers</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel__slider__item" onclick="window.open('http://194.67.125.24/objects/?filter=4&tower=ЖК city park','_self')">
+                        <div class="p-2 slider-index-1-bottom-block"style="background-image: url({% static 'img/IMG_3828.png' %});">
+                            <div class="p-2 slider-index-1-bottom-block-2" >
+                                <a class="text-decoration-none slider-index-1-bottom-block-2-text" href="#">ЖК city park(6 корпусов)</a>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>
+        </div>
     </div>
-    <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+
+    <div class="modal fade" id="myModal-2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-index">
           <div class="modal-content modal-index-1">
+              <button type="button" class="btn btn-close button-admin-15-mob" data-bs-dismiss="modal" aria-label="Close" style="padding: 0px !important;min-width: 40px;height: 40px;background: #FCFCFC;border-radius: 40px;opacity: 1;box-shadow: none;position: absolute;right: 30px;top: 30px;">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M13.41 12L17.71 7.71C17.8983 7.5217 18.0041 7.2663 18.0041 7C18.0041 6.7337 17.8983 6.47831 17.71 6.29C17.5217 6.1017 17.2663 5.99591 17 5.99591C16.7337 5.99591 16.4783 6.1017 16.29 6.29L12 10.59L7.71 6.29C7.5217 6.1017 7.2663 5.99591 7 5.99591C6.7337 5.99591 6.4783 6.1017 6.29 6.29C6.1017 6.47831 5.99591 6.7337 5.99591 7C5.99591 7.2663 6.1017 7.5217 6.29 7.71L10.59 12L6.29 16.29C6.19627 16.383 6.12188 16.4936 6.07111 16.6154C6.02034 16.7373 5.9942 16.868 5.9942 17C5.9942 17.132 6.02034 17.2627 6.07111 17.3846C6.12188 17.5064 6.19627 17.617 6.29 17.71C6.38296 17.8037 6.49356 17.8781 6.61542 17.9289C6.73728 17.9797 6.86799 18.0058 7 18.0058C7.13201 18.0058 7.26272 17.9797 7.38458 17.9289C7.50644 17.8781 7.61704 17.8037 7.71 17.71L12 13.41L16.29 17.71C16.383 17.8037 16.4936 17.8781 16.6154 17.9289C16.7373 17.9797 16.868 18.0058 17 18.0058C17.132 18.0058 17.2627 17.9797 17.3846 17.9289C17.5064 17.8781 17.617 17.8037 17.71 17.71C17.8037 17.617 17.8781 17.5064 17.9289 17.3846C17.9797 17.2627 18.0058 17.132 18.0058 17C18.0058 16.868 17.9797 16.7373 17.9289 16.6154C17.8781 16.4936 17.8037 16.383 17.71 16.29L13.41 12Z" fill="#D19B33"></path>
+                        </svg>
+                    </button>
             <div class="modal-header modal-index-2">
                 <div class="p-2 modal-index-3">
                     <div class="p-2 modal-index-3-1">
@@ -469,7 +514,7 @@
                                 Оставляя заявку, я соглашаюсь с условиями пользовательского соглашения и на обработку персональных данных
                             </label>
                         </div>
-                        <button type="button" class="btn btn-index-modal" data-bs-toggle="modal" data-bs-target="#Modal-2">Оставить заявку</button>
+                        <button type="button" class="btn btn-index-modal" data-bs-toggle="modal" data-bs-target="#Modal_final">Оставить заявку</button>
                     </div>
                 </div>
             </div>
@@ -479,9 +524,14 @@
           </div>
         </div>
     </div>
-    <div class="modal fade" id="Modal-2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="Modal_final" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-index">
           <div class="modal-content modal-index-1">
+              <button type="button" class="btn btn-close button-admin-15-mob" data-bs-dismiss="modal" aria-label="Close" style="padding: 0px !important;min-width: 40px;height: 40px;background: #FCFCFC;border-radius: 40px;opacity: 1;box-shadow: none;position: absolute;right: 30px;top: 30px;">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M13.41 12L17.71 7.71C17.8983 7.5217 18.0041 7.2663 18.0041 7C18.0041 6.7337 17.8983 6.47831 17.71 6.29C17.5217 6.1017 17.2663 5.99591 17 5.99591C16.7337 5.99591 16.4783 6.1017 16.29 6.29L12 10.59L7.71 6.29C7.5217 6.1017 7.2663 5.99591 7 5.99591C6.7337 5.99591 6.4783 6.1017 6.29 6.29C6.1017 6.47831 5.99591 6.7337 5.99591 7C5.99591 7.2663 6.1017 7.5217 6.29 7.71L10.59 12L6.29 16.29C6.19627 16.383 6.12188 16.4936 6.07111 16.6154C6.02034 16.7373 5.9942 16.868 5.9942 17C5.9942 17.132 6.02034 17.2627 6.07111 17.3846C6.12188 17.5064 6.19627 17.617 6.29 17.71C6.38296 17.8037 6.49356 17.8781 6.61542 17.9289C6.73728 17.9797 6.86799 18.0058 7 18.0058C7.13201 18.0058 7.26272 17.9797 7.38458 17.9289C7.50644 17.8781 7.61704 17.8037 7.71 17.71L12 13.41L16.29 17.71C16.383 17.8037 16.4936 17.8781 16.6154 17.9289C16.7373 17.9797 16.868 18.0058 17 18.0058C17.132 18.0058 17.2627 17.9797 17.3846 17.9289C17.5064 17.8781 17.617 17.8037 17.71 17.71C17.8037 17.617 17.8781 17.5064 17.9289 17.3846C17.9797 17.2627 18.0058 17.132 18.0058 17C18.0058 16.868 17.9797 16.7373 17.9289 16.6154C17.8781 16.4936 17.8037 16.383 17.71 16.29L13.41 12Z" fill="#D19B33"></path>
+                        </svg>
+                    </button>
             <div class="modal-header modal-2-index-2">
                 <svg width="78" height="61" viewBox="0 0 78 61" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <g clip-path="url(#clip0_2851_5445)">
@@ -508,6 +558,215 @@
             </div>
           </div>
         </div>
+    </div>
+
+    <div class="modal fade" id="Modal-5" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-filter-str-container">
+      <div class="modal-content modal-filter-str">
+        <div class="d-flex p-2 flex-fill block-filter-3-mob">
+            <div class="d-flex text-filter-mob-1">
+                <div class="d-flex p-2 flex-fill block-filter">
+                    <div class="d-flex p-2 block-text-filter-mob-2">
+                        <div class="block-text-filter-mob-3">
+                            <div class="block-text-filter-mob-4">
+                                <h3 class="text-filter-mob-2">Фильтр</h3>
+                            </div>
+                            <div class="block-text-filter-mob-5">
+                                <button type="button" class="btn btn-close button-admin-15-mob" data-bs-dismiss="modal" aria-label="Close" style="right: 25px; top: 25px">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M13.41 12L17.71 7.71C17.8983 7.5217 18.0041 7.2663 18.0041 7C18.0041 6.7337 17.8983 6.47831 17.71 6.29C17.5217 6.1017 17.2663 5.99591 17 5.99591C16.7337 5.99591 16.4783 6.1017 16.29 6.29L12 10.59L7.71 6.29C7.5217 6.1017 7.2663 5.99591 7 5.99591C6.7337 5.99591 6.4783 6.1017 6.29 6.29C6.1017 6.47831 5.99591 6.7337 5.99591 7C5.99591 7.2663 6.1017 7.5217 6.29 7.71L10.59 12L6.29 16.29C6.19627 16.383 6.12188 16.4936 6.07111 16.6154C6.02034 16.7373 5.9942 16.868 5.9942 17C5.9942 17.132 6.02034 17.2627 6.07111 17.3846C6.12188 17.5064 6.19627 17.617 6.29 17.71C6.38296 17.8037 6.49356 17.8781 6.61542 17.9289C6.73728 17.9797 6.86799 18.0058 7 18.0058C7.13201 18.0058 7.26272 17.9797 7.38458 17.9289C7.50644 17.8781 7.61704 17.8037 7.71 17.71L12 13.41L16.29 17.71C16.383 17.8037 16.4936 17.8781 16.6154 17.9289C16.7373 17.9797 16.868 18.0058 17 18.0058C17.132 18.0058 17.2627 17.9797 17.3846 17.9289C17.5064 17.8781 17.617 17.8037 17.71 17.71C17.8037 17.617 17.8781 17.5064 17.9289 17.3846C17.9797 17.2627 18.0058 17.132 18.0058 17C18.0058 16.868 17.9797 16.7373 17.9289 16.6154C17.8781 16.4936 17.8037 16.383 17.71 16.29L13.41 12Z" fill="#D19B33"/>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="d-flex p-2 flex-fill block-filter-4">
+                <div class="d-flex p-2 block-text-filter-mob">
+                    <p class="text-filter-mob">Тип операции</p>
+                    <button type="button" class="btn btn-dark button-admin-10-mob" onclick="sr_b_mob('rent_filt')" value="rent" id="rent_filt_mob">Аренда</button>
+                    <button type="button" class="btn btn-dark button-admin-11-mob" onclick="sr_b_mob('sale_filt')" value="sale" id="sale_filt_mob">Покупка</button>
+                </div>
+                <p class="text-apart-mob">Тип недвижимости</p>
+                <div class="input-group mb-3 container-apart-mob">
+                    <div class="d-flex flex-wrap str-apart-mob" id="type_prop_mob">
+                        <input type="radio" class="btn-check button-apart-mob-1" name="type_prop_mob" id="option2" onclick="prop_mob('Апартамент')" value="Апартамент" autocomplete="off">
+                        <label class="btn btn-secondary button-apart-mob-1" for="option2">Апартамент</label>
+                        <input type="radio" class="btn-check button-apart-mob-2" name="type_prop_mob" id="option3" onclick="prop_mob('Квартира')" value="Квартира" autocomplete="off">
+                        <label class="btn btn-secondary button-apart-mob-2" for="option3">Квартира</label>
+                        <input type="radio" class="btn-check button-apart-mob-3" name="type_prop_mob" id="option4" onclick="prop_mob('Офис')" value="Офис" autocomplete="off">
+                        <label class="btn btn-secondary button-apart-mob-3" for="option4">Офис</label>
+                        <input type="radio" class="btn-check button-apart-mob-4" name="type_prop_mob" id="option5" onclick="prop_mob('Торговая площадь')" value="Торговая площадь" autocomplete="off">
+                        <label class="btn btn-secondary button-apart-mob-4" for="option5">Торговая площадь</label>
+                        <input type="radio" class="btn-check button-apart-mob-5" name="type_prop_mob" id="option6" onclick="prop_mob('Паркинг')" value="Паркинг" autocomplete="off">
+                        <label class="btn btn-secondary button-apart-mob-5" for="option6">Паркинг</label>
+                        <input type="radio" class="btn-check button-apart-mob-6" name="type_prop_mob" id="option7" onclick="prop_mob('Свободного назначения')" value="Свободного назначения" autocomplete="off">
+                        <label class="btn btn-secondary button-apart-mob-6" for="option7">Свободного назначения</label>
+                        <input type="radio" class="btn-check button-apart-mob-1" name="type_prop_mob" id="option8"onclick="prop_mob('Коворкинг')"  value="Коворкинг" autocomplete="off">
+                        <label class="btn btn-secondary button-apart-mob-1" for="option8">Коворкинг</label>
+                    </div>
+                </div>
+                <p class="text-apart-mob">Башня</p>
+                <div class="input-group mb-3 container-apart-mob-3">
+                    <select class="form-select menu-apartament-1-new" id="tower_mob">
+                        <option class="apart-list-1" value="Башня “Федерация”" selected>Башня Федерация</option>
+                                <option class="apart-list-1" value="Neva towers">Neva towers</option>
+                                <option class="apart-list-1" value="ОКО">ОКО</option>
+                                <option class="apart-list-1" value="Меркурий">Меркурий</option>
+                                <option class="apart-list-1" value="Город Столиц">Город Столиц</option>
+                                <option class="apart-list-1" value="Империя">Империя</option>
+                                <option class="apart-list-1" value="IQ квартал">IQ квартал</option>
+                                <option class="apart-list-1" value="Северная башня">Северная башня</option>
+                                <option class="apart-list-1" value="Башни на набережной">Башни на набережной</option>
+                                <option class="apart-list-1" value="Башня 2000">Башня 2000</option>
+                                <option class="apart-list-1" value="Мост Багратион">Мост Багратион</option>
+                                <option class="apart-list-1" value="Евразия">Евразия</option>
+                                <option class="apart-list-1" value="Эволюция">Эволюция</option>
+                                <option class="apart-list-1" value="Афимол">Афимол</option>
+                                <option class="apart-list-1" value="Moskow Towers">Moskow Towers</option>
+                                <option class="apart-list-1" value="iCity">iCity</option>
+                                <option class="apart-list-1" value="One tower">One tower</option>
+                                <option class="apart-list-1" value="Capital Towers">Capital Towers</option>
+                                <option class="apart-list-1" value="ЖК city park">ЖК city park</option>
+                                <option class="apart-list-1" value="ЖК Headliner">ЖК Headliner</option>
+                                <option class="apart-list-1" value="ЖК Сosmopolit">ЖК Сosmopolit</option>
+                                <option class="apart-list-1" value="ЖК Бадаевский">ЖК Бадаевский</option>
+                                <option class="apart-list-1" value="ЖК Redside">ЖК Redside</option>
+                                <option class="apart-list-1" value="ЖК Victory park Residences">ЖК Victory park Residences</option>
+                                <option class="apart-list-1" value="ЖК Hide">ЖК Hide</option>
+                                <option class="apart-list-1" value="ЖК Поклонная 9">ЖК Поклонная 9</option>
+                                <option class="apart-list-1" value="ЖК Резиденция монэ">ЖК Резиденция монэ</option>
+                    </select>
+                </div>
+                <p class="text-apart-mob" id="text_filter_mob">Спален</p>
+                <div class="input-group mb-3 container-apart-mob">
+                    <div class="d-flex flex-wrap str-apart-mob" id="filter_var_mob">
+                        <input type="radio" class="btn-check button-apart-mob-7" name="options" id="option8_apart" autocomplete="off">
+                        <label class="btn btn-secondary button-apart-mob-7" for="option8_apart">Студия</label>
+                        <input type="radio" class="btn-check button-apart-mob-8" name="options" id="option9_apart" autocomplete="off">
+                        <label class="btn btn-secondary button-apart-mob-8" for="option9_apart">1</label>
+                        <input type="radio" class="btn-check button-apart-mob-8" name="options" id="option10_apart" autocomplete="off">
+                        <label class="btn btn-secondary button-apart-mob-8" for="option10_apart">2</label>
+                        <input type="radio" class="btn-check button-apart-mob-8" name="options" id="option11_apart" autocomplete="off">
+                        <label class="btn btn-secondary button-apart-mob-8" for="option11_apart">3</label>
+                        <input type="radio" class="btn-check button-apart-mob-8" name="options" id="option12_apart" autocomplete="off">
+                        <label class="btn btn-secondary button-apart-mob-8" for="option12_apart">4</label>
+                        <input type="radio" class="btn-check button-apart-mob-9" name="options" id="option13_apart" autocomplete="off">
+                        <label class="btn btn-secondary button-apart-mob-9" for="option13_apart">+5</label>
+                    </div>
+                </div>
+                <p class="text-apart-mob">Номер телефона</p>
+                <div class="input-group mb-3 container-apart-mob">
+                    <div class="input-group mb-3" style="margin-bottom: 0px !important;">
+                        <input type="text" class="form-control filter-apartament-2" id="number_phone_mob" placeholder="Не важно" aria-label="apartament" aria-describedby="addon-wrapping">
+                    </div>
+                </div>
+                <p class="text-apart-mob">Номер объекта</p>
+                <div class="input-group mb-3 container-apart-mob">
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control filter-apartament-2" id="number_pk_mob" placeholder="Не важно" aria-label="tower" aria-describedby="addon-wrapping">
+                    </div>
+                </div>
+                <div class="input-group mb-3 container-apart-mob-2">
+                    <p class="text-apart-2">Диапазон цен</p>
+                    <div class="price_choices">
+                        <input type="radio" id="pricemobChoice1_mob" class="radio-custom" name="price-filter_mob" value="3" checked>
+                        <label for="pricemobChoice1_mob">в месяц</label>
+                    </div>
+                    <div class="price_choices">
+                        <input type="radio" id="pricemobChoice2_mob" class="radio-custom" name="price-filter_mob" value="4">
+                        <label for="pricemobChoice2_mob">м²/мес</label>
+                    </div>
+                    <div class="price_choices">
+                        <input type="radio" id="pricemobChoice3_mob" class="radio-custom" name="price-filter_mob" value="5">
+                        <label for="pricemobChoice3_mob">м²/год</label>
+                    </div>
+                <div class="input-group mb-3 container-apart-mob">
+                    <div class="input-group mb-3" style="margin-bottom: 0px !important;">
+                        <input type="text" class="form-control filter-apartament-3" id="price_min_mob" onkeyup="input_price(this)" placeholder="от" aria-label="price" aria-describedby="addon-wrapping">
+                        <input type="text" class="form-control filter-apartament-3" id="price_max_mob" onkeyup="input_price(this)" placeholder="до" aria-label="price-1" aria-describedby="addon-wrapping">
+                    </div>
+                </div>
+                <p class="text-apart-mob">Этаж</p>
+                <div class="input-group mb-3 container-apart-mob">
+                    <div class="input-group mb-3" style="margin-bottom: 0px !important;">
+                        <input type="text" class="form-control filter-apartament-3" id="floor_min_mob" placeholder="от" aria-label="price" aria-describedby="addon-wrapping">
+                        <input type="text" class="form-control filter-apartament-3" id="floor_max_mob" placeholder="до" aria-label="price-1" aria-describedby="addon-wrapping">
+                    </div>
+                </div>
+                <p class="text-apart-mob">Площадь</p>
+                <div class="input-group mb-3 container-apart-mob">
+                    <div class="input-group mb-3" style="margin-bottom: 0px !important;">
+                        <input type="text" class="form-control filter-apartament-3" id="total_area_min_mob" placeholder="от м²" aria-label="price" aria-describedby="addon-wrapping">
+                        <input type="text" class="form-control filter-apartament-3" id="total_area_max_mob" placeholder="до м²" aria-label="price-1" aria-describedby="addon-wrapping">
+                    </div>
+                </div>
+                <p class="text-apart-mob">Удобства</p>
+                <div class="input-group mb-6 container-apart-mob">
+                    <div class="d-flex flex-wrap str-apart-mob" id="udob_list_mob">
+                        <span class="button-apart-mob-10 udob_mob" id="flexCheckDefault-1_mob" data-type="" onclick="tristate(this);">
+                            <label class="form-check-label" for="flexCheckDefault-1_mob"><img src="{% static 'img/icon/ud-3.png' %}" style="width: 20px; height: 20px;">
+                                Мебель</label>
+                        </span>
+                        <span class="button-apart-mob-10 udob_mob" id="flexCheckDefault-2_mob" data-type="" onclick="tristate(this);">
+                            <label class="form-check-label" for="flexCheckDefault-2_mob"><img src="{% static 'img/icon/ud-2.png' %}" style="width: 20px; height: 20px;">
+                                Вид на сити</label>
+                        </span>
+                        <span class="button-apart-mob-10 udob_mob" id="flexCheckDefault-3_mob" data-type="" onclick="tristate(this);">
+                            <label class="form-check-label" for="flexCheckDefault-3_mob"><img src="{% static 'img/icon/ud-1.png' %}" style="width: 20px; height: 20px;">
+                            Вид на город</label>
+                        </span>
+                        <span class="button-apart-mob-10 udob_mob" id="flexCheckDefault-4_mob" data-type="" onclick="tristate(this);">
+                            <label class="form-check-label" for="flexCheckDefault-4_mob"><img src="{% static 'img/icon/ud-5.png' %}" style="width: 20px; height: 20px;">
+                                Угол</label>
+                        </span>
+                        <span class="button-apart-mob-10 udob_mob" id="flexCheckDefault-5_mob" data-type="" onclick="tristate(this);">
+                            <label class="form-check-label" for="flexCheckDefault-5_mob"><img src="{% static 'img/icon/ud-4.png' %}" style="width: 20px; height: 20px;">
+                            Мастер-спальня</label>
+                        </span>
+                        <span class="button-apart-mob-10 udob_mob" id="flexCheckDefault-6_mob" data-type="" onclick="tristate(this);">
+                            <label class="form-check-label" for="flexCheckDefault-6_mob"><img src="{% static 'img/icon/ud-6.png' %}" style="width: 20px; height: 20px;">
+                            Кухня гостиная</label>
+                        </span>
+                        <span class="button-apart-mob-10 udob_mob" id="flexCheckDefault-7_mob" data-type="" onclick="tristate(this);">
+                            <label class="form-check-label" for="flexCheckDefault-7_mob"><img src="{% static 'img/icon/ud-8.png' %}" style="width: 20px; height: 20px;">
+                            Кровать</label>
+                        </span>
+                        <span class="button-apart-mob-10 udob_mob" id="flexCheckDefault-8_mob" data-type="" onclick="tristate(this);">
+                            <label class="form-check-label" for="flexCheckDefault-8_mob"><img src="{% static 'img/icon/ud-9.png' %}" style="width: 20px; height: 20px;">
+                            Бытовые приборы</label>
+                        </span>
+                        <span class="button-apart-mob-10 udob_mob" id="flexCheckDefault-9_mob" data-type="" onclick="tristate(this);">
+                            <label class="form-check-label" for="flexCheckDefault-9_mob"><img src="{% static 'img/icon/ud-12.png' %}" style="width: 20px; height: 20px;">
+                            Ванна</label>
+                        </span>
+                         <span class="button-apart-mob-10 udob_mob" id="flexCheckDefault-10_mob" data-type="" onclick="tristate(this);">
+                            <label class="form-check-label" for="flexCheckDefault-10_mob"><img src="{% static 'img/icon/ud-7.png' %}" style="width: 20px; height: 20px;">
+                            Гардеробная</label>
+                        </span>
+                         <span class="button-apart-mob-10 udob_mob" id="flexCheckDefault-11_mob" data-type="" onclick="tristate(this);">
+                            <label class="form-check-label" for="flexCheckDefault-11_mob"><img src="{% static 'img/icon/ud-11.png' %}" style="width: 20px; height: 20px;">
+                            Душ</label>
+                        </span>
+                         <span class="button-apart-mob-10 udob_mob" id="flexCheckDefault-12_mob" data-type="" onclick="tristate(this);">
+                            <label class="form-check-label" for="flexCheckDefault-12_mob"><img src="{% static 'img/icon/ud-10.png' %}" style="width: 20px; height: 20px;">
+                            Постирочная</label>
+                        </span>
+                    </div>
+                </div>
+                <hr class="hr-mob">
+                <div class="input-group mb-3 container-apart-mob">
+                    <div class="input-group mb-3 btn-filter-mob">
+                        <button type="button" class="btn btn-dark button-admin-12-mob" data-bs-dismiss="modal" aria-label="Close" onclick="filter_mob()">Поиск</button>
+                        <button type="button" class="btn btn-dark button-admin-13-mob" data-bs-dismiss="modal" aria-label="Close" onclick="restart_filter()">Сбросить</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+      </div>
+    </div>
+    </div>
     </div>
 {% endblock %}
 {% block js %}

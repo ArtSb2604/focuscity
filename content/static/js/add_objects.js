@@ -1397,25 +1397,21 @@ $('#add_subtower').change( function() {
 
 $('#add_tower').change( function() {
    $(this).find(":selected").each(function () {
-       if ($('.admin-users-block-add-2-mob').css('display') == 'none') {
-           if ($(this).val() == 'Capital Towers' || $(this).val() == 'ЖК city park' || $(this).val() == 'ЖК Headliner' || $(this).val() == 'ЖК Сosmopolit' ||
+       if ($(this).val() == 'Capital Towers' || $(this).val() == 'ЖК city park' || $(this).val() == 'ЖК Headliner' || $(this).val() == 'ЖК Сosmopolit' ||
             $(this).val() == 'ЖК Бадаевский' || $(this).val() == 'ЖК Redside' || $(this).val() == 'ЖК Victory park Residences' || $(this).val() == 'ЖК Hide'
             || $(this).val() == 'ЖК Поклонная 9' || $(this).val() == 'ЖК Резиденция монэ') {
                 $('#type_ned').empty();
-                $("#type_ned").append(`<div class="p-2 block-filter-add-6" style="height: 43px;">
-                        <h1 class="text-filter-add-2">Тип недвижимости</h1>
+                $("#type_ned").append(`<h1 class="text-filter-add-2">Тип недвижимости</h1>
                         <div class="p-2 add-select-admin-2">
                             <div class="p-2 add-type">
                                 <input type="radio" class="btn-check button-add-type" name="option" id="option101" value="Квартира" autocomplete="off" onclick="property_type('Квартира')" checked>
                                 <label class="btn btn-secondary button-add-type" for="option101">Квартира</label>
                             </div>
-                        </div>
-                    </div>`)
+                        </div>`)
                property_type_add()
             } else {
                 $('#type_ned').empty();
-                $("#type_ned").append(`<div class="p-2 block-filter-add-6" style="height: 86px;">
-                        <h1 class="text-filter-add-2">Тип недвижимости</h1>
+                $("#type_ned").append(`<h1 class="text-filter-add-2">Тип недвижимости</h1>
                         <div class="p-2 add-select-admin-2">
                             <div class="p-2 add-type">
                                 <input type="radio" class="btn-check button-add-type" name="option" id="option100" autocomplete="off" checked="checked" onclick="property_type_add()" value="Апартамент">
@@ -1433,56 +1429,14 @@ $('#add_tower').change( function() {
                                 <input type="radio" class="btn-check button-add-type" name="option" id="option107" autocomplete="off" onclick="property_type_add()" value="Коворкинг">
                                 <label class="btn btn-secondary button-add-type" for="option107" style="width: 120px;">Коворкинг</label>
                             </div>
-                        </div>
-                    </div>`)
-            }
-       } else {
-           if ($(this).val() == 'Capital Towers' || $(this).val() == 'ЖК city park' || $(this).val() == 'ЖК Headliner' || $(this).val() == 'ЖК Сosmopolit' ||
-            $(this).val() == 'ЖК Бадаевский' || $(this).val() == 'ЖК Redside' || $(this).val() == 'ЖК Victory park Residences' || $(this).val() == 'ЖК Hide'
-            || $(this).val() == 'ЖК Поклонная 9' || $(this).val() == 'ЖК Резиденция монэ') {
-                $('#type_ned_mob').empty();
-                $("#type_ned_mob").append(`<h1 class="text-filter-add-2">Тип недвижимости</h1>
-                        <div class="p-2 add-select-admin-2">
-                            <div class="p-2 add-type-mob">
-                                <input type="radio" class="btn-check button-add-type-mob" name="option_mob" id="optionsss1" onclick="property_type_add()" value="Апартамент" autocomplete="off" checked="checked">
-                                <label class="btn btn-secondary button-add-type-mob" for="optionsss1" style="width: 116px;">Апартамент</label>
-                            </div>
-                        </div>`)
-               property_type_add()
-            } else {
-                $('#type_ned_mob').empty();
-                $("#type_ned_mob").append(`<h1 class="text-filter-add-2">Тип недвижимости</h1>
-                        <div class="p-2 add-select-admin-2">
-                            <div class="p-2 add-type-mob">
-                                <input type="radio" class="btn-check button-add-type-mob" name="option_mob" id="optionsss1" onclick="property_type_add()" value="Апартамент" autocomplete="off" checked="checked">
-                                <label class="btn btn-secondary button-add-type-mob" for="optionsss1" style="width: 116px;">Апартамент</label>
-                                <input type="radio" class="btn-check button-add-type-mob" name="option_mob" id="optionsss2" onclick="property_type_add()" value="Квартира" autocomplete="off">
-                                <label class="btn btn-secondary button-add-type-mob" for="optionsss2" style="width: 99px;">Квартира</label>
-                                <input type="radio" class="btn-check button-add-type-mob" name="option_mob" id="optionsss3" onclick="property_type_add()" value="Офис" autocomplete="off">
-                                <label class="btn btn-secondary button-add-type-mob" for="optionsss3" style="width: 70px;">Офис</label>
-                            </div>
-                            <div class="p-2 add-type-mob">
-                                <input type="radio" class="btn-check button-add-type-mob" name="option_mob" id="optionsss4" onclick="property_type_add()" value="Торговая площадь" autocomplete="off">
-                                <label class="btn btn-secondary button-add-type-mob" for="optionsss4" style="width: 166px;">Торговая площадь</label>
-                                <input type="radio" class="btn-check button-add-type-mob" name="option_mob" id="optionsss5" onclick="property_type_add()" value="Паркинг" autocomplete="off">
-                                <label class="btn btn-secondary button-add-type-mob" for="optionsss5" style="width: 90px;">Паркинг</label>
-                            </div>
-                            <div class="p-2 add-type-mob">
-                                <input type="radio" class="btn-check button-add-type-mob" name="option_mob" id="optionsss6" onclick="property_type_add()" value="Свободного назначения" autocomplete="off">
-                                <label class="btn btn-secondary button-add-type-mob" for="optionsss6" style="width: 212px;">Свободного назначения</label>
-                                <input type="radio" class="btn-check button-add-type-mob" name="option_mob" id="optionsss7" onclick="property_type_add()" value="Коворкинг" autocomplete="off">
-                                <label class="btn btn-secondary button-add-type-mob" for="optionsss7" style="width: 110px;">Коворкинг</label>
-                            </div>
                         </div>`)
             }
-       }
 
     });
  });
 
 function type_oper(num) {
-    if ($('.admin-users-block-add-2-mob').css('display') == 'none') {
-        if (num == 'rent') {
+    if (num == 'rent') {
             $('#zaezd_otezd').css("display", "flex");
 
         $('#add_tower').find(":selected").each(function () {
@@ -1524,7 +1478,7 @@ function type_oper(num) {
                         </div>
                     </div>`)
             }
-    });
+        });
         $('#add_pricing').empty();
         $("#add_pricing").append(`<div class="p-2 add-price">
                                 <h1 class="text-filter-add-4">месяц</h1>
@@ -1544,7 +1498,7 @@ function type_oper(num) {
                             <label class="btn btn-secondary button-add-type-active-2" for="option106">Сдается</label>
                             <input type="radio" class="btn-check button-add-type-2" name="options_status" id="option107" value="Сдано" autocomplete="off">
                             <label class="btn btn-secondary button-add-type-2" for="option107">Сдано</label>`);
-    } else {
+        } else {
             $('#zaezd_otezd').css("display", "none");
 
         $('#add_tower').find(":selected").each(function () {
@@ -1586,142 +1540,32 @@ function type_oper(num) {
         $('#add_pricing').empty();
         $("#add_pricing").append(`<div class="p-2 add-price">
                                 <h1 class="text-filter-add-4">За все</h1>
-                                <input type="text" name="price" id="price" class="form-control input-add-price" placeholder="1 000 000 000 000 ₽" aria-label="price" aria-describedby="addon-wrapping">
+                                <input type="text" name="price" id="price" onkeyup="price_add(this.value);" class="form-control input-add-price" placeholder="1 000 000 000 000 ₽" aria-label="price" aria-describedby="addon-wrapping">
                             </div>
                             <div class="p-2 add-price">
                                 <h1 class="text-filter-add-4">За м²</h1>
                                 <input type="text" name="price_metr" id="price_metr" class="form-control input-add-price" placeholder="1 000 000 000 000 ₽" aria-label="price" aria-describedby="addon-wrapping">
                             </div>`);
 
+        var pricese = IMask(
+  document.getElementById('price'),
+  {
+    mask: Number,
+    min: -10000,
+    max: 10000000000000,
+    thousandsSeparator: ' '
+  });
+
         $('#add_status').empty();
-        $("#add_status").append(`<input type="radio" class="btn-check button-add-type-active-2" name="options_status" id="option106" autocomplete="off" value="Продается" checked="checked">
-                            <label class="btn btn-secondary button-add-type-active-2" for="option106" style="width: 180px;">Продается</label>
-                            <input type="radio" class="btn-check button-add-type-2" name="options_status" id="option107" value="Продано" autocomplete="off">
-                            <label class="btn btn-secondary button-add-type-2" for="option107" style="width: 180px;">Продано</label>`);
-    }
-    } else {
-        if (num == 'rent') {
-        $('#add_tower').find(":selected").each(function () {
-            if ($(this).val() == 'Capital Towers' || $(this).val() == 'ЖК city park' || $(this).val() == 'ЖК Headliner' || $(this).val() == 'ЖК Сosmopolit' ||
-            $(this).val() == 'ЖК Бадаевский' || $(this).val() == 'ЖК Redside' || $(this).val() == 'ЖК Victory park Residences' || $(this).val() == 'ЖК Hide'
-            || $(this).val() == 'ЖК Поклонная 9' || $(this).val() == 'ЖК Резиденция монэ') {
-                $('#type_ned_mob').empty();
-                $("#type_ned_mob").append(`<h1 class="text-filter-add-2">Тип недвижимости</h1>
-                        <div class="p-2 add-select-admin-2">
-                            <div class="p-2 add-type-mob">
-                                <input type="radio" class="btn-check button-add-type-mob" name="option_mob" id="optionsss1" onclick="property_type_add()" value="Апартамент" autocomplete="off" checked="checked">
-                                <label class="btn btn-secondary button-add-type-mob" for="optionsss1" style="width: 116px;">Апартамент</label>
-                            </div>
-                        </div>`)
-            } else {
-                $('#type_ned_mob').empty();
-                $("#type_ned_mob").append(`<h1 class="text-filter-add-2">Тип недвижимости</h1>
-                        <div class="p-2 add-select-admin-2">
-                            <div class="p-2 add-type-mob">
-                                <input type="radio" class="btn-check button-add-type-mob" name="option_mob" id="optionsss1" onclick="property_type_add()" value="Апартамент" autocomplete="off" checked="checked">
-                                <label class="btn btn-secondary button-add-type-mob" for="optionsss1" style="width: 116px;">Апартамент</label>
-                                <input type="radio" class="btn-check button-add-type-mob" name="option_mob" id="optionsss2" onclick="property_type_add()" value="Квартира" autocomplete="off">
-                                <label class="btn btn-secondary button-add-type-mob" for="optionsss2" style="width: 99px;">Квартира</label>
-                                <input type="radio" class="btn-check button-add-type-mob" name="option_mob" id="optionsss3" onclick="property_type_add()" value="Офис" autocomplete="off">
-                                <label class="btn btn-secondary button-add-type-mob" for="optionsss3" style="width: 70px;">Офис</label>
-                            </div>
-                            <div class="p-2 add-type-mob">
-                                <input type="radio" class="btn-check button-add-type-mob" name="option_mob" id="optionsss4" onclick="property_type_add()" value="Торговая площадь" autocomplete="off">
-                                <label class="btn btn-secondary button-add-type-mob" for="optionsss4" style="width: 166px;">Торговая площадь</label>
-                                <input type="radio" class="btn-check button-add-type-mob" name="option_mob" id="optionsss5" onclick="property_type_add()" value="Паркинг" autocomplete="off">
-                                <label class="btn btn-secondary button-add-type-mob" for="optionsss5" style="width: 90px;">Паркинг</label>
-                            </div>
-                            <div class="p-2 add-type-mob">
-                                <input type="radio" class="btn-check button-add-type-mob" name="option_mob" id="optionsss6" onclick="property_type_add()" value="Свободного назначения" autocomplete="off">
-                                <label class="btn btn-secondary button-add-type-mob" for="optionsss6" style="width: 212px;">Свободного назначения</label>
-                                <input type="radio" class="btn-check button-add-type-mob" name="option_mob" id="optionsss7" onclick="property_type_add()" value="Коворкинг" autocomplete="off">
-                                <label class="btn btn-secondary button-add-type-mob" for="optionsss7" style="width: 110px;">Коворкинг</label>
-                            </div>
-                        </div>`)
-            }
-        });
-
-        $('#add_pricing_mob').empty();
-        $("#add_pricing_mob").append(`<h1 class="text-filter-add-2">Цена</h1>
-                            <div class="p-2 add-price">
-                                <h1 class="text-filter-add-2-price">месяц</h1>
-                                <input type="text" name="price_month_mob" id="price_month_mob" class="form-control input-add-price" placeholder="1 000 000 000 000 ₽" aria-label="price" aria-describedby="addon-wrapping">
-                            </div>
-                            <div class="p-2 add-price">
-                                <h1 class="text-filter-add-2-price">м²/ месяц</h1>
-                                <input type="text" name="price_square_month_mob" id="price_square_month_mob" class="form-control input-add-price" placeholder="1 000 000 000 000 ₽" aria-label="price" aria-describedby="addon-wrapping">
-                            </div>
-                            <div class="p-2 add-price">
-                                <h1 class="text-filter-add-2-price">м²/ год</h1>
-                                <input type="text" name="price_square_year_mob" id="price_square_year_mob" class="form-control input-add-price" placeholder="1 000 000 000 000 ₽" aria-label="price" aria-describedby="addon-wrapping">
-                            </div>`);
-
-        $('#add_status_mob').empty();
-        $("#add_status_mob").append(`<input type="radio" class="btn-check button-add-type-active-2" name="options_status_mob" id="options_status_mob106" value="Сдается" autocomplete="off" checked="checked">
-                            <label class="btn btn-secondary button-add-type-active-2" for="options_status_mob106">Сдается</label>
-                            <input type="radio" class="btn-check button-add-type-2" name="options_status_mob" id="options_status_mob107" value="Сдано" autocomplete="off">
-                            <label class="btn btn-secondary button-add-type-2" for="options_status_mob107">Сдано</label>`);
-    } else {
-        $('#add_tower').find(":selected").each(function () {
-            if ($(this).val() == 'Capital Towers' || $(this).val() == 'ЖК city park' || $(this).val() == 'ЖК Headliner' || $(this).val() == 'ЖК Сosmopolit' ||
-            $(this).val() == 'ЖК Бадаевский' || $(this).val() == 'ЖК Redside' || $(this).val() == 'ЖК Victory park Residences' || $(this).val() == 'ЖК Hide'
-            || $(this).val() == 'ЖК Поклонная 9' || $(this).val() == 'ЖК Резиденция монэ') {
-                $('#type_ned_mob').empty();
-                $("#type_ned_mob").append(`<h1 class="text-filter-add-2">Тип недвижимости</h1>
-                        <div class="p-2 add-select-admin-2">
-                            <div class="p-2 add-type-mob">
-                                <input type="radio" class="btn-check button-add-type-mob" name="option_mob" id="optionsss1" onclick="property_type_add()" value="Апартамент" autocomplete="off" checked="checked">
-                                <label class="btn btn-secondary button-add-type-mob" for="optionsss1" style="width: 116px;">Апартамент</label>
-                            </div>
-                        </div>`)
-            } else {
-                $('#type_ned_mob').empty();
-                $("#type_ned_mob").append(`<h1 class="text-filter-add-2">Тип недвижимости</h1>
-                        <div class="p-2 add-select-admin-2">
-                            <div class="p-2 add-type-mob">
-                                <input type="radio" class="btn-check button-add-type-mob" name="option_mob" id="optionsss1" onclick="property_type_add()" value="Апартамент" autocomplete="off" checked="checked">
-                                <label class="btn btn-secondary button-add-type-mob" for="optionsss1" style="width: 116px;">Апартамент</label>
-                                <input type="radio" class="btn-check button-add-type-mob" name="option_mob" id="optionsss2" onclick="property_type_add()" value="Квартира" autocomplete="off">
-                                <label class="btn btn-secondary button-add-type-mob" for="optionsss2" style="width: 99px;">Квартира</label>
-                                <input type="radio" class="btn-check button-add-type-mob" name="option_mob" id="optionsss3" onclick="property_type_add()" value="Офис" autocomplete="off">
-                                <label class="btn btn-secondary button-add-type-mob" for="optionsss3" style="width: 70px;">Офис</label>
-                            </div>
-                            <div class="p-2 add-type-mob">
-                                <input type="radio" class="btn-check button-add-type-mob" name="option_mob" id="optionsss4" onclick="property_type_add()" value="Торговая площадь" autocomplete="off">
-                                <label class="btn btn-secondary button-add-type-mob" for="optionsss4" style="width: 166px;">Торговая площадь</label>
-                                <input type="radio" class="btn-check button-add-type-mob" name="option_mob" id="optionsss5" onclick="property_type_add()" value="Паркинг" autocomplete="off">
-                                <label class="btn btn-secondary button-add-type-mob" for="optionsss5" style="width: 90px;">Паркинг</label>
-                            </div>
-                            <div class="p-2 add-type-mob">
-                                <input type="radio" class="btn-check button-add-type-mob" name="option_mob" id="optionsss7" onclick="property_type_add()" value="Свободного назначения" autocomplete="off">
-                                <label class="btn btn-secondary button-add-type-mob" for="optionsss7" style="width: 212px;">Свободного назначения</label>
-                            </div>
-                        </div>`)
-            }
-    });
-        $('#add_pricing_mob').empty();
-        $("#add_pricing_mob").append(`<h1 class="text-filter-add-2">Цена</h1>
-                            <div class="p-2 add-price">
-                                <h1 class="text-filter-add-2-price">За все</h1>
-                                <input type="text" name="price_mob" id="price_mob" class="form-control input-add-price" placeholder="1 000 000 000 000 ₽" aria-label="price" aria-describedby="addon-wrapping">
-                            </div>
-                            <div class="p-2 add-price">
-                                <h1 class="text-filter-add-2-price">За м²</h1>
-                                <input type="text" name="price_metr_mob" id="price_metr_mob" class="form-control input-add-price" placeholder="1 000 000 000 000 ₽" aria-label="price" aria-describedby="addon-wrapping">
-                            </div>`);
-
-        $('#add_status_mob').empty();
-        $("#add_status_mob").append(`<input type="radio" class="btn-check button-add-type-active-2" name="options_status_mob" id="options_status_mob106" value="Продаётся" autocomplete="off" checked="checked">
-                            <label class="btn btn-secondary button-add-type-active-2" for="options_status_mob106">Продаётся</label>
-                            <input type="radio" class="btn-check button-add-type-2" name="options_status_mob" id="options_status_mob107" value="Продано" autocomplete="off">
-                            <label class="btn btn-secondary button-add-type-2" for="options_status_mob107">Продано</label>`);
-    }
+        $("#add_status").append(`<input type="radio" class="btn-check button-add-type-active-2" name="options_status" id="option106_status" autocomplete="off" value="Продается" checked="checked">
+                            <label class="btn btn-secondary button-add-type-active-2" for="option106_status" style="width: 180px;">Продается</label>
+                            <input type="radio" class="btn-check button-add-type-2" name="options_status" id="option107_status" value="Продано" autocomplete="off">
+                            <label class="btn btn-secondary button-add-type-2" for="option107_status" style="width: 180px;">Продано</label>`);
     }
 }
 
 function property_type_add() {
-    if ($('.admin-users-block-add-2-mob').css('display') == 'none') {
-        $.ajax(
+    $.ajax(
         {
             type:"GET",
             url: "filter_add_object/",
@@ -1735,22 +1579,6 @@ function property_type_add() {
                 $("#hst").append(data)
             }
         });
-    } else {
-        $.ajax(
-        {
-            type:"GET",
-            url: "filter_add_object/",
-            data: {
-                prop : $('input[name="option_mob"]:checked').val(),
-                stat : $('input[name="type-op"]:checked').val(),
-            },
-            success: function( data )
-            {
-                $('#hst').empty();
-                $("#hst").append(data)
-            }
-        });
-    }
 }
 
 function add_file() {
@@ -1848,11 +1676,10 @@ $('#input_photo').on('change', function(){
 		let reader = new FileReader();
 		reader.readAsDataURL(file);
 		reader.onloadend = function(){
-			let new_file_input = '<div class="input-file-list-item_photo">' +
-				'<img class="input-file-list-img" src="' + reader.result + '">' +
-				'<span class="input-file-list-name">' + file.name + '</span>' +
-				'<a href="#" onclick="removeFilesItem_2(this); return false;" class="input-file-list-remove">x</a>' +
-			'</div>';
+			let new_file_input = '<li class="tasks__item input-file-list-item_photo" draggable="true">' +
+				'<a class="item_img" id="'+ file.name + '" style="background-image: url(' + reader.result + '); background-size: 100px 50px; width: 100%; height: 100%; display: block"></a>' +
+                '<a href="#" onclick="removeFilesItem_3(this); return false;" class="input-file-list-remove">x</a>' +
+			'</li>';
 			$files_list.append(new_file_input);
 		}
 	};
@@ -1866,8 +1693,8 @@ $('#input_photo').on('change', function(){
     console.log(dt2)
 });
 
-function removeFilesItem_2(target){
-	let name = $(target).prev().text();
+function removeFilesItem_3(target){
+	let name = $(target).prev().attr('id');
 	let input = $(target).closest('.input-file-row-img').find('input[type=file]');
 	$(target).closest('.input-file-list-item_photo').remove();
 	for(let i = 0; i < dt2.items.length; i++){
@@ -1876,10 +1703,152 @@ function removeFilesItem_2(target){
 		}
 	}
 	input[0].files = dt2.files;
-    $('#file_text_save').html(`<svg width="81" height="82" viewBox="0 0 81 82" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M20.75 41H60.125" stroke="#292D32" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                <path d="M40.9414 61.1922V20.8076" stroke="#292D32" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                <rect x="1.25" y="0.5" width="79" height="81" rx="39.5" stroke="#959697"/>
-                                </a>
-                                </svg><h3 class="text-add-planir">Загрузить планировку</h3>`)
 }
+
+$('#price_month').on('input',function(e){
+    $('#price_square_month').val(Math.round(Number($('#price_month').val().replace(/\s/g, ""))/$('#total_area').val().replace(/\s/g, "")).toLocaleString())
+    $('#price_square_year').val(Math.round(Number($('#price_month').val().replace(/\s/g, "")/$('#total_area').val().replace(/\s/g, "")*12)).toLocaleString())
+});
+
+function price_add(num) {
+    $('#price_metr').val(Math.round(Number($('#price').val().replace(/\s/g, "")/$('#total_area').val().replace(/\s/g, ""))).toLocaleString())
+}
+
+function total(num) {
+    if ($('input[name="type-op"]:checked').val() == 'rent') {
+        $('#price_square_month').val(Math.round(Number($('#price_month').val().replace(/\s/g, "")/$('#total_area').val().replace(/\s/g, ""))).toLocaleString())
+        $('#price_square_year').val(Math.round(Number($('#price_month').val().replace(/\s/g, "")/$('#total_area').val().replace(/\s/g, "")*12)).toLocaleString())
+    } else {
+        $('#price_metr').val(Math.round(Number($('#price').val().replace(/\s/g, "")/$('#total_area').val().replace(/\s/g, ""))).toLocaleString())
+    }
+}
+
+var element = document.getElementById('number_phone');
+var maskOptions = {
+  mask: '+{7}(000)000-00-00'
+};
+var mask = IMask(element, maskOptions);
+
+
+var price_month = IMask(
+  document.getElementById('price_month'),
+  {
+    mask: Number,
+    min: -10000,
+    max: 10000000000000,
+    thousandsSeparator: ' '
+  });
+
+
+
+var dt_mob = new DataTransfer();
+
+$('.input-file input[name=upload_photo_mob]').on('change', function(){
+	let $files_list = $(this).closest('.input-file').next();
+
+	for(var i = 0; i < this.files.length; i++){
+		let file = this.files.item(i);
+		dt_mob.items.add(file);
+
+		let reader = new FileReader();
+		reader.readAsDataURL(file);
+		reader.onloadend = function(){
+			let new_file_input = '<div class="input-file-list-item">' +
+				'<img class="input-file-list-img" style="width: 100px;" src="' + reader.result + '">' +
+				'<a href="#" onclick="removeFilesItem_mob(this); return false;" class="input-file-list-remove">x</a>' +
+			'</div>';
+			$('#photo_mob').append(new_file_input);
+		}
+	};
+	this.files = dt_mob.files;
+});
+
+function removeFilesItem_mob(target){
+	let name = $(target).prev().text();
+	let input = $(target).closest('.input-file-row-img').find('input[type=file]');
+	$(target).closest('.input-file-list-item').remove();
+	for(let i = 0; i < dt_mob.items.length; i++){
+		if(name === dt_mob.items[i].getAsFile().name){
+			dt_mob.items.remove(i);
+		}
+	}
+
+}
+
+function add_number(num) {
+    $(num).remove()
+    $('#list_number').append('<input id="number_phone_2" name="number_phone_2" type="text" class="form-control input-add-tel" placeholder="+7 (_ _ _ ) _ _ _ - _ _ - _ _" aria-label="tower" aria-describedby="addon-wrapping">')
+    var element = document.getElementById('number_phone_2');
+    var maskOptions = {
+        mask: '+{7}(000)000-00-00'
+    };
+    var mask = IMask(element, maskOptions);
+}
+
+const tasksListElement = document.querySelector(`.tasks__list`);
+const taskElements = tasksListElement.querySelectorAll(`.tasks__item`);
+
+for (const task of taskElements) {
+  task.draggable = true;
+}
+
+tasksListElement.addEventListener(`dragstart`, (evt) => {
+  evt.target.classList.add(`selected`);
+});
+
+tasksListElement.addEventListener(`dragend`, (evt) => {
+  evt.target.classList.remove(`selected`);
+});
+
+const getNextElement = (cursorPosition, currentElement) => {
+  const currentElementCoord = currentElement.getBoundingClientRect();
+  const currentElementCenter = currentElementCoord.y + currentElementCoord.height / 2;
+
+  const nextElement = (cursorPosition < currentElementCenter) ?
+    currentElement :
+    currentElement.nextElementSibling;
+
+  return nextElement;
+};
+
+tasksListElement.addEventListener(`dragover`, (evt) => {
+  evt.preventDefault();
+
+  const activeElement = tasksListElement.querySelector(`.selected`);
+  const currentElement = evt.target;
+  const isMoveable = activeElement !== currentElement &&
+    currentElement.classList.contains(`tasks__item`);
+
+  if (!isMoveable) {
+    return;
+  }
+
+  const nextElement = getNextElement(evt.clientY, currentElement);
+
+  if (
+    nextElement &&
+    activeElement === nextElement.previousElementSibling ||
+    activeElement === nextElement
+  ) {
+    return;
+  }
+
+  tasksListElement.insertBefore(activeElement, nextElement);
+  var name_elem = []
+  var elem_file = new DataTransfer()
+  const elem = document.getElementsByClassName('item_img')
+    Array.from(elem).forEach((el) => {
+        name_elem.push(el.id)
+    });
+  Array.from(name_elem).forEach((el) => {
+      Array.from(dt2.files).forEach((el1) => {
+          if (el == el1.name) {
+              elem_file.items.add(el1)
+          }
+      });
+  });
+  dt2.clearData()
+    Array.from(elem_file.files).forEach((el) => {
+        dt2.items.add(el)
+      });
+});

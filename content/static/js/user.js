@@ -88,28 +88,3 @@ async function status_user(id) {
         }
      })
 }
-
-async function status_user_mob(id) {
-    var userid;
-    var status;
-    userid = $('#user_status_mob' + id).attr("data-userid");
-    status = $('#user_status_mob' + id).attr("data-status");
-    console.log(userid, status)
-    $.ajax(
-    {
-        type:"GET",
-        url: "user_update_status",
-        cache: false,
-        async: true,
-        data:{
-                 user_id: userid,
-                 status: status,
-                 mob : 'mob',
-        },
-        success: function( data )
-        {
-            $( '#user_status_mob'+ id ).remove();
-            $("#status_mob" + id ).append(data);
-        }
-     })
-}

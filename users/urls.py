@@ -3,9 +3,12 @@ from . import views
 
 # Wire up our API using automatic URL routing.
 # Additionally, we include login URLs for the browsable API.
-from .views import register, AllUsersView, UsersDetail, SettingsView
+from .views import register, AllUsersView, UsersDetail, SettingsView, Admin, CallbackView
 
 urlpatterns = [
+    path('', Admin.as_view(), name="admin"),
+    path('callback/', CallbackView.as_view(), name="callback"),
+    path('callback/save/', views.callback_save, name="callback_save"),
     path('adduser/', views.register, name="adduser"),
     path("users/", AllUsersView.as_view(), name="all_users"),
     path("users/<int:pk>/", UsersDetail.as_view(), name="all_users"),

@@ -61,8 +61,16 @@ $(document).ready(function () {
         var price_var = $('input[name="price-mob-filter"]:checked').val();
         switch (price_var) {
             case '1':
-                price_month_min += $('#price_min').val()
-                price_month_max += $('#price_max').val()
+                if ($('#price_min').val() != ""){
+                    price_month_min += $('#price_min').val()
+                } else {
+                    price_month_min += '0'
+                }
+                if ($('#price_max').val() != ""){
+                    price_month_max += $('#price_max').val()
+                } else {
+                    price_month_max += '100000000000'
+                }
                 price_square_min += '0'
                 price_square_max += '10000000000'
                 price_square_year_min += '0'
@@ -75,8 +83,16 @@ $(document).ready(function () {
             case '2':
                 price_month_min += '0'
                 price_month_max += '10000000000'
-                price_square_min += $('#price_min').val()
-                price_square_max += $('#price_max').val()
+                if ($('#price_min').val() != ""){
+                    price_square_min += $('#price_min').val()
+                } else {
+                    price_square_min += '0'
+                }
+                if ($('#price_max').val() != ""){
+                    price_square_max += $('#price_max').val()
+                } else {
+                    price_square_max += '100000000000'
+                }
                 price_square_year_min += '0'
                 price_square_year_max += '10000000000'
                 price_min += '0'
@@ -89,8 +105,16 @@ $(document).ready(function () {
                 price_month_max += '10000000000'
                 price_square_min += '0'
                 price_square_max += '10000000000'
-                price_square_year_min += $('#price_min').val()
-                price_square_year_max += $('#price_max').val()
+                if ($('#price_min').val() != ""){
+                    price_square_year_min += $('#price_min').val()
+                } else {
+                    price_square_year_min += '0'
+                }
+                if ($('#price_max').val() != ""){
+                    price_square_year_max += $('#price_max').val()
+                } else {
+                    price_square_year_max += '100000000000'
+                }
                 price_min += '0'
                 price_max += '10000000000'
                 price_metr_min += '0'
@@ -103,8 +127,16 @@ $(document).ready(function () {
                 price_square_max += '10000000000'
                 price_square_year_min += '0'
                 price_square_year_max += '10000000000'
-                price_min += $('#price_min').val()
-                price_max += $('#price_max').val()
+                if ($('#price_min').val() != ""){
+                    price_min += $('#price_min').val()
+                } else {
+                    price_min += '0'
+                }
+                if ($('#price_max').val() != ""){
+                    price_max += $('#price_max').val()
+                } else {
+                    price_max += '100000000000'
+                }
                 price_metr_min += '0'
                 price_metr_max += '10000000000'
                 break;
@@ -117,8 +149,16 @@ $(document).ready(function () {
                 price_square_year_max += '10000000000'
                 price_min += '0'
                 price_max += '10000000000'
-                price_metr_min += $('#price_min').val()
-                price_metr_max += $('#price_max').val()
+                if ($('#price_min').val() != ""){
+                    price_metr_min += $('#price_min').val()
+                } else {
+                    price_metr_min += '0'
+                }
+                if ($('#price_max').val() != ""){
+                    price_metr_max += $('#price_max').val()
+                } else {
+                    price_metr_max += '100000000000'
+                }
                 break;
         }
         window.open(`/objects?filter=1&type=${type}&apart=${apart}&tower=${tower}&price_month_min=${price_month_min}&price_month_max=${price_month_max}&price_square_month_min=${price_square_min}&price_square_month_max=${price_square_max}&price_square_year_min=${price_square_year_min}&price_square_year_max=${price_square_year_max}&price_min=${price_min}&price_max=${price_max}&price_metr_min=${price_metr_min}&price_metr_max=${price_metr_max}`, '_self');
@@ -208,7 +248,5 @@ $(document).ready(function () {
   init();
 
 })();
-
-
 
 
