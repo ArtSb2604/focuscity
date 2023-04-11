@@ -1,0 +1,909 @@
+{% extends 'admin_panel/base_admin.html' %}
+{% load poll_extras %}
+{% load static %}
+{% block css %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/add_object.css' %}">
+{% endblock %}
+{% block panel %}
+<form action="" method="post" class="col block-right-admin-add-1" enctype="multipart/form-data" class="form" name="form">
+{% csrf_token %}
+<input name="pk" value="{{ object.pk }}" style="display: none">
+                <div class="container container-add-1">
+                    <div class="d-flex p-2 block-text-filter-add-mob">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M2.5 3.75H17.5" stroke="#292D32" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M2.5 8.33331H14.1667" stroke="#292D32" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M2.5 12.5H11.6667" stroke="#292D32" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M2.5 16.6667H8.33333" stroke="#292D32" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        <h1 class="text-filter-add-admin-mob">Добавление объекта</h1>
+                    </div>
+                    <div class="d-flex p-2 block-text-filter-add">
+                        <h1 class="text-filter-add-admin">Новое объявление</h1>
+                    </div>
+                    <div class="d-flex p-2 block-text-filter-add-2">
+                        <button type="button" class="btn button-add-1">Дублировать без фото</button>
+                        <button type="button" class="btn button-add-2">Дублировать с фото</button>
+                    </div>
+                </div>
+<!--Блок 1-->
+                <div class="container admin-users-block-add">
+                    <h1 class="text-filter-add-1">Расположение объекта</h1>
+                    <div class="p-2 block-filter-add-3">
+                        <h1 class="text-filter-add-2">Башня</h1>
+                        <div class="input-group mb-3 add-select-admin">
+                            <select class="form-select menu-tower-1" id="add_tower" name="tower" aria-label="Default select example">
+                                <option class="apart-list-1" value="Башня “Федерация”" {% if object.tower == 'Башня “Федерация”' %}selected{% endif %}>Башня Федерация</option>
+                                <option class="apart-list-1" value="Neva towers" {% if object.tower == 'Neva towers' %}selected{% endif %}>Neva towers</option>
+                                <option class="apart-list-1" value="ОКО" {% if object.tower == 'ОКО' %}selected{% endif %}>ОКО</option>
+                                <option class="apart-list-1" value="Меркурий" {% if object.tower == 'Меркурий' %}selected{% endif %}>Меркурий</option>
+                                <option class="apart-list-1" value="Город Столиц" {% if object.tower == 'Город Столиц' %}selected{% endif %}>Город Столиц</option>
+                                <option class="apart-list-1" value="Империя" {% if object.tower == 'Империя' %}selected{% endif %}>Империя</option>
+                                <option class="apart-list-1" value="IQ квартал" {% if object.tower == 'IQ квартал' %}selected{% endif %}>IQ квартал</option>
+                                <option class="apart-list-1" value="Северная башня" {% if object.tower == 'Северная башня' %}selected{% endif %}>Северная башня</option>
+                                <option class="apart-list-1" value="Башни на набережной" {% if object.tower == 'Башни на набережной' %}selected{% endif %}>Башни на набережной</option>
+                                <option class="apart-list-1" value="Башня 2000" {% if object.tower == 'Башня 2000' %}selected{% endif %}>Башня 2000</option>
+                                <option class="apart-list-1" value="Мост Багратион" {% if object.tower == 'Мост Багратион' %}selected{% endif %}>Мост Багратион</option>
+                                <option class="apart-list-1" value="Евразия" {% if object.tower == 'Евразия' %}selected{% endif %}>Евразия</option>
+                                <option class="apart-list-1" value="Эволюция" {% if object.tower == 'Эволюция' %}selected{% endif %}>Эволюция</option>
+                                <option class="apart-list-1" value="Афимол" {% if object.tower == 'Афимол' %}selected{% endif %}>Афимол</option>
+                                <option class="apart-list-1" value="Moskow Towers" {% if object.tower == 'Moskow Towers' %}selected{% endif %}>Moskow Towers</option>
+                                <option class="apart-list-1" value="iCity" {% if object.tower == 'iCity' %}selected{% endif %}>iCity</option>
+                                <option class="apart-list-1" value="One tower" {% if object.tower == 'One tower' %}selected{% endif %}>One tower</option>
+                                <option class="apart-list-1" value="Capital Towers" {% if object.tower == 'Capital Towers' %}selected{% endif %}>Capital Towers</option>
+                                <option class="apart-list-1" value="ЖК city park" {% if object.tower == 'ЖК city park' %}selected{% endif %}>ЖК city park</option>
+                                <option class="apart-list-1" value="ЖК Headliner" {% if object.tower == 'ЖК Headliner' %}selected{% endif %}>ЖК Headliner</option>
+                                <option class="apart-list-1" value="ЖК Сosmopolit" {% if object.tower == 'ЖК Сosmopolit' %}selected{% endif %}>ЖК Сosmopolit</option>
+                                <option class="apart-list-1" value="ЖК Бадаевский" {% if object.tower == 'ЖК Бадаевский' %}selected{% endif %}>ЖК Бадаевский</option>
+                                <option class="apart-list-1" value="ЖК Redside" {% if object.tower == 'ЖК Redside' %}selected{% endif %}>ЖК Redside</option>
+                                <option class="apart-list-1" value="ЖК Victory park Residences" {% if object.tower == 'ЖК Victory park Residences' %}selected{% endif %}>ЖК Victory park Residences</option>
+                                <option class="apart-list-1" value="ЖК Hide" {% if object.tower == 'ЖК Hide' %}selected{% endif %}>ЖК Hide</option>
+                                <option class="apart-list-1" value="ЖК Поклонная 9" {% if object.tower == 'ЖК Поклонная 9' %}selected{% endif %}>ЖК Поклонная 9</option>
+                                <option class="apart-list-1" value="ЖК Резиденция монэ" {% if object.tower == 'ЖК Резиденция монэ' %}selected{% endif %}>ЖК Резиденция монэ</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="p-2 block-filter-add-3">
+                        <h1 class="text-filter-add-2">Подбашня</h1>
+                        <div class="input-group mb-3 add-select-admin">
+                            <select class="form-select menu-tower-1" name="subtower" aria-label="Default select example" id="add_subtower">
+                                <option class="apart-list-1" value="{{ object.sub_tower }}" selected>{{ object.sub_tower }}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="p-2 block-filter-add-3">
+                        <h1 class="text-filter-add-2">Тип операции</h1>
+                        <div class="d-flex p-2 add-button-1" id="check">
+                            <input type="radio" class="btn-check button-add-4" onclick="type_oper('rent'); property_type_add();" value="rent" name="type-op" id="type-op1" autocomplete="off" {% if object.type_operation == 'rent' %}checked{% endif %}>
+                            <label class="btn btn-secondary button-add-4" for="type-op1">Аренда</label>
+                            <input type="radio" class="btn-check button-add-4" onclick="type_oper('sale'); property_type_add();" value="sale" name="type-op" id="type-op2" autocomplete="off" {% if object.type_operation == 'sale' %}checked{% endif %}>
+                            <label class="btn btn-secondary button-add-4" for="type-op2">Продажа</label>
+                        </div>
+                    </div>
+                    <div class="p-2 block-filter-add-4">
+                        <div class="d-flex p-2 add-address">
+                            <div class="p-2 add-text-address-1">
+                                <p class="text-add-1">Адрес объекта</p>
+                            </div>
+                            <div class="p-2 add-text-address-2">
+                                <p class="text-add-1">Этаж</p>
+                            </div>
+                            <div class="p-2 add-text-address-2">
+                                <p class="text-add-1">Этажность</p>
+                            </div>
+                        </div>
+                        <hr class="hr-add">
+                        <div class="d-flex p-2 add-address-2">
+                            <input type="text" class="form-control add-address-input" name="address" id="address" value="{{ object.address }}" placeholder="Адрес заполняется автоматически" aria-label="address" aria-describedby="addon-wrapping" required>
+                            <input type="text" class="form-control add-address-input-2" name="floor" id="floor" placeholder="Этаж" value="{{ object.floor }}" aria-label="address" aria-describedby="addon-wrapping">
+                            <input type="text" class="form-control add-address-input-3" name="number_of_floors" id="number_of_floors" value="{{ object.number_of_floors }}" placeholder="97" aria-label="address" aria-describedby="addon-wrapping">
+                            <input type="text" class="form-control add-address-input" name="address_coords_x" id="address_coords_x" value="{{ object.x }}">
+                            <input type="text" class="form-control add-address-input" name="address_coords_y" id="address_coords_y" value="{{ object.y }}">
+                        </div>
+                    </div>
+                    <div class="p-2 block-filter-add-5">
+                        <div id="map" style="width: 100%; height: 100%"></div>
+                    </div>
+<!--Блок 2 БЛОК МОБ ЭТАЖ-->
+                    <div class="d-flex p-2 add-address-2-mob">
+                        <div class="p-2 add-text-address-2-mob">
+                            <p class="text-add-1">Этаж</p>
+                        </div>
+                        <div class="p-2 add-text-address-2-mob-2">
+                            <div class="p-2 add-text-address-2-mob-3">
+                                <input type="text" name="floor_mob" id="floor_mob" class="form-control add-address-input" value="{{ object.floor }}" placeholder="от" aria-label="address" aria-describedby="addon-wrapping" style="border-width: 2px 0px 2px 2px;">
+                            </div>
+                            <div class="p-2 add-text-address-2-mob-3">
+                                <input type="text" name="number_of_floors_mob" id="number_of_floors_mob" class="form-control add-address-input" value="{{ object.number_of_floors }}" placeholder="до" aria-label="address" aria-describedby="addon-wrapping" style="border-width: 2px">
+                            </div>
+                            <input type="text" id="user" value="{{ user.pk }}" style="display: none;">
+                        </div>
+                    </div>
+                </div>
+<!--Блок 2-->
+                <div class="container admin-users-block-add-2">
+                    <h1 class="text-filter-add-1">Специфические данные</h1>
+                    <div class="p-2 block-filter-add-6" id="type_ned">
+                        <h1 class="text-filter-add-2">Тип недвижимости</h1>
+                        <div class="p-2 add-select-admin-2">
+                            <div class="p-2 add-type">
+                                <input type="radio" class="btn-check button-add-type" name="option" id="option100" autocomplete="off" onclick="property_type_add()" value="Апартамент" {% if object.property_type == "Апартамент" %}checked{% endif %}>
+                                <label class="btn btn-secondary button-add-type" for="option100" style="width: 132px;">Апартамент</label>
+                                <input type="radio" class="btn-check button-add-type" name="option" id="option102" autocomplete="off" onclick="property_type_add()" value="Офис" {% if object.property_type == "Офис" %}checked{% endif %}>
+                                <label class="btn btn-secondary button-add-type" for="option102" style="width: 86px;">Офис</label>
+                                <input type="radio" class="btn-check button-add-type" name="option" id="option103" autocomplete="off" onclick="property_type_add()" value="Торговая площадь" {% if object.property_type == "Торговая площадь" %}checked{% endif %}>
+                                <label class="btn btn-secondary button-add-type" for="option103" style="width: 182px;">Торговая площадь</label>
+                                <input type="radio" class="btn-check button-add-type" name="option" id="option104" autocomplete="off" onclick="property_type_add()" value="Свободного назначения" {% if object.property_type == "Свободного назначения" %}checked{% endif %}>
+                                <label class="btn btn-secondary button-add-type" for="option104" style="width: 228px;">Свободного назначения</label>
+                                <input type="radio" class="btn-check button-add-type" name="option" id="option105" autocomplete="off" onclick="property_type_add()" value="Паркинг" {% if object.property_type == "Паркинг" %}checked{% endif %}>
+                                <label class="btn btn-secondary button-add-type" for="option105" style="width: 106px;">Паркинг</label>
+                                <input type="radio" class="btn-check button-add-type" name="option" id="option106" autocomplete="off" onclick="property_type_add()" value="Коворкинг" {% if object.property_type == "Коворкинг" %}checked{% endif %}>
+                                <label class="btn btn-secondary button-add-type" for="option106" style="width: 120px;">Коворкинг</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-2 block-filter-add-7">
+                        <h1 class="text-filter-add-2">Статус</h1>
+                        <div class="p-2 add-type-3" id="add_status">
+                            {% if object.type_operation == 'rent' %}
+                                <input type="radio" class="btn-check button-add-type-active-2" name="options_status" id="option106_status" value="Сдается" autocomplete="off" {% if object.status == 'Сдается' %}checked{% endif %}>
+                                <label class="btn btn-secondary button-add-type-active-2" for="option106_status">Сдаётся</label>
+                                <input type="radio" class="btn-check button-add-type-2" name="options_status" id="option107_status" value="Сдано" autocomplete="off" {% if object.status == 'Сдано' %}checked{% endif %}>
+                                <label class="btn btn-secondary button-add-type-2" for="option107_status">Сдано</label>
+                                {% else %}
+                                <input type="radio" class="btn-check button-add-type-active-2" name="options_status" id="option106_status" value="Сдается" autocomplete="off" {% if object.status == 'Продаётся' %}checked{% endif %}>
+                                <label class="btn btn-secondary button-add-type-active-2" for="option106_status">Продаётся</label>
+                                <input type="radio" class="btn-check button-add-type-2" name="options_status" id="option107_status" value="Сдано" autocomplete="off" {% if object.status == 'Продано' %}checked{% endif %}>
+                                <label class="btn btn-secondary button-add-type-2" for="option107_status">Продано</label>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="p-2 block-filter-add-7">
+                        <h1 class="text-filter-add-2">С кем связь</h1>
+                        <div class="p-2 add-type-4">
+                            <input type="radio" class="btn-check button-add-type" name="options-wtcw" id="option1" value="Собственник" autocomplete="off" {% if object.wtcw == 'Собственник' %}checked{% endif %}>
+                            <label class="btn btn-secondary button-add-type" for="option1" style="width: 140px;">Собственник</label>
+                            <input type="radio" class="btn-check button-add-type" name="options-wtcw" id="option2" value="Представитель собственника" autocomplete="off" {% if object.wtcw == 'Представитель собственника' %}checked{% endif %}>
+                            <label class="btn btn-secondary button-add-type" for="option2" style="width: 264px;">Представитель собственника</label>
+                            <input type="radio" class="btn-check button-add-type" name="options-wtcw" id="option3" value="Знакомый собственника" autocomplete="off" {% if object.wtcw == 'Знакомый собственника' %}checked{% endif %}>
+                            <label class="btn btn-secondary button-add-type" for="option3" style="width: 234px;">Знакомый собственника</label>
+                            <input type="radio" class="btn-check button-add-type" name="options-wtcw" id="option4" value="Брокер" autocomplete="off" {% if object.wtcw == 'Брокер' %}checked{% endif %}>
+                            <label class="btn btn-secondary button-add-type" for="option4" style="width: 99px;">Брокер</label>
+                        </div>
+                    </div>
+                    <div class="p-2 block-filter-add-7">
+                        <h1 class="text-filter-add-2">Номер телефона</h1>
+                        <div class="input-group mb-3 add-type-5" id="list_number">
+                            <input id="number_phone" name="number_phone" type="text" class="form-control input-add-tel" value="{{ object.number_phone|number_phone_1 }}" placeholder="+7 (_ _ _ ) _ _ _ - _ _ - _ _" aria-label="tower" aria-describedby="addon-wrapping" required>
+                            {% if object.number_phone|number_phone_2 %}
+                                <input id="number_phone_2" name="number_phone_2" type="text" class="form-control input-add-tel" value="{{ object.number_phone|number_phone_2 }}" placeholder="+7 (_ _ _ ) _ _ _ - _ _ - _ _" aria-label="tower" aria-describedby="addon-wrapping" required>
+                            {% else %}
+                                <button type="button" class="btn button-add-tel" onclick="add_number(this)">+</button>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="p-2 block-filter-add-8">
+                        <h1 class="text-filter-add-3">Размер вознаграждение</h1>
+                        <div class="input-group mb-3 add-type-5">
+                            <input type="text" name="amount_remuneration" id="amount_remuneration" value="{{ object.amount_remuneration }}" class="form-control input-add-tel" placeholder="Напишите размер вознаграждения" aria-label="tower" aria-describedby="addon-wrapping" required>
+                        </div>
+                    </div>
+                    <div class="p-2 block-filter-add-8">
+                        <h1 class="text-filter-add-3">Назначить ответственного</h1>
+                        <div class="input-group mb-3 add-type-5">
+                            <select class="form-select menu-tower-1" id="Appoint_responsible_person" name="Appoint_responsible_person" aria-label="Default select example">
+                                {% for i in user %}
+                                    <option class="apart-list-2" value="{{ i.pk }}" {% if object.Appoint_responsible_person == i.pk %}selected{% endif %}>{{ i.last_name }} {{ i.first_name }} - {{ i.username }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                    <div class="p-2 block-filter-add-9">
+                        <h1 class="text-filter-add-5">Цена</h1>
+                        <div class="input-group mb-3 add-type-6" id="add_pricing">
+                            {% if object.type_operation == 'rent' %}
+                            <div class="p-2 add-price">
+                                <h1 class="text-filter-add-4">месяц</h1>
+                                <input type="text" id="price_month" name="price_month" class="form-control input-add-price" value="{{ object.price_month }}" placeholder="1 000 000 000 000 ₽" aria-label="price" aria-describedby="addon-wrapping">
+                            </div>
+                            <div class="p-2 add-price">
+                                <h1 class="text-filter-add-4">м²/ месяц</h1>
+                                <input type="text" id="price_square_month" name="price_square_month" class="form-control input-add-price" value="{{ object.price_square_month }}" placeholder="1 000 000 000 000 ₽" aria-label="price" aria-describedby="addon-wrapping" >
+                            </div>
+                            <div class="p-2 add-price">
+                                <h1 class="text-filter-add-4">м²/ год</h1>
+                                <input type="text" id="price_square_year" name="price_square_year" class="form-control input-add-price" value="{{ object.price_square_year }}" placeholder="1 000 000 000 000 ₽" aria-label="price" aria-describedby="addon-wrapping">
+                            </div>
+                            {% else %}
+                                <div class="p-2 add-price">
+                                    <h1 class="text-filter-add-4">За все</h1>
+                                    <input type="text" name="price" id="price" onkeyup="price_add(this.value);" value="{{ object.price }}" class="form-control input-add-price" placeholder="1 000 000 000 000 ₽" aria-label="price" aria-describedby="addon-wrapping">
+                                </div>
+                                <div class="p-2 add-price">
+                                    <h1 class="text-filter-add-4">За м²</h1>
+                                    <input type="text" name="price_metr" id="price_metr" class="form-control input-add-price" value="{{ object.price_metr }}" placeholder="1 000 000 000 000 ₽" aria-label="price" aria-describedby="addon-wrapping">
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            <div class="hst" id="hst">
+                <div class="container admin-users-block-add-3">
+                    <h1 class="text-filter-add-1">Данные недвижимости</h1>
+                    {% if object.property_type != 'Паркинг' and object.property_type != 'Коворкинг' %}
+                        <div class="p-2 block-filter-add-7" id="rooms">
+                        <h1 class="text-filter-add-2" id="rooms-text">Комнат</h1>
+                        <div class="d-flex flex-wrap add-type-7">
+                            <input type="radio" class="btn-check button-add-type-3" name="options-3" id="option31" autocomplete="off" value="1" {% if object.rooms == '1' %}checked{% endif %}>
+                            <label class="btn btn-secondary button-add-type-3" for="option31" style="padding: 8px 18px;">1</label>
+                            <input type="radio" class="btn-check button-add-type-3" name="options-3" id="option32" autocomplete="off" value="2" {% if object.rooms == '2' %}checked{% endif %}>
+                            <label class="btn btn-secondary button-add-type-3" for="option32" style="padding: 8px 16px;">2</label>
+                            <input type="radio" class="btn-check button-add-type-3" name="options-3" id="option33" autocomplete="off" value="3" {% if object.rooms == '3' %}checked{% endif %}>
+                            <label class="btn btn-secondary button-add-type-3" for="option33" style="padding: 8px 16px;">3</label>
+                            <input type="radio" class="btn-check button-add-type-3" name="options-3" id="option34" autocomplete="off" value="4" {% if object.rooms == '4' %}checked{% endif %}>
+                            <label class="btn btn-secondary button-add-type-3" for="option34" style="padding: 8px 16px;">4</label>
+                            <input type="radio" class="btn-check button-add-type-3" name="options-3" id="option35" autocomplete="off" value="5+" {% if object.rooms == '5+' %}checked{% endif %}>
+                            <label class="btn btn-secondary button-add-type-3" for="option35" style="padding: 8px 12px;">5+</label>
+                        </div>
+                    </div>
+                    {% endif %}
+                    {% if object.property_type == 'Коворкинг' %}
+                        <div class="p-2 block-filter-add-7" id="rooms">
+                        <h1 class="text-filter-add-2" id="rooms-text">Комнат</h1>
+                        <div class="d-flex flex-wrap add-type-7">
+                            <input type="radio" class="btn-check button-add-type-3" name="options-3" id="option31" autocomplete="off" value="openspace" {% if object.rooms == 'openspace' %}checked{% endif %}>
+                            <label class="btn btn-secondary button-add-type-3" for="option31" style="width: 120px; padding: 8px 18px;">openspace</label>
+                            <input type="radio" class="btn-check button-add-type-3" name="options-3" id="option32" autocomplete="off" value="1" {% if object.rooms == '1' %}checked{% endif %}>
+                            <label class="btn btn-secondary button-add-type-3" for="option32" style="padding: 8px 18px;">1</label>
+                            <input type="radio" class="btn-check button-add-type-3" name="options-3" id="option33" autocomplete="off" value="2" {% if object.rooms == '2' %}checked{% endif %}>
+                            <label class="btn btn-secondary button-add-type-3" for="option33" style="padding: 8px 16px;">2</label>
+                            <input type="radio" class="btn-check button-add-type-3" name="options-3" id="option34" autocomplete="off" value="3" {% if object.rooms == '3' %}checked{% endif %}>
+                            <label class="btn btn-secondary button-add-type-3" for="option34" style="padding: 8px 16px;">3</label>
+                            <input type="radio" class="btn-check button-add-type-3" name="options-3" id="option35" autocomplete="off" value="4" {% if object.rooms == '4' %}checked{% endif %}>
+                            <label class="btn btn-secondary button-add-type-3" for="option35" style="padding: 8px 16px;">4</label>
+                            <input type="radio" class="btn-check button-add-type-3" name="options-3" id="option36" autocomplete="off" value="5+" {% if object.rooms == '5+' %}checked{% endif %}>
+                            <label class="btn btn-secondary button-add-type-3" for="option36" style="padding: 8px 12px;">5+</label>
+                        </div>
+                    </div>
+                    {% endif %}
+                    {% if object.property_type == 'Апартамент' or object.property_type == 'Квартира' %}
+                         <div class="p-2 block-filter-add-7">
+                        <h1 class="text-filter-add-2">Спален</h1>
+                        <div class="d-flex flex-wrap add-type-7">
+                            <input type="radio" class="btn-check button-add-type-3" name="options-4" id="option46" autocomplete="off" value="Студия" {% if object.bedrooms == 'Студия' %}checked{% endif %}>
+                            <label class="btn btn-secondary button-add-type-3" for="option46" style="padding: 8px 18px; width: 87px;">Студия</label>
+                            <input type="radio" class="btn-check button-add-type-3" name="options-4" id="option41" autocomplete="off" value="1" {% if object.bedrooms == '1' %}checked{% endif %}>
+                            <label class="btn btn-secondary button-add-type-3" for="option41" style="padding: 8px 18px;">1</label>
+                            <input type="radio" class="btn-check button-add-type-3" name="options-4" id="option42" autocomplete="off" value="2" {% if object.bedrooms == '2' %}checked{% endif %}>
+                            <label class="btn btn-secondary button-add-type-3" for="option42" style="padding: 8px 16px;">2</label>
+                            <input type="radio" class="btn-check button-add-type-3" name="options-4" id="option43" autocomplete="off" value="3" {% if object.bedrooms == '3' %}checked{% endif %}>
+                            <label class="btn btn-secondary button-add-type-3" for="option43" style="padding: 8px 16px;">3</label>
+                            <input type="radio" class="btn-check button-add-type-3" name="options-4" id="option44" autocomplete="off" value="4" {% if object.bedrooms == '4' %}checked{% endif %}>
+                            <label class="btn btn-secondary button-add-type-3" for="option44" style="padding: 8px 16px;">4</label>
+                            <input type="radio" class="btn-check button-add-type-3" name="options-4" id="option45" autocomplete="off" value="5+" {% if object.bedrooms == '5+' %}checked{% endif %}>
+                            <label class="btn btn-secondary button-add-type-3" for="option45" style="padding: 8px 12px;">5+</label>
+                        </div>
+                    </div>
+                    {% endif %}
+                    {% if object.property_type == 'Офис' or object.property_type == 'Торговая площадь' or object.property_type == 'Свободного назначения' %}
+                        <div class="p-2 block-filter-add-7">
+                        <h1 class="text-filter-add-2">Мокрые точки</h1>
+                        <div class="input-group mb-3 add-type-5">
+                            <input type="text" name="wet_spots" id="wet_spots" value="{{ object.wet_spots }}" class="form-control input-add-pl" placeholder="1" aria-label="tower" aria-describedby="addon-wrapping">
+                        </div>
+                    </div>
+                    {% endif %}
+                    <div class="p-2 block-filter-add-7">
+                        <h1 class="text-filter-add-2">Общая площадь</h1>
+                        <div class="input-group mb-3 add-type-5">
+                            <input type="text" name="total_area" id="total_area" value="{{ object.total_area }}" onkeyup="total(this.value);" class="form-control input-add-pl" placeholder="140 м²" aria-label="tower" aria-describedby="addon-wrapping">
+                        </div>
+                    </div>
+                    {% if object.property_type == 'Офис' or object.property_type == 'Торговая площадь' or object.property_type == 'Свободного назначения' or object.property_type == 'Коворкинг' %}
+                        <div class="p-2 block-filter-add-7">
+                        <h1 class="text-filter-add-2">1 комната</h1>
+                        <div class="input-group mb-3 add-type-5">
+                            <input type="text" name="one_room" class="form-control input-add-pl" value="{{ object.one_room }}" id="one_room" placeholder="30 м²" aria-label="tower" aria-describedby="addon-wrapping">
+                        </div>
+                        </div>
+                    {% endif %}
+                    {% if object.type_operation == 'rent' %}
+                        <div class="p-2 block-filter-add-6">
+                        <h1 class="text-filter-add-2">Длительность</h1>
+                        <div class="p-2 add-select-admin-4">
+                            <div class="d-flex flex-wrap add-type-8">
+                                <input type="radio" class="btn-check button-add-type-4" name="duration" id="duration1" autocomplete="off" value="Любой срок аренды" {% if object.duration == 'Любой срок аренды' %}checked{% endif %}>
+                                <label class="btn btn-secondary button-add-type-4" for="duration1" style="width: 192px;">Любой срок аренды</label>
+                                <input type="radio" class="btn-check button-add-type-4" name="duration" id="duration2" autocomplete="off" value="Посуточно" {% if object.duration == 'Посуточно' %}checked{% endif %}>
+                                <label class="btn btn-secondary button-add-type-4" for="duration2" style="width: 124px;">Посуточно</label>
+                                <input type="radio" class="btn-check button-add-type-4" name="duration" id="duration3" autocomplete="off" value="Почасовая" {% if object.duration == 'Почасовая' %}checked{% endif %}>
+                                <label class="btn btn-secondary button-add-type-4" for="duration3" style="width: 124px;">Почасовая</label>
+                                <input type="radio" class="btn-check button-add-type-4" name="duration" id="duration4" autocomplete="off" value="На длительный срок" {% if object.duration == 'На длительный срок' %}checked{% endif %}>
+                                <label class="btn btn-secondary button-add-type-4" for="duration4" style="width: 195px;">На длительный срок</label>
+                            </div>
+                            <div class="p-2 add-type-9">
+                                <input type="radio" class="btn-check button-add-type-4" name="duration" id="duration5" autocomplete="off" value="На короткий срок" {% if object.duration == 'На короткий срок' %}checked{% endif %}>
+                                <label class="btn btn-secondary button-add-type-4" for="duration5" style="width: 176px;">На короткий срок</label>
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+                    {% if object.property_type == 'Апартамент' or object.property_type == 'Квартира' %}
+                        <div class="p-2 block-filter-add-7">
+                        <h1 class="text-filter-add-2">Санузел</h1>
+                        <div class="d-flex flex-wrap add-type-10">
+                            <input type="radio" class="btn-check button-add-type-3" name="bathroom" id="su1" autocomplete="off" value="Персональный с/у" {% if object.bathroom == 'Персональный с/у' %}checked{% endif %}>
+                            <label class="btn btn-secondary button-add-type-3" for="su1" style="width: 182px;">Персональный с/у</label>
+                            <input type="radio" class="btn-check button-add-type-3" name="bathroom" id="su2" autocomplete="off" value="Гостевой + Персональный с/у" {% if object.bathroom == 'Гостевой + Персональный с/у' %}checked{% endif %}>
+                            <label class="btn btn-secondary button-add-type-3" for="su2" style="width: 261px;">Гостевой + Персональный с/у</label>
+                            <input type="radio" class="btn-check button-add-type-3" name="bathroom" id="su3" autocomplete="off" value="3 + с/у" {% if object.bathroom == '3 + с/у' %}checked{% endif %}>
+                            <label class="btn btn-secondary button-add-type-3" for="su3" style="width: 99px;">3 + с/у</label>
+                        </div>
+                    </div>
+                    {% endif %}
+                    {% if object.property_type != 'Паркинг' %}
+                            <div class="p-2 block-filter-add-7">
+                        <h1 class="text-filter-add-2">Ремонт</h1>
+                        <div class="d-flex flex-wrap add-type-10">
+                            <input type="radio" class="btn-check button-add-type-3" name="repair" id="remont1" autocomplete="off" value="shell&core" {% if object.repair == 'shell&core' %}checked{% endif %}>
+                            <label class="btn btn-secondary button-add-type-3" for="remont1" style="width: 118px;">shell&core</label>
+                            <input type="radio" class="btn-check button-add-type-3" name="repair" id="remont2" autocomplete="off" value="whitebox" {% if object.repair == 'whitebox' %}checked{% endif %}>
+                            <label class="btn btn-secondary button-add-type-3" for="remont2" style="width: 110px;">whitebox</label>
+                            <input type="radio" class="btn-check button-add-type-3" name="repair" id="remont3" autocomplete="off" value="Класика" {% if object.repair == 'Класика' %}checked{% endif %}>
+                            <label class="btn btn-secondary button-add-type-3" for="remont3" style="width: 106px;">Класика</label>
+                            <input type="radio" class="btn-check button-add-type-3" name="repair" id="remont4" autocomplete="off" value="Неокласика" {% if object.repair == 'Неокласика' %}checked{% endif %}>
+                            <label class="btn btn-secondary button-add-type-3" for="remont4" style="width: 132px;">Неокласика</label>
+                            <input type="radio" class="btn-check button-add-type-3" name="repair" id="remont5" autocomplete="off" value="Лофт" {% if object.repair == 'Лофт' %}checked{% endif %}>
+                            <label class="btn btn-secondary button-add-type-3" for="remont5" style="width: 84px;">Лофт</label>
+                            <input type="radio" class="btn-check button-add-type-3" name="repair" id="remont6" autocomplete="off" value="Дизайнерский" {% if object.repair == 'Дизайнерский' %}checked{% endif %}>
+                            <label class="btn btn-secondary button-add-type-3" for="remont6" style="width: 149px;">Дизайнерский</label>
+                        </div>
+                    </div>
+                    {% endif %}
+
+                    {% if object.property_type == 'Офис' or object.property_type == 'Торговая площадь' or object.property_type == 'Свободного назначения' %}
+                        {% if stat == 'sale' %}
+                            <div class="p-2 block-filter-add-7">
+                        <h1 class="text-filter-add-2">Готовый бизнес</h1>
+                        <div class="d-flex flex-wrap add-type-10">
+                            <input type="radio" class="btn-check button-add-type-3" name="ready_made_business" id="ready_made_business1" autocomplete="off" value="Готовый бизнес" {% if object.ready_made_business == 'Готовый бизнес' %}checked{% endif %}>
+                            <label class="btn btn-secondary button-add-type-3" for="ready_made_business1" style="width: 162px;">Готовый бизнес</label>
+                            <input type="radio" class="btn-check button-add-type-3" name="ready_made_business" id="ready_made_business2" autocomplete="off" value="Без арендатора" {% if object.ready_made_business == 'Без арендатора' %}checked{% endif %}>
+                            <label class="btn btn-secondary button-add-type-3" for="ready_made_business2" style="width: 162px;">Без арендатора</label>
+                        </div>
+                        </div>
+                            {% endif %}
+                    {% endif %}
+                    {% if object.type_operation == 'rent' %}
+                        {% if object.property_type == 'Офис' or object.property_type == 'Торговая площадь' or object.property_type == 'Свободного назначения' or object.property_type == 'Коворкинг' %}
+                            <div class="p-2 block-filter-add-7">
+                        <h1 class="text-filter-add-2">Право собственности</h1>
+                        <div class="d-flex flex-wrap add-type-11">
+                            <input type="radio" class="btn-check button-add-type-3" name="ownership" id="ownership1" autocomplete="off" value="Прямая аренда" {% if object.ownership == 'Прямая аренда' %}checked{% endif %}>
+                            <label class="btn btn-secondary button-add-type-3" for="ownership1" style="width: 180px; padding: 8px 34px;">Прямая аренда</label>
+                            <input type="radio" class="btn-check button-add-type-3" name="ownership" id="ownership2" autocomplete="off" value="Субаренда" {% if object.ownership == 'Субаренда' %}checked{% endif %}>
+                            <label class="btn btn-secondary button-add-type-3" for="ownership2" style="width: 130px;">Субаренда</label>
+                        </div>
+                        </div>
+                            {% endif %}
+                    {% endif %}
+                    {% if object.type_operation == 'rent' %}
+                        {% if object.property_type != 'Паркинг' %}
+                            <div class="p-2 block-filter-add-7">
+                        <h1 class="text-filter-add-2">Клининг</h1>
+                        <div class="d-flex flex-wrap add-type-11">
+                            <input type="radio" class="btn-check button-add-type-3" name="cleaning" id="cleaning1" autocomplete="off" value="Клининг общих мест" {% if object.cleaning == 'Клининг общих мест' %}checked{% endif %}>
+                            <label class="btn btn-secondary button-add-type-3" for="cleaning1" style="width: 225px; padding: 8px 34px;">Клининг общих мест</label>
+                            <input type="radio" class="btn-check button-add-type-3" name="cleaning" id="cleaning2" autocomplete="off" value="Клининг не предусмотрен" {% if object.cleaning == 'Клининг не предусмотрен' %}checked{% endif %}>
+                            <label class="btn btn-secondary button-add-type-3" for="cleaning2" style="width: 244px;">Клининг не предусмотрен</label>
+                            <input type="radio" class="btn-check button-add-type-3" name="cleaning" id="cleaning3" autocomplete="off" value="Клининг включен" {% if object.cleaning == 'Клининг включен' %}checked{% endif %}>
+                            <label class="btn btn-secondary button-add-type-3" for="cleaning3" style="width: 176px;">Клининг включен</label>
+                        </div>
+                        </div>
+                            {% endif %}
+                        {% else %}
+                        <div class="p-2 block-filter-add-7">
+                        <h1 class="text-filter-add-2">Обременение</h1>
+                        <div class="d-flex flex-wrap add-type-11">
+                            <input type="radio" class="btn-check button-add-type-3" name="encumbrance" id="encumbrance1" autocomplete="off" value="Без обременений" {% if object.encumbrance == 'Без обременений' %}checked{% endif %}>
+                            <label class="btn btn-secondary button-add-type-3" for="encumbrance1" style="width: 200px; padding: 8px 34px;">Без обременений</label>
+                            <input type="radio" class="btn-check button-add-type-3" name="encumbrance" id="encumbrance2" autocomplete="off" value="Аренда (субаренда)" {% if object.encumbrance == 'Аренда (субаренда)' %}checked{% endif %}>
+                            <label class="btn btn-secondary button-add-type-3" for="encumbrance2" style="width: 200px;">Аренда (субаренда)</label>
+                            <input type="radio" class="btn-check button-add-type-3" name="encumbrance" id="encumbrance3" autocomplete="off" value="Ипотека (залог недвижимости)" {% if object.encumbrance == 'Ипотека (залог недвижимости)' %}checked{% endif %}>
+                            <label class="btn btn-secondary button-add-type-3" for="encumbrance3" style="width: 275px;">Ипотека (залог недвижимости)</label>
+                        </div>
+                        </div>
+                        <div class="p-2 add-type-11">
+                            <input type="radio" class="btn-check button-add-type-3" name="encumbrance" id="encumbrance4" autocomplete="off" value="Арест" {% if object.encumbrance == 'Арест' %}checked{% endif %}>
+                            <label class="btn btn-secondary button-add-type-3" for="encumbrance4" style="width: 100px; margin-left: 222px">Арест</label>
+
+                        </div>
+                    {% endif %}
+
+                    {% if object.type_operation == 'rent' %}
+                        <div class="p-2 block-filter-add-7">
+                        <h1 class="text-filter-add-2">Коммуналка</h1>
+                        <div class="d-flex flex-wrap add-type-11">
+                            <input type="radio" class="btn-check button-add-type-3" name="communal" id="communal1" autocomplete="off" value="+счетчики" {% if object.communal_apartment == '+счетчики' %}checked{% endif %}>
+                            <label class="btn btn-secondary button-add-type-3" for="communal1" style="width: 122px;">+счетчики</label>
+                            <input type="radio" class="btn-check button-add-type-3" name="communal" id="communal2" autocomplete="off" value="все включено" {% if object.communal_apartment == 'все включено' %}checked{% endif %}>
+                            <label class="btn btn-secondary button-add-type-3" for="communal2" style="width: 149px;">все включено</label>
+                            <input type="radio" class="btn-check button-add-type-3" name="communal" id="communal3" autocomplete="off" value="+все платежи" {% if object.communal_apartment == '+все платежи' %}checked{% endif %}>
+                            <label class="btn btn-secondary button-add-type-3" for="communal3" style="width: 149px;">+все платежи</label>
+                        </div>
+                    </div>
+                    {% endif %}
+
+                    <div class="p-2 block-filter-add-7">
+                        <h1 class="text-filter-add-2">НДС</h1>
+                        <div class="d-flex flex-wrap add-type-11">
+                            <input type="radio" class="btn-check button-add-type-3" name="nds" id="nds1" autocomplete="off" value="НДС включен" {% if object.vat == 'НДС включен' %}checked{% endif %}>
+                            <label class="btn btn-secondary button-add-type-3" for="nds1" style="width: 148px;">НДС включен</label>
+                            <input type="radio" class="btn-check button-add-type-3" name="nds" id="nds2" autocomplete="off" value="НДС не облагается" {% if object.vat == 'НДС не облагается' %}checked{% endif %}>
+                            <label class="btn btn-secondary button-add-type-3" for="nds2" style="width: 186px;">НДС не облагается</label>
+                            <input type="radio" class="btn-check button-add-type-3" name="nds" id="nds3" autocomplete="off" value="+НДС 20%" {% if object.vat == '+НДС 20%' %}checked{% endif %}>
+                            <label class="btn btn-secondary button-add-type-3" for="nds3" style="width: 126px;">+НДС 20%</label>
+                            <input type="radio" class="btn-check button-add-type-3" name="nds" id="nds4" autocomplete="off" value="+НДС 10%" {% if object.vat == '+НДС 10%' %}checked{% endif %}>
+                            <label class="btn btn-secondary button-add-type-3" for="nds4" style="width: 124px;">+НДС 10%</label>
+                            <input type="radio" class="btn-check button-add-type-3" name="nds" id="nds5" autocomplete="off" value="+НДС 0%" {% if object.vat == '+НДС 0%' %}checked{% endif %}>
+                            <label class="btn btn-secondary button-add-type-3" for="nds5" style="width: 118px;">+НДС 0%</label>
+                        </div>
+                    </div>
+                    {% if object.type_operation == 'rent' %}
+                        <div class="p-2 block-filter-add-7">
+                        <h1 class="text-filter-add-2">Предоплата</h1>
+                        <div class="d-flex flex-wrap add-type-11">
+                            <input type="radio" class="btn-check button-add-type-3" name="prepayment" id="prepayment1" autocomplete="off" value="1 месяц" {% if object.prepayment == '1 месяц' %}checked{% endif %}>
+                            <label class="btn btn-secondary button-add-type-3" for="prepayment1" style="width: 106px;">1 месяц</label>
+                            <input type="radio" class="btn-check button-add-type-3" name="prepayment" id="prepayment2" autocomplete="off" value="2 месяца" {% if object.prepayment == '2 месяца' %}checked{% endif %}>
+                            <label class="btn btn-secondary button-add-type-3" for="prepayment2" style="width: 116px;">2 месяца</label>
+                            <input type="radio" class="btn-check button-add-type-3" name="prepayment" id="prepayment3" autocomplete="off" value="3 месяца" {% if object.prepayment == '3 месяца' %}checked{% endif %}>
+                            <label class="btn btn-secondary button-add-type-3" for="prepayment3" style="width: 117px;">3 месяца</label>
+                            <input type="radio" class="btn-check button-add-type-3" name="prepayment" id="prepayment4" autocomplete="off" value="За полгода" {% if object.prepayment == 'За полгода' %}checked{% endif %}>
+                            <label class="btn btn-secondary button-add-type-3" for="prepayment4" style="width: 130px;">За полгода</label>
+                            <input type="radio" class="btn-check button-add-type-3" name="prepayment" id="prepayment5" autocomplete="off" value="За год" {% if object.prepayment == 'За год' %}checked{% endif %}>
+                            <label class="btn btn-secondary button-add-type-3" for="prepayment5" style="width: 97px;">За год</label>
+                        </div>
+                    </div>
+                    <div class="p-2 block-filter-add-10">
+                        <h1 class="text-filter-add-2">Залог</h1>
+                        <div class="input-group mb-3 add-type-5">
+                            <input type="text" name="deposit" class="form-control input-add-zl" value="{{ object.deposit }}" placeholder="12 000 000 ₽" aria-label="tower" aria-describedby="addon-wrapping">
+                        </div>
+                    </div>
+                    {% endif %}
+                    {% if object.property_type == 'Апартамент' or object.property_type == 'Квартира' %}
+                        <div class="p-2 block-filter-add-11">
+                        <h1 class="text-filter-add-2">Удобства</h1>
+                        <div class="input-group mb-3 add-type-12">
+                                <div class="p-2 box-check-udob">
+                                    <input class="form-check-input checkbox-ud" type="checkbox" value="{% if object.city_view == 1 %}1{% endif %}" id="flexCheckDefault-2" name="flexCheckDefault-2" onclick="check_udob('#flexCheckDefault-2')" {% if object.city_view == 1 %}checked{% endif %}>
+                                    <label class="form-check-label" for="flexCheckDefault-2">
+                                        <img src="{% static 'img/icon/ud-2.png' %}">
+                                        Вид на сити
+                                    </label>
+                                </div>
+                                <div class="p-2 box-check-udob">
+                                    <input class="form-check-input checkbox-ud" type="checkbox" value="{% if object.gorod_view == 1 %}1{% endif %}" id="flexCheckDefault-1" name="flexCheckDefault-1" onclick="check_udob('#flexCheckDefault-1')" {% if object.gorod_view == 1 %}checked{% endif %}>
+                                    <label class="form-check-label" for="flexCheckDefault-1">
+                                        <img src="{% static 'img/icon/ud-1.png' %}">
+                                        Вид на город
+                                    </label>
+                                </div>
+                                <div class="p-2 box-check-udob">
+                                    <input class="form-check-input checkbox-ud" type="checkbox" value="{% if object.furniture == 1 %}1{% endif %}" id="flexCheckDefault-3" name="flexCheckDefault-3" onclick="check_udob('#flexCheckDefault-3')" {% if object.furniture == 1 %}checked{% endif %}>
+                                    <label class="form-check-label" for="flexCheckDefault-3">
+                                        <img src="{% static 'img/icon/ud-3.png' %}">
+                                        Мебель
+                                    </label>
+                                </div>
+                                <div class="p-2 box-check-udob">
+                                    <input class="form-check-input checkbox-ud" type="checkbox" value="{% if object.corner == 1 %}1{% endif %}" id="flexCheckDefault-4" name="flexCheckDefault-4" onclick="check_udob('#flexCheckDefault-4')" {% if object.corner == 1 %}checked{% endif %}>
+                                    <label class="form-check-label" for="flexCheckDefault-4">
+                                        <img src="{% static 'img/icon/ud-4.png' %}">
+                                        Угол
+                                    </label>
+                                </div>
+                                <div class="p-2 box-check-udob">
+                                    <input class="form-check-input checkbox-ud" type="checkbox" value="{% if object.master_bedroom == 1 %}1{% endif %}" id="flexCheckDefault-5" name="flexCheckDefault-5" onclick="check_udob('#flexCheckDefault-5')" {% if object.master_bedroom == 1 %}checked{% endif %}>
+                                    <label class="form-check-label" for="flexCheckDefault-5">
+                                        <img src="{% static 'img/icon/ud-5.png' %}">
+                                        Мастер-спальня
+                                    </label>
+                                </div>
+                                <div class="p-2 box-check-udob">
+                                    <input class="form-check-input checkbox-ud" type="checkbox" value="{% if object.kitchen_living == 1 %}1{% endif %}" id="flexCheckDefault-6" name="flexCheckDefault-6" onclick="check_udob('#flexCheckDefault-6')" {% if object.kitchen_living == 1 %}checked{% endif %}>
+                                    <label class="form-check-label" for="flexCheckDefault-6">
+                                        <img src="{% static 'img/icon/ud-6.png' %}">
+                                        Кухня гостиная
+                                    </label>
+                                </div>
+                                <div class="p-2 box-check-udob">
+                                    <input class="form-check-input checkbox-ud" type="checkbox" value="{% if object.wardrobe == 1 %}1{% endif %}" id="flexCheckDefault-7" name="flexCheckDefault-7" onclick="check_udob('#flexCheckDefault-7')" {% if object.wardrobe == 1 %}checked{% endif %}>
+                                    <label class="form-check-label" for="flexCheckDefault-7">
+                                        <img src="{% static 'img/icon/ud-7.png' %}">
+                                        Гардеробная
+                                    </label>
+                                </div>
+                                <div class="p-2 box-check-udob">
+                                    <input class="form-check-input checkbox-ud" type="checkbox" value="{% if object.bed == 1 %}1{% endif %}" id="flexCheckDefault-8" name="flexCheckDefault-8" onclick="check_udob('#flexCheckDefault-8')" {% if object.bed == 1 %}checked{% endif %}>
+                                    <label class="form-check-label" for="flexCheckDefault-8">
+                                        <img src="{% static 'img/icon/ud-8.png' %}">
+                                        Кровать
+                                    </label>
+                                </div>
+                                <div class="p-2 box-check-udob">
+                                    <input class="form-check-input checkbox-ud" type="checkbox" value="{% if object.household_appliances == 1 %}1{% endif %}" id="flexCheckDefault-9" name="flexCheckDefault-9" onclick="check_udob('#flexCheckDefault-9')" {% if object.household_appliances == 1 %}checked{% endif %}>
+                                    <label class="form-check-label" for="flexCheckDefault-9">
+                                        <img src="{% static 'img/icon/ud-9.png' %}">
+                                        Бытовые приборы
+                                    </label>
+                                </div>
+                                <div class="p-2 box-check-udob">
+                                    <input class="form-check-input checkbox-ud" type="checkbox" value="{% if object.laundry_room == 1 %}1{% endif %}" id="flexCheckDefault-10" name="flexCheckDefault-10" onclick="check_udob('#flexCheckDefault-10')" {% if object.laundry_room == 1 %}checked{% endif %}>
+                                    <label class="form-check-label" for="flexCheckDefault-10">
+                                        <img src="{% static 'img/icon/ud-10.png' %}">
+                                        Постирочная
+                                    </label>
+                                </div>
+                                <div class="p-2 box-check-udob">
+                                    <input class="form-check-input checkbox-ud" type="checkbox" value="{% if object.shower == 1 %}1{% endif %}" id="flexCheckDefault-11" name="flexCheckDefault-11" onclick="check_udob('#flexCheckDefault-11')"> {% if object.shower == 1 %}checked{% endif %}
+                                    <label class="form-check-label" for="flexCheckDefault-11">
+                                        <img src="{% static 'img/icon/ud-11.png' %}">
+                                        Душ
+                                    </label>
+                                </div>
+                                <div class="p-2 box-check-udob">
+                                    <input class="form-check-input checkbox-ud" type="checkbox" value="{% if object.bath == 1 %}1{% endif %}" id="flexCheckDefault-12" name="flexCheckDefault-12" onclick="check_udob('#flexCheckDefault-12')" {% if object.bath == 1 %}checked{% endif %}>
+                                    <label class="form-check-label" for="flexCheckDefault-12">
+                                        <img src="{% static 'img/icon/ud-12.png' %}">
+                                        Ванна
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="d-flex flex-wrap str-apart-mob">
+                                <input type="checkbox" class="btn-check button-apart-mob-10" name="options" id="option14_mob" value="{% if object.furniture == 1 %}1{% endif %}" autocomplete="off" {% if object.furniture == 1 %}checked{% endif %}>
+                                <label class="btn btn-secondary button-apart-mob-10" for="option14">
+                                    <img src="{% static 'img/icon/ud-3.png' %}" style="width: 20px; height: 20px;">
+                                    Мебель
+                                </label>
+                                <input type="checkbox" class="btn-check button-apart-mob-11" name="options" id="option15_mob" value="{% if object.city_view == 1 %}1{% endif %}" autocomplete="off" {% if object.city_view == 1 %}checked{% endif %}>
+                                <label class="btn btn-secondary button-apart-mob-11" for="option15">
+                                    <img src="{% static 'img/icon/ud-2.png' %}" style="width: 20px; height: 20px;">
+                                    Вид на сити
+                                </label>
+                                <input type="checkbox" class="btn-check button-apart-mob-14" name="options" id="option13_mob" value="{% if object.gorod_view == 1 %}1{% endif %}" autocomplete="off" {% if object.gorod_view == 1 %}checked{% endif %}>
+                                <label class="btn btn-secondary button-apart-mob-14" for="option15">
+                                    <img src="{% static 'img/icon/ud-1.png' %}" style="width: 20px; height: 20px;">
+                                    Вид на город
+                                </label>
+                                <input type="checkbox" class="btn-check button-apart-mob-12" name="options" id="option16_mob" value="{% if object.corner == 1 %}1{% endif %}" autocomplete="off" {% if object.corner == 1 %}checked{% endif %}>
+                                <label class="btn btn-secondary button-apart-mob-12" for="option16">
+                                    <img src="{% static 'img/icon/ud-5.png' %}" style="width: 20px; height: 20px;">
+                                    Угол
+                                </label>
+                                <input type="checkbox" class="btn-check button-apart-mob-13" name="options" id="option17_mob" value="{% if object.master_bedroom == 1 %}1{% endif %}" autocomplete="off" {% if object.master_bedroom == 1 %}checked{% endif %}>
+                                <label class="btn btn-secondary button-apart-mob-13" for="option17">
+                                    <img src="{% static 'img/icon/ud-4.png' %}" style="width: 20px; height: 20px;">
+                                    Мастер-спальня
+                                </label>
+                                <input type="checkbox" class="btn-check button-apart-mob-14" name="options" id="option18_mob" value="{% if object.kitchen_living == 1 %}1{% endif %}" autocomplete="off" {% if object.kitchen_living == 1 %}checked{% endif %}>
+                                <label class="btn btn-secondary button-apart-mob-14" for="option18">
+                                    <img src="{% static 'img/icon/ud-6.png' %}" style="width: 20px; height: 20px;">
+                                    Кухня гостиная
+                                </label>
+                                <input type="checkbox" class="btn-check button-apart-mob-15" name="options" id="option19_mob" value="{% if object.bed == 1 %}1{% endif %}" autocomplete="off" {% if object.bed == 1 %}checked{% endif %}>
+                                <label class="btn btn-secondary button-apart-mob-15" for="option19">
+                                    <img src="{% static 'img/icon/ud-8.png' %}" style="width: 20px; height: 20px;">
+                                    Кровать
+                                </label>
+                                <input type="checkbox" class="btn-check button-apart-mob-16" name="options" id="option20_mob" value="{% if object.household_appliances == 1 %}1{% endif %}" autocomplete="off" {% if object.household_appliances == 1 %}checked{% endif %}>
+                                <label class="btn btn-secondary button-apart-mob-16" for="option20">
+                                    <img src="{% static 'img/icon/ud-9.png' %}" style="width: 20px; height: 20px;">
+                                    Бытовые приборы
+                                </label>
+                                <input type="checkbox" class="btn-check button-apart-mob-17" name="options" id="option21_mob" value="{% if object.bath == 1 %}1{% endif %}" autocomplete="off" {% if object.bath == 1 %}checked{% endif %}>
+                                <label class="btn btn-secondary button-apart-mob-17" for="option21">
+                                    <img src="{% static 'img/icon/ud-12.png' %}" style="width: 20px; height: 20px;">
+                                    Ванна
+                                </label>
+                                <input type="checkbox" class="btn-check button-apart-mob-18" name="options" id="option22_mob" value="{% if object.wardrobe == 1 %}1{% endif %}" autocomplete="off" {% if object.wardrobe == 1 %}checked{% endif %}>
+                                <label class="btn btn-secondary button-apart-mob-18" for="option22">
+                                    <img src="{% static 'img/icon/ud-7.png' %}" style="width: 20px; height: 20px;">
+                                    Гардеробная
+                                </label>
+                                <input type="checkbox" class="btn-check button-apart-mob-19" name="options" id="option23_mob" value="{% if object.shower == 1 %}1{% endif %}" autocomplete="off" {% if object.shower == 1 %}checked{% endif %}>
+                                <label class="btn btn-secondary button-apart-mob-19" for="option23">
+                                    <img src="{% static 'img/icon/ud-11.png' %}" style="width: 20px; height: 20px;">
+                                    Душ
+                                </label>
+                                <input type="checkbox" class="btn-check button-apart-mob-20" name="options" id="option24_mob" value="{% if object.laundry_room == 1 %}1{% endif %}" autocomplete="off" {% if object.laundry_room == 1 %}checked{% endif %}>
+                                <label class="btn btn-secondary button-apart-mob-20" for="option24">
+                                    <img src="{% static 'img/icon/ud-10.png' %}" style="width: 20px; height: 20px;">
+                                    Постирочная
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                        {% else %}
+                        <div class="p-2 block-filter-add-11">
+                        <h1 class="text-filter-add-2">Удобства</h1>
+                        <div class="input-group mb-3 add-type-12">
+                                <div class="p-2 box-check-udob">
+                                    <input class="form-check-input checkbox-ud" type="checkbox" value="{% if object.city_view == 1 %}1{% endif %}" id="flexCheckDefault-2" name="flexCheckDefault-2" onclick="check_udob('#flexCheckDefault-2')" {% if object.city_view == 1 %}checked{% endif %}>
+                                    <label class="form-check-label" for="flexCheckDefault-2">
+                                        <img src="{% static 'img/icon/ud-2.png' %}">
+                                        Вид на сити
+                                    </label>
+                                </div>
+                                <div class="p-2 box-check-udob">
+                                    <input class="form-check-input checkbox-ud" type="checkbox" value="{% if object.gorod_view == 1 %}1{% endif %}" id="flexCheckDefault-1" name="flexCheckDefault-1" onclick="check_udob('#flexCheckDefault-1')" {% if object.gorod_view == 1 %}checked{% endif %}>
+                                    <label class="form-check-label" for="flexCheckDefault-1">
+                                        <img src="{% static 'img/icon/ud-1.png' %}">
+                                        Вид на город
+                                    </label>
+                                </div>
+                                <div class="p-2 box-check-udob">
+                                    <input class="form-check-input checkbox-ud" type="checkbox" value="{% if object.furniture == 1 %}1{% endif %}" id="flexCheckDefault-3" name="flexCheckDefault-3" onclick="check_udob('#flexCheckDefault-3')" {% if object.furniture == 1 %}checked{% endif %}>
+                                    <label class="form-check-label" for="flexCheckDefault-3">
+                                        <img src="{% static 'img/icon/ud-3.png' %}">
+                                        Мебель
+                                    </label>
+                                </div>
+                                <div class="p-2 box-check-udob">
+                                    <input class="form-check-input checkbox-ud" type="checkbox" value="{% if object.corner == 1 %}1{% endif %}" id="flexCheckDefault-4" name="flexCheckDefault-4" onclick="check_udob('#flexCheckDefault-4')" {% if object.corner == 1 %}checked{% endif %}>
+                                    <label class="form-check-label" for="flexCheckDefault-4">
+                                        <img src="{% static 'img/icon/ud-4.png' %}">
+                                        Угол
+                                    </label>
+                                </div>
+                                <div class="p-2 box-check-udob">
+                                    <input class="form-check-input checkbox-ud" type="checkbox" value="{% if object.your_own_farm == 1 %}1{% endif %}" id="flexCheckDefault-5" name="flexCheckDefault-5" onclick="check_udob('#flexCheckDefault-5')" {% if object.your_own_farm == 1 %}checked{% endif %}>
+                                    <label class="form-check-label" for="flexCheckDefault-5">
+                                        <img src="{% static 'img/icon/ud-13.png' %}">
+                                        Свой с/у
+                                    </label>
+                                </div>
+                                <div class="p-2 box-check-udob">
+                                    <input class="form-check-input checkbox-ud" type="checkbox" value="{% if object.kitchen_living == 1 %}1{% endif %}" id="flexCheckDefault-6" name="flexCheckDefault-6" onclick="check_udob('#flexCheckDefault-6')" {% if object.kitchen_living == 1 %}checked{% endif %}>
+                                    <label class="form-check-label" for="flexCheckDefault-6">
+                                        <img src="{% static 'img/icon/ud-12.png' %}">
+                                        Кухня
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="d-flex flex-wrap str-apart-mob">
+                                <input type="checkbox" class="btn-check button-apart-mob-10" name="options" value="{% if object.furniture == 1 %}1{% endif %}" id="option14_mob" autocomplete="off" {% if object.furniture == 1 %}checked{% endif %}>
+                                <label class="btn btn-secondary button-apart-mob-10" for="option14">
+                                    <img src="{% static 'img/icon/ud-3.png' %}" style="width: 20px; height: 20px;">
+                                    Мебель
+                                </label>
+                                <input type="checkbox" class="btn-check button-apart-mob-11" name="options" value="{% if object.city_view == 1 %}1{% endif %}" id="option15_mob" autocomplete="off" {% if object.city_view == 1 %}checked{% endif %}>
+                                <label class="btn btn-secondary button-apart-mob-11" for="option15">
+                                    <img src="{% static 'img/icon/ud-2.png' %}" style="width: 20px; height: 20px;">
+                                    Вид на сити
+                                </label>
+                                <input type="checkbox" class="btn-check button-apart-mob-11" name="options" value="{% if object.gorod_view == 1 %}1{% endif %}" id="option13_mob" autocomplete="off" {% if object.gorod_view == 1 %}checked{% endif %}>
+                                <label class="btn btn-secondary button-apart-mob-11" for="option15">
+                                    <img src="{% static 'img/icon/ud-1.png' %}" style="width: 20px; height: 20px;">
+                                    Вид на город
+                                </label>
+                                <input type="checkbox" class="btn-check button-apart-mob-11" name="options" value="{% if object.your_own_farm == 1 %}1{% endif %}" id="option17_mob" autocomplete="off" {% if object.your_own_farm == 1 %}checked{% endif %}>
+                                <label class="btn btn-secondary button-apart-mob-11" for="option15">
+                                    <img src="{% static 'img/icon/ud-13.png' %}" style="width: 20px; height: 20px;">
+                                    Свой с/у
+                                </label>
+                                <input type="checkbox" class="btn-check button-apart-mob-12" name="options" value="{% if object.corner == 1 %}1{% endif %}" id="option16_mob" autocomplete="off" {% if object.corner == 1 %}checked{% endif %}>
+                                <label class="btn btn-secondary button-apart-mob-12" for="option16">
+                                    <img src="{% static 'img/icon/ud-5.png' %}" style="width: 20px; height: 20px;">
+                                    Угол
+                                </label>
+                                <input type="checkbox" class="btn-check button-apart-mob-14" name="options" value="{% if object.kitchen_living == 1 %}1{% endif %}" id="option18_mob" autocomplete="off" {% if object.kitchen_living == 1 %}checked{% endif %}>
+                                <label class="btn btn-secondary button-apart-mob-14" for="option18">
+                                    <img src="{% static 'img/icon/ud-6.png' %}" style="width: 20px; height: 20px;">
+                                    Кухня
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+            </div>
+<!--Блок 3 МОБИЛЬНАЯ ВЕРСИЯ-->
+
+<!--Блок 4-->
+                <div class="container admin-users-block-add-4" id="zaezd_otezd">
+                    <div class="p-2 block-filter-add-12">
+                        <h1 class="text-filter-add-6">Заезд / Отъезд</h1>
+                        <div class="input-group mb-3 add-select-admin-5">
+                            <input type="text" class="form-control add-calendar-input" placeholder="Дата, от" aria-label="address" aria-describedby="addon-wrapping"/>
+                            <input type="text" class="form-control add-calendar-input" placeholder="Дата, до" aria-label="address" aria-describedby="addon-wrapping">
+                        </div>
+                    </div>
+                </div>
+<!--Блок 5-->
+                <div class="container admin-users-block-add-5">
+                    <h1 class="text-filter-add-7">Фото</h1>
+                    <div class="p-2 add-object-img">
+                        <div class="input-file-row-img" style="display: flex; flex-direction: row;">
+                            <label class="input-file">
+                                <div id="inputs">
+                                <input type="file" id="input_photo" name="file2" accept="image/*" multiple></div>
+                                <div id="block_add_photo" style="width: 250px;"><span class="input-photo">Добавить фото</span></div>
+                            </label>
+                            <div class="input-file-list_photo">
+                                {% for i in images %}
+                                    <div class="input-file-list-item_photo" id="photo-{{ i.pk }}">
+                                    <img class="input-file-list-img" src="{{ i.image.url }}">
+                                    <a href="#" onclick="removeFilesEdit({{ i.pk }}); return false;" class="input-file-list-remove">x</a>
+                                    </div>
+                                {% endfor %}
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+<!--Блок 5 МОБИЛЬНАЯ ВЕРСИЯ-->
+                <div class="container admin-users-block-add-5-mob">
+                    <h1 class="text-filter-add-7">Фото</h1>
+                    <div class="input-group mb-3 add-select-admin-5-mob-add-img">
+                        <div class="p-2 add-object-photo-2">
+                            <label class="input-file" style="border: none !important; background: transparent;padding: 0px !important;">
+                                <input type="file" name="upload_photo_mob" id="upload_photo_mob" accept="image/*" style="width: 100%; height: 100%; display: none">
+                                <img class="for-mob-img-add-obj-2" src="{% static 'img/Frame 4768.png' %}">
+                            </label>
+                            <div class="p-2 continer-text-planir">
+                                <a class="text-decoration-none" href="#"><h3 class="text-add-planir">Загрузить фото</h3></a>
+                            </div>
+                        </div>
+                        <div id="photo_mob" class="input-file-list" style="display: flex;">
+                            {% for i in images %}
+                                <div class="input-file-list-item">
+                                    <img class="input-file-list-img" style="width: 100px;" src="{{ i.image.url }}">
+                                    <a href="#" onclick="removeFilesItem_mob(this); return false;" class="input-file-list-remove">x</a>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+<!--Блок 6-->
+                <div class="container admin-users-block-add-6">
+                    <div class="p-2 add-object-planir">
+                        <h1 class="text-filter-add-8">Планировка</h1>
+                        <div class="p-2 add-object-planir-2">
+                            <div class="input-file-row">
+                                <label class="input-file">
+                                    <input type="file" name="upload_plan" id="upload_plan" accept="image/*" >
+                                    <span id="file_text_save"></span>
+                                </label>
+                                <div class="input-file-list"><div class="input-file-list-item"><img class="input-file-list-img" src="{{ object.plan.url }}"><span class="input-file-list-name"></span><a href="#" onclick="removeFilesItem(this); return false;" class="input-file-list-remove">x</a></div></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-2 add-object-planir">
+                        <h1 class="text-filter-add-8">PDF от брокеров</h1>
+                        <div class="p-2 add-object-planir-2">
+                            <div class="input-file-row row_pdf">
+                                <label class="input-file">
+                                    <input type="file" name="upload_pdf" id="upload_pdf" accept="application/pdf">
+                                    <span id="file_pdf_save"></span>
+                                </label>
+                                <div class="input-file-list input_pdf">
+                                    <div class="input-file-list-item" id="pdf">
+                                        <a href="{{ object.pdf.url }}"><img class="input-file-list-img" src="{% static 'img/pdf.png' %}"></a>
+                                        <span class="input-file-list-name"></span>
+                                        <a href="#" onclick="removeFilesItem_1(this); return false;" class="input-file-list-remove">x</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+<!--Блок 7-->
+                <div class="container admin-users-block-add-8">
+                    <h1 class="text-filter-add-7">Ссылка на ютуб</h1>
+                    <input type="text" class="form-control add-video-input" placeholder="Введите ссылку на ютуб" aria-label="address" aria-describedby="addon-wrapping">
+                </div>
+                <div class="container admin-users-block-add-8">
+                    <h1 class="text-filter-add-7">Описание недвижимости</h1>
+                    <input type="text" id="desc" name="desc" class="form-control add-description-input" value="{{ object.description }}" placeholder="Опишите объект недвижимости" aria-label="address" aria-describedby="addon-wrapping" required>
+                </div>
+<!--Блок 8-->
+                <div class="container admin-users-block-add-8">
+                    <h1 class="text-filter-add-7">Примечание</h1>
+                    <input type="text" id="note" name="note" class="form-control add-description-input" value="{{ object.note }}" placeholder="Написать примечание" aria-label="address" aria-describedby="addon-wrapping" required>
+                </div>
+<!--Блок 9-->
+                <div class="container admin-users-block-add-7">
+                    <div class="d-flex flex-wrap button-continer-add">
+                        <div class="p-2 button-continer-add-2">
+                            <button type="submit" class="btn button-add-1" onclick="dublicate_no_photo()">Дублировать без фото</button>
+                            <button type="submit" class="btn button-add-2" onclick="dublicate_and_photo()">Дублировать с фото</button>
+                        </div>
+                        <div class="p-2 button-continer-add-3">
+                            <button type="submit" class="btn button-add-5" onclick="save()">Сохранить изменения</button>
+                            <button type="button" class="btn button-add-7" onclick="delete_obj({{ object.pk }})">
+                            <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M21.5 6.47998C18.17 6.14998 14.82 5.97998 11.48 5.97998C9.5 5.97998 7.52 6.07998 5.54 6.27998L3.5 6.47998" stroke="#7B7B7B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M9 5.47L9.22 4.16C9.38 3.21 9.5 2.5 11.19 2.5H13.81C15.5 2.5 15.63 3.25 15.78 4.17L16 5.47" stroke="#7B7B7B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M19.3499 9.63989L18.6999 19.7099C18.5899 21.2799 18.4999 22.4999 15.7099 22.4999H9.2899C6.4999 22.4999 6.4099 21.2799 6.2999 19.7099L5.6499 9.63989" stroke="#7B7B7B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M10.8301 17H14.1601" stroke="#7B7B7B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M10 13H15" stroke="#7B7B7B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+<!--Блок 9 МОБИЛЬНАЯ ВЕРСИЯ-->
+                <div class="container admin-users-block-add-7-mob">
+                    <div class="p-2 button-continer-add-2" id="buttonsi">
+                        <button type="submit" class="btn button-add-1" onclick="dublicate_no_photo()">Дублировать без фото</button>
+                        <button type="submit" class="btn button-add-2">Дублировать с фото</button>
+                    </div>
+                    <button type="button" class="btn button-add-5">Сохранить изменения</button>
+                    <button type="button" class="btn button-add-5">Удалить объект</button>
+                    <button type="submit" class="btn button-add-6">Сохранить</button>
+                </div>
+</form>
+{% endblock panel %}
+{% block js %}
+    <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&amp;apikey=d15b9678-d62b-4c65-9a9d-2f7381ed012e" type="text/javascript"></script>
+    <script src="{% static 'js/select_add.js' %}" type="text/javascript"></script>
+    <script src="{% static "js/edit_objects.js" %}"></script>
+    <script>
+    var myMap;
+
+    ymaps.ready(init)
+    function init() {
+        var x = '{{ object.x }}'.replace(",", ".");
+        var y = '{{ object.y }}'.replace(",", ".");
+        console.log(x)
+    myMap = new ymaps.Map("map", {center: [x,y], zoom: 14}, {searchControlProvider: 'yandex#search'});
+    myMap.geoObjects.add(new ymaps.Placemark([x,y], {balloonContent: 'цвет <strong>красный</strong>',
+        iconCaption: '{{ object.tower }} {{ object.sub_tower }}'}, {preset: 'islands#redDotIconWithCaption'}))
+    }
+
+    var dt1 = new DataTransfer();
+    var image_pdf = '{% static 'img/pdf.png' %}'
+
+$('.input-file input[name=upload_pdf]').on('change', function(){
+	let $files_list = $(this).closest('.input-file').next();
+	$files_list.empty();
+
+	for(var i = 0; i < this.files.length; i++){
+		let file = this.files.item(i);
+		dt1.items.add(file);
+
+		let reader = new FileReader();
+		reader.readAsDataURL(file);
+		reader.onloadend = function(){
+			let new_file_input = '<div class="input-file-list-item">' +
+				'<img class="input-file-list-img" src="' + image_pdf + '">' +
+				'<span class="input-file-list-name">' + file.name + '</span>' +
+				'<a href="#" onclick="removeFilesItem_1(this); return false;" class="input-file-list-remove">x</a>' +
+			'</div>';
+			$files_list.append(new_file_input);
+		}
+	};
+	this.files = dt1.files;
+    $('#file_pdf_save').html(``)
+});
+
+function removeFilesItem_1(target){
+	let name = $(target).prev().text();
+	let input = $(target).closest('.input-file-row').find('input[type=file]');
+	$(target).closest('.input-file-list-item').remove();
+	for(let i = 0; i < dt1.items.length; i++){
+		if(name === dt1.items[i].getAsFile().name){
+			dt1.items.remove(i);
+		}
+	}
+	input[0].files = dt1.files;
+    $('#file_pdf_save').html(`<svg width="81" height="82" viewBox="0 0 81 82" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M20.75 41H60.125" stroke="#292D32" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M40.9414 61.1922V20.8076" stroke="#292D32" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                <rect x="1.25" y="0.5" width="79" height="81" rx="39.5" stroke="#959697"/>
+                                </a>
+                                </svg><h3 class="text-add-planir">Загрузить PDF файл</h3>`)
+}
+    </script>
+{% endblock %}

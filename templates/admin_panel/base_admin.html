@@ -1,0 +1,96 @@
+{% extends "base.html" %}
+{% load static %}
+{% block css %}
+{% endblock %}
+{% block content %}
+<div class="section-admin">
+        <div class="container container-11">
+            <div class="row h-100 justify-content-center align-items-center container-10">
+<!--Левый Блок-->
+            <div class="col block-left-admin-call">
+                {% if request.user.is_superuser %}
+                    <div class="p-2 {% active_page_admin request "all_users" %}">
+                        <div class="menu-left-2">
+                            <div class="menu-left-3">
+                                <a href="{% url 'all_users' %}" class="text-decoration-none {% active_page_admin_text request "all_users" %}">Пользователи</a>
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+                <div class="p-2 {% active_page_admin request "callback" %}">
+                    <div class="menu-left-2">
+                        <div class="menu-left-3">
+                            <a href="{% url 'callback' %}" class="text-decoration-none {% active_page_admin_text request "callback" %}">Обратный звонок</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-2 menu-left-admin {% active_page_admin request "add_object" %}">
+                    <div class="menu-left-2">
+                        <div class="menu-left-3">
+                            <a href="{% url 'add_object' %}" class="text-decoration-none {% active_page_admin_text request "add_object" %}">Добавить объект</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-2 menu-left-admin">
+                    <div class="menu-left-2">
+                        <div class="menu-left-3">
+                            <a href="#" class="text-decoration-none text-admin-menu">Избранное</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-2 menu-left-admin">
+                    <div class="menu-left-2">
+                        <div class="menu-left-3">
+                            <a href="#" class="text-decoration-none text-admin-menu">Мои объекты</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-2 menu-left-admin" style="height: 80px !important;">
+                    <div class="menu-left-2" style="height: 80px !important;">
+                        <div class="menu-left-3" style="height: 80px !important;">
+                            <a href="#" class="text-decoration-none text-admin-menu" style="height: 48px !important;">Напоминания об объектах</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-2 menu-left-admin">
+                    <div class="menu-left-2">
+                        <div class="menu-left-3">
+                            <a href="#" class="text-decoration-none text-admin-menu">Настройки</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-2 menu-left-admin">
+                    <div class="menu-left-2">
+                        <div class="menu-left-3">
+                            <a href="#" class="text-decoration-none text-admin-menu">Клиенты</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-2 menu-left-admin" style="height: 80px !important;">
+                    <div class="menu-left-2" style="height: 80px !important;">
+                        <div class="menu-left-3" style="height: 80px !important;">
+                            <a href="#" class="text-decoration-none text-admin-menu" style="height: 48px !important;">Напоминания по клиентам</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-2 menu-left-admin">
+                    <div class="menu-left-2">
+                        <div class="menu-left-3">
+                            <a href="#" class="text-decoration-none text-admin-menu">Добавление клиента</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-2 menu-left-admin">
+                    <div class="menu-left-2">
+                        <div class="menu-left-3">
+                            <a href="#" class="text-decoration-none text-admin-menu">Архив клиентов</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                {% block panel %}
+                {% endblock %}
+        </div>
+    </div>
+</div>
+{% endblock content %}

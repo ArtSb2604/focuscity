@@ -1,0 +1,159 @@
+{% extends 'admin_panel/base_admin.html' %}
+{% load static %}
+{% block css %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/callback.css' %}">
+{% endblock %}
+{% block panel %}
+    {% if request.user.is_superuser %}
+        <div class="col block-right-admin-call-back">
+                <div class="d-flex">
+                    <div class="d-flex p-2 block-text-filter-user">
+                        <h1 class="text-filter-user">Фильтр</h1>
+                    </div>
+                    <div class="d-flex p-2 block-text-filter-user-mob">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M2.5 3.75H17.5" stroke="#292D32" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M2.5 8.33331H14.1667" stroke="#292D32" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M2.5 12.5H11.6667" stroke="#292D32" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M2.5 16.6667H8.33333" stroke="#292D32" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        <h1 class="text-filter-user">Пользователи</h1>
+                    </div>
+                </div>
+                <div class="d-flex p-2 flex-fill block-filter-3-mob-pc-2">
+                    <div class="d-flex p-2 flex-fill block-filter">
+                        <div class="input-group mb-3 filter-button-admin-block">
+                            <input type="text" class="form-control filter-admin-name-call" placeholder="Имя" aria-label="first-name-broker" aria-describedby="addon-wrapping">
+                        </div>
+                        <div class="input-group mb-3 filter-button-admin-block">
+                            <input type="text" class="form-control filter-admin-name-call" placeholder="Фамилия" aria-label="last-name-broker" aria-describedby="addon-wrapping">
+                        </div>
+                        <div class="input-group mb-3 filter-button-admin-block">
+                            <input type="text" class="form-control filter-admin-name-call-1" placeholder="Номер телефона" aria-label="company-broker" aria-describedby="addon-wrapping">
+                        </div>
+                        <div class="input-group mb-3 filter-button-admin-block">
+                             <button type="button" class="btn btn-dark button-filter-3-1">Поиск</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="container admin-users-block-call-back">
+                    <div class="d-flex p-2 flex-fill block-filter-2-call">
+                        <div class="p-2 block-filter-3-call">
+                            <div class="p-2 block-filter-4-call">
+                                <div class="p-2 block-filter-5-call">
+                                    <div class="input-group mb-3 filter-text-admin-block-call-back">
+                                        <input class="form-check-input checkbox-ud-call" type="checkbox" value="" id="flexCheckDefault-1">
+                                        <label class="form-check-label" for="flexCheckDefault-1">
+                                        </label>
+                                    </div>
+                                    <div class="input-group mb-3 filter-text-admin-block-1-call">
+                                        <h1 class="filter-text-admin">Имя</h1>
+                                    </div>
+                                    <div class="input-group mb-3 filter-text-admin-block-2-call">
+                                        <h1 class="filter-text-admin">Телефон</h1>
+                                    </div>
+                                    <div class="input-group mb-3 filter-text-admin-block-5-call">
+                                        <h1 class="filter-text-admin">Электронная почта</h1>
+                                    </div>
+                                </div>
+                                <div class="p-2 block-filter-6-call">
+                                    <div class="input-group mb-3 filter-text-admin-block-4-call">
+                                        <h1 class="filter-text-admin">Время обращения</h1>
+                                    </div>
+                                    <div class="input-group mb-3 filter-text-admin-block-4-call">
+                                        <h1 class="filter-text-admin">Дата обращения</h1>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <hr class="hr-user-call">
+                    </div>
+                    {% for i in objects %}
+                        <div class="d-flex p-2 flex-fill block-filter-22-call">
+                        <div class="p-2 block-call-back">
+                            <div class="p-2 block-text-call-back">
+                                <div class="input-group mb-3 text-block-call-back">
+                                    <input class="form-check-input checkbox-ud-call" type="checkbox" value="" id="flexCheckDefault-1">
+                                    <label class="form-check-label" for="flexCheckDefault-1">
+                                    </label>
+                                </div>
+                                <div class="input-group mb-3 text-block-call-back-1">
+                                    <h1 class="text-call-back-user">{{ i.name }}</h1>
+                                </div>
+                                <div class="input-group mb-3 text-block-call-back-2">
+                                    <h1 class="text-call-back-user-2">{{ i.number_phone }}</h1>
+                                </div>
+                                <div class="input-group mb-3 text-block-call-back-2">
+                                    <h1 class="text-call-back-user-2">mail@mail.ru</h1>
+                                </div>
+                            </div>
+                            <div class="p-2 block-text-call-back-2">
+                                <div class="input-group mb-3 text-block-call-back-3">
+                                    <h1 class="text-call-back-user-3">{{ i.time_of_appeal }}</h1>
+                                </div>
+                                <div class="input-group mb-3 text-block-call-back-3">
+                                    <h1 class="text-call-back-user-3">{{ i.date_of_appeal }}</h1>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr class="hr-user-call">
+                    {% endfor %}
+                </div>
+                <div class="container-fluid admin-users-search-1">
+                <div class="py-4">
+                    <div class="col-12 col-4 col-md-4"></div>
+                    <div class="col-12 col-4 col-md-4 block-search-admin-2">
+                        <div class="d-flex align-items-center text-white justify-content-center mb-4 mb-xl-0 block-search-admin">
+                            {% if page_obj.has_previous %}
+                                <a href="?page=1" type="button" class="btn btn-dark button-admin-search">
+                                <svg width="29" height="28" viewBox="0 0 29 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <a href="#">
+                                    <path d="M21.5 7.5L14.4552 13.2239C13.9627 13.6241 13.9627 14.3759 14.4552 14.7761L21.5 20.5" stroke="#959697"/>
+                                    <path d="M15.5 7.5L8.45522 13.2239C7.96267 13.6241 7.96267 14.3759 8.45522 14.7761L15.5 20.5" stroke="#959697"/>
+                                    </a>
+                                </svg>
+                            </a>
+                                <a href="?page={{ page_obj.previous_page_number }}" type="button" class="btn btn-dark button-admin-search">
+                                <svg width="29" height="28" viewBox="0 0 29 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <a href="#">
+                                    <path d="M18.5 7.5L11.4552 13.2239C10.9627 13.6241 10.9627 14.3759 11.4552 14.7761L18.5 20.5" stroke="#959697"/>
+                                    </a>
+                                </svg>
+                                </a>
+                            {% endif %}
+
+
+                            <input type="text" class="admin-serch" size="32" value="{{ page_obj.number }}" name="fee" />
+                            <div class="search-text">
+                                <p class="search-text-1">/</p>
+                            </div>
+                            <div class="search-text">
+                                <p class="search-text-1">{{ page_obj.paginator.num_pages }}</p>
+                            </div>
+                        {% if page_obj.has_next %}
+                            <a href="?page={{ page_obj.next_page_number }}" type="button" class="btn btn-dark button-admin-search">
+                                <svg width="29" height="28" viewBox="0 0 29 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <a href="#">
+                                    <path d="M10.5 20.5L17.5448 14.7761C18.0373 14.3759 18.0373 13.6241 17.5448 13.2239L10.5 7.5" stroke="#959697"/>
+                                    </a>
+                                </svg>
+                            </a>
+                           <a href="?page={{ page_obj.paginator.num_pages }}" type="button" class="btn btn-dark button-admin-search">
+                                <svg width="29" height="28" viewBox="0 0 29 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <a href="#">
+                                    <path d="M7.5 20.5L14.5448 14.7761C15.0373 14.3759 15.0373 13.6241 14.5448 13.2239L7.5 7.5" stroke="#959697"/>
+                                    <path d="M13.5 20.5L20.5448 14.7761C21.0373 14.3759 21.0373 13.6241 20.5448 13.2239L13.5 7.5" stroke="#959697"/>
+                                    </a>
+                                </svg>
+                            </a>
+                        {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+    {% endif %}
+{% endblock %}
+{% block js %}
+{% endblock %}

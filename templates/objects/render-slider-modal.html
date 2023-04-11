@@ -1,0 +1,31 @@
+{% load static %}
+{% for a in object.pk|carousel_active %}
+                <div class="carousel-item active" style="height: 100%;background-image: url('http://194.67.125.24/media/{{ a.image }}'); background-position: center; background-size: 100% 100%; backdrop-filter: blur(5px); background-color: rgba(0, 0, 0, 0.61);">
+                    <div class="znaki" style="z-index: 999999;">
+                        <img class="znaki-img" src="{% static 'img/logo.png' %}">
+                        <img class="znaki-img-2" src="{% static 'img/logo.png' %}">
+                        <img class="znaki-img-3" src="{% static 'img/logo.png' %}">
+                        <img class="znaki-img-4" src="{% static 'img/logo.png' %}">
+                        <img class="znaki-img-5" src="{% static 'img/logo.png' %}">
+                        <img class="znaki-img-6" src="{% static 'img/logo.png' %}">
+                    </div>
+                    <div style="height: 100%; width: 100%; display: flex; justify-content: center">
+                        <img src="{{ a.image.url }}" class="d-block w-70 slider-picture" alt="Focus City">
+                    </div>
+                </div>
+            {% endfor %}
+            {% for a in object.pk|carousel %}
+                <div class="carousel-item" style="height: 100%;background-image: url('http://194.67.125.24/media/{{ a.image }}'); background-position: center; background-size: 100% 100%; backdrop-filter: blur(5px); background-color: rgba(0, 0, 0, 0.61);">
+                    <div class="znaki" style="z-index: 999999;">
+                        <img class="znaki-img" src="{% static 'img/logo.png' %}">
+                        <img class="znaki-img-2" src="{% static 'img/logo.png' %}">
+                        <img class="znaki-img-3" src="{% static 'img/logo.png' %}">
+                        <img class="znaki-img-4" src="{% static 'img/logo.png' %}">
+                        <img class="znaki-img-5" src="{% static 'img/logo.png' %}">
+                        <img class="znaki-img-6" src="{% static 'img/logo.png' %}">
+                    </div>
+                    <div style="height: 100%; width: 100%; display: flex; justify-content: center">
+                        <img src="{{ a.image.url }}" class="d-block w-70 slider-picture" alt="Focus City">
+                    </div>
+                </div>
+            {% endfor %}

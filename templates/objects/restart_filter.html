@@ -1,0 +1,224 @@
+{% load static %}
+<div class="d-flex container-mob">
+                    <div class="d-flex p-2 flex-fill block-filter">
+                        <div class="d-flex p-2 block-text-filter">
+                            <button type="button" class="btn btn-dark button-admin-10" onclick="sr_b('rent_filt')" value="rent" id="rent_filt">Снять</button>
+                            <button type="button" class="btn btn-dark button-admin-11" onclick="sr_b('sale_filt')" value="sale" id="sale_filt">Купить</button>
+                        </div>
+                    </div>
+                </div>
+<div class="d-flex p-2 block-filter-4-new">
+                    <div class="d-flex p-2 container-filter-new">
+                        <p class="text-apart-new">Тип недвижимости</p>
+                        <div class="input-group mb-3 input-group-margin">
+                            <select class="form-select menu-apartament-1-new" id="type_prop">
+                                <option class="apart-list-1" value="Апартамент" onclick="prop_filter('Апартамент')" selected>Апартамент</option>
+                                <option class="apart-list-1" value="Квартира" onclick="prop_filter('Квартира')" >Квартира</option>
+                                <option class="apart-list-1" value="Офис" onclick="prop_filter('Офис')" >Офис</option>
+                                <option class="apart-list-1" value="Торговая площадь" onclick="prop_filter('Торговая площадь')" >Торговая площадь</option>
+                                <option class="apart-list-1" value="Свободного назначения" onclick="prop_filter('Свободного назначения')" >Свободного назначения</option>
+                                <option class="apart-list-1" value="Паркинг" onclick="prop_filter('Паркинг')" >Паркинг</option>
+                                <option class="apart-list-1" value="Коворкинг" onclick="prop_filter('Коворкинг')" >Коворкинг</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="d-flex p-2 container-filter-new">
+                        <p class="text-apart-new">Башня</p>
+                        <div class="input-group mb-3 input-group-margin">
+                            <select class="form-select menu-apartament-1-new" id="tower">
+                                <option class="apart-list-1" value="" selected>Выбрать башню</option>
+                                <option class="apart-list-1" value="Башня “Федерация”">Башня Федерация</option>
+                                <option class="apart-list-1" value="Neva towers">Neva towers</option>
+                                <option class="apart-list-1" value="ОКО">ОКО</option>
+                                <option class="apart-list-1" value="Меркурий">Меркурий</option>
+                                <option class="apart-list-1" value="Город Столиц">Город Столиц</option>
+                                <option class="apart-list-1" value="Империя">Империя</option>
+                                <option class="apart-list-1" value="IQ квартал">IQ квартал</option>
+                                <option class="apart-list-1" value="Северная башня">Северная башня</option>
+                                <option class="apart-list-1" value="Башни на набережной">Башни на набережной</option>
+                                <option class="apart-list-1" value="Башня 2000">Башня 2000</option>
+                                <option class="apart-list-1" value="Мост Багратион">Мост Багратион</option>
+                                <option class="apart-list-1" value="Евразия">Евразия</option>
+                                <option class="apart-list-1" value="Эволюция">Эволюция</option>
+                                <option class="apart-list-1" value="Афимол">Афимол</option>
+                                <option class="apart-list-1" value="Moskow Towers">Moskow Towers</option>
+                                <option class="apart-list-1" value="iCity">iCity</option>
+                                <option class="apart-list-1" value="One tower">One tower</option>
+                                <option class="apart-list-1" value="Capital Towers">Capital Towers</option>
+                                <option class="apart-list-1" value="ЖК city park">ЖК city park</option>
+                                <option class="apart-list-1" value="ЖК Headliner">ЖК Headliner</option>
+                                <option class="apart-list-1" value="ЖК Сosmopolit">ЖК Сosmopolit</option>
+                                <option class="apart-list-1" value="ЖК Бадаевский">ЖК Бадаевский</option>
+                                <option class="apart-list-1" value="ЖК Redside">ЖК Redside</option>
+                                <option class="apart-list-1" value="ЖК Victory park Residences">ЖК Victory park Residences</option>
+                                <option class="apart-list-1" value="ЖК Hide">ЖК Hide</option>
+                                <option class="apart-list-1" value="ЖК Поклонная 9">ЖК Поклонная 9</option>
+                                <option class="apart-list-1" value="ЖК Резиденция монэ">ЖК Резиденция монэ</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="d-flex p-2 container-filter-new">
+                        <p class="text-apart-new" id="text_filter">Спален</p>
+                        <div class="input-group mb-3 input-group-margin">
+                            <select class="form-select menu-apartament-1-new" id="filter_var">
+                                <option class="apart-list-2" value="" selected>Выбрать</option>
+                                <option class="apart-list-1" value="Студия">Студия</option>
+                                <option class="apart-list-1" value="1">1</option>
+                                <option class="apart-list-1" value="2">2</option>
+                                <option class="apart-list-1" value="3">3</option>
+                                <option class="apart-list-1" value="4">4</option>
+                                <option class="apart-list-1" value="5+">5+</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                {% if request.user.is_authenticated %}
+                    <div class="d-flex p-2 block-filter-4-new">
+                        <div class="d-flex p-2 container-filter-new">
+                            <p class="text-apart-new">Номер телефона</p>
+                            <div class="input-group mb-3 input-group-margin">
+                                <input type="text" class="form-control filter-apartament-2" id="number_phone" onkeyup="input_number_phone(this);" placeholder="Введите номер телефона" aria-label="apartament" aria-describedby="addon-wrapping">
+                            </div>
+                        </div>
+                        <div class="d-flex p-2 container-filter-new">
+                            <p class="text-apart-new">Номер объекта</p>
+                            <div class="input-group mb-3 input-group-margin">
+                                <input type="text" class="form-control filter-apartament-2" id="number_pk" placeholder="Введите номер объекта" aria-label="apartament" aria-describedby="addon-wrapping">
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+                <div class="d-flex p-2 block-filter-4-new">
+                    <div class="d-flex p-2 container-filter-new">
+                        <div class="d-flex p-2 container-filter-new-2" id="price_filter">
+                            <p class="text-apart-new">Диапазон цен</p>
+                            <div class="price_choices">
+                                <input type="radio" id="pricemobChoice1" class="radio-custom" name="price-filter" value="1" checked>
+                                <label for="pricemobChoice1" class="container-222-block-2-text-3">за все</label>
+                            </div>
+                            <div class="price_choices">
+                                <input type="radio" id="pricemobChoice2" class="radio-custom" name="price-filter" value="2">
+                                <label for="pricemobChoice2" class="container-222-block-2-text-3">за м²</label>
+                            </div>
+                        </div>
+                        <div class="input-group mb-3 input-group-margin">
+                            <input type="text" class="form-control filter-apartament-3" id="price_min" onkeyup="input_price(this);" placeholder="от" aria-label="price" aria-describedby="addon-wrapping">
+                            <input type="text" class="form-control filter-apartament-3" id="price_max" onkeyup="input_price(this);" placeholder="до" aria-label="price-1" aria-describedby="addon-wrapping">
+                        </div>
+                    </div>
+                    <div class="d-flex p-2 container-filter-new">
+                        <p class="text-apart-new">Этаж</p>
+                        <div class="input-group mb-3 input-group-margin">
+                            <input type="text" class="form-control filter-apartament-3" id="floor_min" placeholder="от" aria-label="price" aria-describedby="addon-wrapping">
+                            <input type="text" class="form-control filter-apartament-3" id="floor_max" placeholder="до" aria-label="price-1" aria-describedby="addon-wrapping">
+                        </div>
+                    </div>
+                    <div class="d-flex p-2 container-filter-new">
+                        <p class="text-apart-new">Площадь</p>
+                        <div class="input-group mb-3 input-group-margin">
+                            <input type="text" class="form-control filter-apartament-3" id="total_area_min" onkeyup="input_price(this);" placeholder="от м²" aria-label="price" aria-describedby="addon-wrapping">
+                            <input type="text" class="form-control filter-apartament-3" id="total_area_max" onkeyup="input_price(this);" placeholder="до м²" aria-label="price-1" aria-describedby="addon-wrapping">
+                        </div>
+                    </div>
+                </div>
+                <div class="d-flex p-2 block-filter-4-new-2" id="udobstva_ap_kv">
+                    <p class="text-apart-new">Удобства</p>
+                    <div class="d-flex p-2 container-filter-new">
+                        <div class="input-group mb-3 input-group-margin-udobstva">
+                            <div class="d-flex flex-wrap form-check checkbox-ud-1">
+                                <span class="form-check-input checkbox-ud" id="flexCheckDefault-1" data-type="" onclick="tristate(this);"></span>
+                                <label class="form-check-label" for="flexCheckDefault-1">
+                                    <img src="{% static 'img/icon/ud-1.png' %}">
+                                    Вид на город
+                                </label>
+                            </div>
+                            <div class="d-flex flex-wrap form-check checkbox-ud-1">
+                                <span class="form-check-input checkbox-ud" id="flexCheckDefault-2" data-type="" onclick="tristate(this);"></span>
+                                <label class="form-check-label" for="flexCheckDefault-2">
+                                    <img src="{% static 'img/icon/ud-2.png' %}">
+                                    Вид на сити
+                                </label>
+                            </div>
+                            <div class="d-flex flex-wrap form-check checkbox-ud-1">
+                                <span class="form-check-input checkbox-ud" id="flexCheckDefault-3" data-type="" onclick="tristate(this);"></span>
+                                <label class="form-check-label" for="flexCheckDefault-3">
+                                    <img src="{% static 'img/icon/ud-3.png' %}">
+                                    Мебель
+                                </label>
+                            </div>
+                            <div class="d-flex flex-wrap form-check checkbox-ud-1">
+                                <span class="form-check-input checkbox-ud" id="flexCheckDefault-4" data-type="" onclick="tristate(this);"></span>
+                                <label class="form-check-label" for="flexCheckDefault-4">
+                                    <img src="{% static 'img/icon/ud-4.png' %}">
+                                    Мастер-спальня
+                                </label>
+                            </div>
+                            <div class="d-flex flex-wrap form-check checkbox-ud-1">
+                                <span class="form-check-input checkbox-ud" id="flexCheckDefault-5" data-type="" onclick="tristate(this);"></span>
+                                <label class="form-check-label" for="flexCheckDefault-5">
+                                    <img src="{% static 'img/icon/ud-5.png' %}">
+                                    Угол
+                                </label>
+                            </div>
+                            <div class="d-flex flex-wrap form-check checkbox-ud-1">
+                                <span class="form-check-input checkbox-ud" id="flexCheckDefault-6" data-type="" onclick="tristate(this);"></span>
+                                <label class="form-check-label" for="flexCheckDefault-6">
+                                    <img src="{% static 'img/icon/ud-6.png' %}">
+                                    Кухня гостиная
+                                </label>
+                            </div>
+                            <div class="d-flex flex-wrap form-check checkbox-ud-1">
+                                <span class="form-check-input checkbox-ud" id="flexCheckDefault-7" data-type="" onclick="tristate(this);"></span>
+                                <label class="form-check-label" for="flexCheckDefault-7">
+                                    <img src="{% static 'img/icon/ud-7.png' %}">
+                                    Гардеробная
+                                </label>
+                            </div>
+                            <div class="d-flex flex-wrap form-check checkbox-ud-1">
+                                <span class="form-check-input checkbox-ud" id="flexCheckDefault-8" data-type="" onclick="tristate(this);"></span>
+                                <label class="form-check-label" for="flexCheckDefault-8">
+                                    <img src="{% static 'img/icon/ud-8.png' %}">
+                                    Кровать
+                                </label>
+                            </div>
+                            <div class="d-flex flex-wrap form-check checkbox-ud-1">
+                                <span class="form-check-input checkbox-ud" id="flexCheckDefault-9" data-type="" onclick="tristate(this);"></span>
+                                <label class="form-check-label" for="flexCheckDefault-9">
+                                    <img src="{% static 'img/icon/ud-9.png' %}">
+                                    Бытовые приборы
+                                </label>
+                            </div>
+                            <div class="d-flex flex-wrap form-check checkbox-ud-1">
+                                <span class="form-check-input checkbox-ud" id="flexCheckDefault-10" data-type="" onclick="tristate(this);"></span>
+                                <label class="form-check-label" for="flexCheckDefault-10">
+                                    <img src="{% static 'img/icon/ud-10.png' %}">
+                                    Постирочная
+                                </label>
+                            </div>
+                            <div class="d-flex flex-wrap form-check checkbox-ud-1">
+                                <span class="form-check-input checkbox-ud" id="flexCheckDefault-11" data-type="" onclick="tristate(this);"></span>
+                                <label class="form-check-label" for="flexCheckDefault-11">
+                                    <img src="{% static 'img/icon/ud-11.png' %}">
+                                    Душ
+                                </label>
+                            </div>
+                            <div class="d-flex flex-wrap form-check checkbox-ud-1">
+                                <span class="form-check-input checkbox-ud" id="flexCheckDefault-12" data-type="" onclick="tristate(this);"></span>
+                                <label class="form-check-label" for="flexCheckDefault-12">
+                                    <img src="{% static 'img/icon/ud-12.png' %}">
+                                    Ванна
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+<div class="d-flex flex-str-1">
+                    <div class="d-flex p-2 flex-fill block-filter-6">
+                        <div class="d-flex p-2 block-text-filter-8">
+                            <button type="button" class="btn btn-dark button-admin-12" onclick="restart_filter()">Сбросить фильтр</button>
+                        </div>
+                        <div class="d-flex p-2 block-text-filter-8">
+                            <button type="button" class="btn btn-dark button-admin-13" onclick="filter()">Найти</button>
+                        </div>
+                    </div>
+                </div>
