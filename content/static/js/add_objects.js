@@ -1482,15 +1482,15 @@ function type_oper(num) {
         $('#add_pricing').empty();
         $("#add_pricing").append(`<div class="p-2 add-price">
                                 <h1 class="text-filter-add-4">месяц</h1>
-                                <input type="text" name="price_month" id="price_month" class="form-control input-add-price" placeholder="1 000 000 000 000 ₽" aria-label="price" aria-describedby="addon-wrapping">
+                                <input type="text" name="price_month" id="price_month" class="form-control input-add-price" placeholder="₽" aria-label="price" aria-describedby="addon-wrapping">
                             </div>
                             <div class="p-2 add-price">
                                 <h1 class="text-filter-add-4">м²/ месяц</h1>
-                                <input type="text" name="price_square_month" id="price_square_month" class="form-control input-add-price" placeholder="1 000 000 000 000 ₽" aria-label="price" aria-describedby="addon-wrapping">
+                                <input type="text" name="price_square_month" id="price_square_month" class="form-control input-add-price" placeholder="₽" aria-label="price" aria-describedby="addon-wrapping">
                             </div>
                             <div class="p-2 add-price">
                                 <h1 class="text-filter-add-4">м²/ год</h1>
-                                <input type="text" name="price_square_year" id="price_square_year" class="form-control input-add-price" placeholder="1 000 000 000 000 ₽" aria-label="price" aria-describedby="addon-wrapping">
+                                <input type="text" name="price_square_year" id="price_square_year" class="form-control input-add-price" placeholder="₽" aria-label="price" aria-describedby="addon-wrapping">
                             </div>`);
 
         $('#add_status').empty();
@@ -1540,11 +1540,11 @@ function type_oper(num) {
         $('#add_pricing').empty();
         $("#add_pricing").append(`<div class="p-2 add-price">
                                 <h1 class="text-filter-add-4">За все</h1>
-                                <input type="text" name="price" id="price" onkeyup="price_add(this.value);" class="form-control input-add-price" placeholder="1 000 000 000 000 ₽" aria-label="price" aria-describedby="addon-wrapping">
+                                <input type="text" name="price" id="price" onkeyup="price_add(this.value);" class="form-control input-add-price" placeholder="₽" aria-label="price" aria-describedby="addon-wrapping">
                             </div>
                             <div class="p-2 add-price">
                                 <h1 class="text-filter-add-4">За м²</h1>
-                                <input type="text" name="price_metr" id="price_metr" class="form-control input-add-price" placeholder="1 000 000 000 000 ₽" aria-label="price" aria-describedby="addon-wrapping">
+                                <input type="text" name="price_metr" id="price_metr" onkeyup="price_add_metr(this.value);" class="form-control input-add-price" placeholder="₽" aria-label="price" aria-describedby="addon-wrapping">
                             </div>`);
 
         var pricese = IMask(
@@ -1710,8 +1710,22 @@ $('#price_month').on('input',function(e){
     $('#price_square_year').val(Math.round(Number($('#price_month').val().replace(/\s/g, "")/$('#total_area').val().replace(/\s/g, "")*12)).toLocaleString())
 });
 
+$('#price_square_month').on('input',function(e){
+    $('#price_month').val(Math.round(Number($('#price_square_month').val().replace(/\s/g, ""))*$('#total_area').val().replace(/\s/g, "")).toLocaleString())
+    $('#price_square_year').val(Math.round(Number($('#price_month').val().replace(/\s/g, "")/$('#total_area').val().replace(/\s/g, "")*12)).toLocaleString())
+});
+
+$('#price_square_year').on('input',function(e){
+    $('#price_square_month').val(Math.round(Number($('#price_square_year').val().replace(/\s/g, "")/12)).toLocaleString())
+    $('#price_month').val(Math.round(Number($('#price_square_month').val().replace(/\s/g, ""))*$('#total_area').val().replace(/\s/g, "")).toLocaleString())
+});
+
 function price_add(num) {
     $('#price_metr').val(Math.round(Number($('#price').val().replace(/\s/g, "")/$('#total_area').val().replace(/\s/g, ""))).toLocaleString())
+}
+
+function price_add_metr(num) {
+    $('#price').val(Math.round(Number($('#price_metr').val().replace(/\s/g, "")*$('#total_area').val().replace(/\s/g, ""))).toLocaleString())
 }
 
 function total(num) {

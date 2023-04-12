@@ -1223,7 +1223,6 @@ function restart_filter() {
             data: data,
             success: function( data )
             {
-                console.log(data)
                 document.getElementById("list_obj").innerHTML = "";
                 $("#list_obj").append(data[1])
 
